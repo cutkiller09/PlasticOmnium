@@ -1,0 +1,556 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - couverture de code des tests - src/Driver_TcpSocketDriver.c</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">src</a> - Driver_TcpSocketDriver.c<span style="font-size: 80%;"> (source / <a href="Driver_TcpSocketDriver.c.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">couverture de code des tests</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">110</td>
+            <td class="headerCovTableEntry">117</td>
+            <td class="headerCovTableEntryHi">94.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-02-16</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /*============================================================================*/</a>
+<span class="lineNum">       2 </span>            : /*                              ROBOSOFT                                      */
+<span class="lineNum">       3 </span>            : /*============================================================================*/
+<span class="lineNum">       4 </span>            : /*                        OBJECT SPECIFICATION                                */
+<span class="lineNum">       5 </span>            : /*============================================================================*/
+<span class="lineNum">       6 </span>            : /*! 
+<span class="lineNum">       7 </span>            :  * $Source: Driver_TcpSocketDriver.c 
+<span class="lineNum">       8 </span>            :  * $Author: MDega 
+<span class="lineNum">       9 </span>            :  * $Date: 2015/12/30
+<span class="lineNum">      10 </span>            :  */
+<span class="lineNum">      11 </span>            : /*============================================================================*/
+<span class="lineNum">      12 </span>            : /* DESCRIPTION :                                                              */
+<span class="lineNum">      13 </span>            : /** \file  Driver_TcpSocketDriver.c 
+<span class="lineNum">      14 </span>            :   * \brief Source file of TcpSocketDriver Service
+<span class="lineNum">      15 </span>            : */
+<span class="lineNum">      16 </span>            : /*============================================================================*/
+<span class="lineNum">      17 </span>            : /* COPYRIGHT (C) ROBOSOFT 2015                                                */ 
+<span class="lineNum">      18 </span>            : /* ALL RIGHTS RESERVED                                                        */
+<span class="lineNum">      19 </span>            : /*                                                                            */
+<span class="lineNum">      20 </span>            : /* The reproduction, transmission, or use of this document or its content is  */
+<span class="lineNum">      21 </span>            : /* not permitted without express written authority. Offenders will be liable  */
+<span class="lineNum">      22 </span>            : /* for damages.                                                               */
+<span class="lineNum">      23 </span>            : /* All rights, including rights created by patent grant or registration of a  */
+<span class="lineNum">      24 </span>            : /* utility model or design, are reserved.                                     */
+<span class="lineNum">      25 </span>            : /*                                                                            */
+<span class="lineNum">      26 </span>            : /*============================================================================*/ 
+<span class="lineNum">      27 </span>            : 
+<span class="lineNum">      28 </span>            : /* Includes                                                                   */
+<span class="lineNum">      29 </span>            : /*============================================================================*/ 
+<span class="lineNum">      30 </span>            : #include &quot;types.h&quot;
+<span class="lineNum">      31 </span>            : #include &quot;Library_StdLib.h&quot;
+<span class="lineNum">      32 </span>            : #include &quot;Driver_TcpSocketDriver.h&quot; 
+<span class="lineNum">      33 </span>            : 
+<span class="lineNum">      34 </span>            : #include &lt;netinet/in.h&gt;
+<span class="lineNum">      35 </span>            : #include &lt;sys/socket.h&gt;
+<span class="lineNum">      36 </span>            : #include &lt;sys/types.h&gt;
+<span class="lineNum">      37 </span>            : #include &lt;sys/ioctl.h&gt;
+<span class="lineNum">      38 </span>            : #include &lt;unistd.h&gt;
+<span class="lineNum">      39 </span>            : #include &lt;netdb.h&gt;
+<span class="lineNum">      40 </span>            : #include &lt;fcntl.h&gt;
+<span class="lineNum">      41 </span>            : #include &lt;string.h&gt;
+<span class="lineNum">      42 </span>            : #include &lt;stdio.h&gt;
+<span class="lineNum">      43 </span>            : #include &lt;errno.h&gt;
+<span class="lineNum">      44 </span>            : 
+<span class="lineNum">      45 </span>            : /* Constants and types                                                        */
+<span class="lineNum">      46 </span>            : /*============================================================================*/ 
+<span class="lineNum">      47 </span>            :    
+<span class="lineNum">      48 </span>            : /* Variables                                                                  */
+<span class="lineNum">      49 </span>            : /*============================================================================*/ 
+<span class="lineNum">      50 </span>            : static Std_ReturnType gt_InitTcpSocketDriver_Status = E_NOT_OK ;
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span>            : /* Private functions prototypes                                               */
+<span class="lineNum">      53 </span>            : /*============================================================================*/ 
+<span class="lineNum">      54 </span>            : 
+<span class="lineNum">      55 </span>            : /* Inline functions                                                           */
+<span class="lineNum">      56 </span>            : /*============================================================================*/
+<span class="lineNum">      57 </span>            : 
+<span class="lineNum">      58 </span>            : /* Private functions                                                          */
+<span class="lineNum">      59 </span>            : /*============================================================================*/
+<span class="lineNum">      60 </span>            : 
+<span class="lineNum">      61 </span>            : /**
+<span class="lineNum">      62 </span>            :  * \fn  Std_ReturnType DrvTcpSocket_Initialize(void) 
+<span class="lineNum">      63 </span>            :  * \brief this function initializes internal variables
+<span class="lineNum">      64 </span>            :  *
+<span class="lineNum">      65 </span>            :  * \param  void
+<span class="lineNum">      66 </span>            :  *
+<span class="lineNum">      67 </span>            : * \return Std_ReturnType :
+<span class="lineNum">      68 </span>            : *         - E_OK if good return function
+<a name="69"><span class="lineNum">      69 </span>            : *         - E_NOT_OK if not</a>
+<span class="lineNum">      70 </span>            :  */
+<span class="lineNum">      71 </span><span class="lineCov">          1 : Std_ReturnType DrvTcpSocket_Initialize(void) </span>
+<span class="lineNum">      72 </span>            : {
+<span class="lineNum">      73 </span>            :     /*! Declaration */     
+<span class="lineNum">      74 </span>            :     Std_ReturnType t_Initialize_Status; 
+<span class="lineNum">      75 </span>            : 
+<span class="lineNum">      76 </span>            :     /*! Initialization */
+<span class="lineNum">      77 </span><span class="lineCov">          1 :     t_Initialize_Status=E_OK; </span>
+<span class="lineNum">      78 </span><span class="lineCov">          1 :     gt_InitTcpSocketDriver_Status = t_Initialize_Status ;</span>
+<span class="lineNum">      79 </span>            : 
+<span class="lineNum">      80 </span>            :     /*! return code */
+<span class="lineNum">      81 </span><span class="lineCov">          1 :     return(t_Initialize_Status);</span>
+<span class="lineNum">      82 </span>            : }
+<span class="lineNum">      83 </span>            : 
+<span class="lineNum">      84 </span>            : /**
+<span class="lineNum">      85 </span>            :  * \fn  Std_ReturnType DrvTcpSocket_Open( const DrvTcpsocket_cfg_type * const pt_configuration , DrvTcpsocket_descriptor_type * const pt_tcpsocket_desc ,
+<span class="lineNum">      86 </span>            :                                                                         E_DRVTCPSOCKET_ERROR * const pt_error )
+<span class="lineNum">      87 </span>            :  * \brief this function opens tcp socket link
+<span class="lineNum">      88 </span>            :  *
+<span class="lineNum">      89 </span>            :  * \param  t_configuration [in] : Socket configuration (server address, server port, blocking mode, timeout)
+<span class="lineNum">      90 </span>            :  * \param  ps32_tcpsocket_desc [out] : link descriptor
+<span class="lineNum">      91 </span>            :  * \param  pt_error [out] : Error type
+<span class="lineNum">      92 </span>            :  *
+<span class="lineNum">      93 </span>            : * \return Std_ReturnType :
+<span class="lineNum">      94 </span>            : *         - E_OK if good return function
+<a name="95"><span class="lineNum">      95 </span>            : *         - E_NOT_OK if not</a>
+<span class="lineNum">      96 </span>            :  */
+<span class="lineNum">      97 </span><span class="lineCov">         14 : Std_ReturnType DrvTcpSocket_Open( const DrvTcpsocket_cfg_type * const pt_configuration , DrvTcpsocket_descriptor_type * const pt_tcpsocket_desc ,</span>
+<span class="lineNum">      98 </span>            :                                                                         E_DRVTCPSOCKET_ERROR * const pt_error )
+<span class="lineNum">      99 </span>            : {
+<span class="lineNum">     100 </span>            :     /*! Declaration */
+<span class="lineNum">     101 </span>            :     Std_ReturnType t_Open_Status;
+<span class="lineNum">     102 </span>            :     struct sockaddr_in t_SockAddrIn;
+<span class="lineNum">     103 </span>            :     struct hostent * t_serverHostName ;
+<span class="lineNum">     104 </span>            :     uint32 u32_flags ;
+<span class="lineNum">     105 </span>            :     sint32 s32_error ;
+<span class="lineNum">     106 </span>            : 
+<span class="lineNum">     107 </span>            :     /*! Initialization */
+<span class="lineNum">     108 </span><span class="lineCov">         14 :         t_Open_Status = E_NOT_OK ;</span>
+<span class="lineNum">     109 </span>            : 
+<span class="lineNum">     110 </span>            :     /*! Function Body */
+<span class="lineNum">     111 </span><span class="lineCov">         14 :     if( (E_NOT_OK != gt_InitTcpSocketDriver_Status) &amp;&amp; (NULL_PTR != pt_tcpsocket_desc) &amp;&amp; (NULL_PTR != pt_configuration) &amp;&amp; (NULL_PTR != pt_error) )</span>
+<span class="lineNum">     112 </span>            :     {
+<span class="lineNum">     113 </span><span class="lineCov">         18 :         if( (NULL_PTR != pt_configuration-&gt;au8_serverAddress) )</span>
+<span class="lineNum">     114 </span>            :                 {
+<span class="lineNum">     115 </span><span class="lineCov">          9 :                         t_Open_Status = E_OK ;</span>
+<span class="lineNum">     116 </span>            : 
+<span class="lineNum">     117 </span><span class="lineCov">          9 :                         if( (E_DRVTCPSOCKET_DESCRIPTOR_CLOSED == *pt_tcpsocket_desc) )</span>
+<span class="lineNum">     118 </span>            :                         {
+<span class="lineNum">     119 </span><span class="lineCov">          8 :                                  *pt_error = E_DRVTCPSOCKET_ERROR_NOERROR ;</span>
+<span class="lineNum">     120 </span>            : 
+<span class="lineNum">     121 </span>            :                                 /* Set TCP  Datagram */
+<span class="lineNum">     122 </span><span class="lineCov">          8 :                                 *pt_tcpsocket_desc = socket(AF_INET, SOCK_STREAM, 0);</span>
+<span class="lineNum">     123 </span>            : 
+<span class="lineNum">     124 </span>            :                                 /* Check Socket Init Error */
+<span class="lineNum">     125 </span><span class="lineCov">          8 :                                 if( -1 == *pt_tcpsocket_desc )</span>
+<span class="lineNum">     126 </span>            :                                 {
+<span class="lineNum">     127 </span><span class="lineNoCov">          0 :                                         *pt_error =  E_DRVTCPSOCKET_ERROR_CONNECT_INVALID_SOCKET_ERROR ;</span>
+<span class="lineNum">     128 </span>            :                                 }
+<span class="lineNum">     129 </span>            : 
+<span class="lineNum">     130 </span>            :                                 /* If O.S Unix Set Zero to  0x00 to sockaddr_in gt_SockAddrIn */
+<span class="lineNum">     131 </span><span class="lineCov">          8 :                                 if( E_DRVTCPSOCKET_ERROR_NOERROR == *pt_error )</span>
+<span class="lineNum">     132 </span>            :                                 {
+<span class="lineNum">     133 </span><span class="lineCov">          8 :                                         memset( &amp;t_SockAddrIn , 0 , sizeof(t_SockAddrIn) );</span>
+<span class="lineNum">     134 </span>            :                                 }
+<span class="lineNum">     135 </span>            : 
+<span class="lineNum">     136 </span>            :                                 /* -&gt; Get Host By Name */
+<span class="lineNum">     137 </span><span class="lineCov">          8 :                                 if( E_DRVTCPSOCKET_ERROR_NOERROR == *pt_error )</span>
+<span class="lineNum">     138 </span>            :                                 {
+<span class="lineNum">     139 </span><span class="lineCov">          8 :                                         t_serverHostName = gethostbyname( (char*) pt_configuration-&gt;au8_serverAddress ) ;</span>
+<span class="lineNum">     140 </span>            :                                         /* Check if Address is Known */
+<span class="lineNum">     141 </span><span class="lineCov">          8 :                                         if( t_serverHostName == NULL )</span>
+<span class="lineNum">     142 </span>            :                                         {
+<span class="lineNum">     143 </span><span class="lineCov">          1 :                                                 *pt_error = E_DRVTCPSOCKET_ERROR_CONNECT_INVALID_SERVER_ADDRESS_ERROR ;</span>
+<span class="lineNum">     144 </span>            :                                         }
+<span class="lineNum">     145 </span>            :                                 }
+<span class="lineNum">     146 </span>            : 
+<span class="lineNum">     147 </span>            :                                 /* Initialize Socket Configuration */
+<span class="lineNum">     148 </span><span class="lineCov">          8 :                                 if( E_DRVTCPSOCKET_ERROR_NOERROR == *pt_error )</span>
+<span class="lineNum">     149 </span>            :                                 {
+<span class="lineNum">     150 </span><span class="lineCov">          7 :                                         t_SockAddrIn.sin_family = AF_INET;</span>
+<span class="lineNum">     151 </span><span class="lineCov">          7 :                                         t_SockAddrIn.sin_port = htons( pt_configuration-&gt;u32_server_port ) ;</span>
+<span class="lineNum">     152 </span><span class="lineCov">          7 :                                         memcpy( &amp;t_SockAddrIn.sin_addr , t_serverHostName-&gt;h_addr , t_serverHostName-&gt;h_length ) ;</span>
+<span class="lineNum">     153 </span>            :                                 }
+<span class="lineNum">     154 </span>            : 
+<span class="lineNum">     155 </span>            :                                 /* Connect Socket */
+<span class="lineNum">     156 </span><span class="lineCov">          8 :                                 if( E_DRVTCPSOCKET_ERROR_NOERROR == *pt_error )</span>
+<span class="lineNum">     157 </span>            :                                 {
+<span class="lineNum">     158 </span><span class="lineCov">          7 :                                         s32_error = connect( *pt_tcpsocket_desc , (struct sockaddr *)&amp;t_SockAddrIn, sizeof(t_SockAddrIn) ) ;</span>
+<span class="lineNum">     159 </span><span class="lineCov">          7 :                                         if( -1 == s32_error )</span>
+<span class="lineNum">     160 </span>            :                                         {
+<span class="lineNum">     161 </span><span class="lineCov">          2 :                                                 *pt_error = E_DRVTCPSOCKET_ERROR_CONNECT_FUNCTION_CONNECT_ERROR ;</span>
+<span class="lineNum">     162 </span>            :                                         }
+<span class="lineNum">     163 </span>            :                                 }
+<span class="lineNum">     164 </span>            :                                 /* Set Flag Blocking / Non Blocking */
+<span class="lineNum">     165 </span><span class="lineCov">          8 :                                 if( E_DRVTCPSOCKET_ERROR_NOERROR == *pt_error )</span>
+<span class="lineNum">     166 </span>            :                                 {
+<span class="lineNum">     167 </span><span class="lineCov">          5 :                                         if( K_TRUE == pt_configuration-&gt;b_blocking_mode )</span>
+<span class="lineNum">     168 </span>            :                                         {
+<span class="lineNum">     169 </span><span class="lineCov">          1 :                                                 u32_flags = fcntl( *pt_tcpsocket_desc , F_GETFL ) ;</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 :                                                 fcntl( *pt_tcpsocket_desc , F_SETFL , u32_flags &amp; ~O_NONBLOCK ) ;</span>
+<span class="lineNum">     171 </span>            :                                         }
+<span class="lineNum">     172 </span>            :                                         else
+<span class="lineNum">     173 </span>            :                                         {
+<span class="lineNum">     174 </span><span class="lineCov">          4 :                                                 u32_flags = fcntl( *pt_tcpsocket_desc , F_GETFL ) ;</span>
+<span class="lineNum">     175 </span><span class="lineCov">          4 :                                                 fcntl( *pt_tcpsocket_desc , F_SETFL , u32_flags | O_NONBLOCK ) ;</span>
+<span class="lineNum">     176 </span>            :                                         }
+<span class="lineNum">     177 </span>            :                                 }
+<span class="lineNum">     178 </span>            : 
+<span class="lineNum">     179 </span>            :                                 /* Set Internal Flag */
+<span class="lineNum">     180 </span><span class="lineCov">          8 :                                 if( E_DRVTCPSOCKET_ERROR_NOERROR != *pt_error )</span>
+<span class="lineNum">     181 </span>            :                                 {
+<span class="lineNum">     182 </span><span class="lineCov">          3 :                                         t_Open_Status = E_NOT_OK ;</span>
+<span class="lineNum">     183 </span><span class="lineCov">          3 :                                         *pt_tcpsocket_desc = E_DRVTCPSOCKET_DESCRIPTOR_CLOSED ;</span>
+<span class="lineNum">     184 </span>            :                                 }
+<span class="lineNum">     185 </span>            :                         }
+<span class="lineNum">     186 </span>            :                 }
+<span class="lineNum">     187 </span>            :     }
+<span class="lineNum">     188 </span>            :     else
+<span class="lineNum">     189 </span>            :     {
+<span class="lineNum">     190 </span>            :                 /* Module is not initialized, Halt */
+<span class="lineNum">     191 </span><span class="lineCov">          5 :         t_Open_Status = E_NOT_OK ;</span>
+<span class="lineNum">     192 </span>            :     }
+<span class="lineNum">     193 </span>            : 
+<span class="lineNum">     194 </span>            :     /*! return code */
+<span class="lineNum">     195 </span><span class="lineCov">         14 :     return(t_Open_Status);</span>
+<span class="lineNum">     196 </span>            : }
+<span class="lineNum">     197 </span>            : 
+<span class="lineNum">     198 </span>            : /**
+<span class="lineNum">     199 </span>            :  * \fn  Std_ReturnType DrvTcpSocket_Close( DrvTcpsocket_descriptor_type * const pt_tcpsocket_desc , E_DRVTCPSOCKET_ERROR * const pt_error )
+<span class="lineNum">     200 </span>            :  * \brief this function closes link
+<span class="lineNum">     201 </span>            :  *
+<span class="lineNum">     202 </span>            :  * \param  pt_tcpsocket_desc  [out] : link descriptor
+<span class="lineNum">     203 </span>            :  * \param  pt_error  [out] : Error type
+<span class="lineNum">     204 </span>            :  *
+<span class="lineNum">     205 </span>            : * \return Std_ReturnType :
+<span class="lineNum">     206 </span>            : *         - E_OK if good return function
+<a name="207"><span class="lineNum">     207 </span>            : *         - E_NOT_OK if not</a>
+<span class="lineNum">     208 </span>            :  */
+<span class="lineNum">     209 </span><span class="lineCov">         11 : Std_ReturnType DrvTcpSocket_Close( DrvTcpsocket_descriptor_type * const pt_tcpsocket_desc , E_DRVTCPSOCKET_ERROR * const pt_error )</span>
+<span class="lineNum">     210 </span>            : {
+<span class="lineNum">     211 </span>            :     /*! Declaration */
+<span class="lineNum">     212 </span>            :     Std_ReturnType t_Status;
+<span class="lineNum">     213 </span>            :     sint32 s32_error ;
+<span class="lineNum">     214 </span>            : 
+<span class="lineNum">     215 </span>            :     /*! Initialization */
+<span class="lineNum">     216 </span><span class="lineCov">         11 :     t_Status=E_NOT_OK;</span>
+<span class="lineNum">     217 </span>            : 
+<span class="lineNum">     218 </span>            :     /*! Function Body */
+<span class="lineNum">     219 </span><span class="lineCov">         11 :     if( (E_NOT_OK != gt_InitTcpSocketDriver_Status) &amp;&amp; (NULL_PTR != pt_tcpsocket_desc) &amp;&amp; (NULL_PTR != pt_error) )</span>
+<span class="lineNum">     220 </span>            :     {
+<span class="lineNum">     221 </span><span class="lineCov">          7 :         t_Status = E_OK ;</span>
+<span class="lineNum">     222 </span><span class="lineCov">         14 :         if( E_DRVTCPSOCKET_DESCRIPTOR_CLOSED != *pt_tcpsocket_desc )</span>
+<span class="lineNum">     223 </span>            :         {
+<span class="lineNum">     224 </span><span class="lineCov">          6 :                 *pt_error = E_DRVTCPSOCKET_ERROR_NOERROR ;</span>
+<span class="lineNum">     225 </span><span class="lineCov">          6 :                 s32_error = close( *pt_tcpsocket_desc ) ;</span>
+<span class="lineNum">     226 </span><span class="lineCov">          6 :                         if( -1 == s32_error )</span>
+<span class="lineNum">     227 </span>            :                         {
+<span class="lineNum">     228 </span><span class="lineCov">          1 :                                 t_Status = E_NOT_OK ;</span>
+<span class="lineNum">     229 </span><span class="lineCov">          1 :                                 *pt_error = E_DRVTCPSOCKET_ERROR_DISCONNECT_FUNCTION_CLOSE_ERROR ;</span>
+<span class="lineNum">     230 </span>            :                         }
+<span class="lineNum">     231 </span><span class="lineCov">          6 :                         if( E_DRVTCPSOCKET_ERROR_NOERROR == *pt_error )</span>
+<span class="lineNum">     232 </span>            :                         {
+<span class="lineNum">     233 </span><span class="lineCov">          5 :                                 *pt_tcpsocket_desc = E_DRVTCPSOCKET_DESCRIPTOR_CLOSED ;</span>
+<span class="lineNum">     234 </span>            :                         }
+<span class="lineNum">     235 </span>            :         }
+<span class="lineNum">     236 </span>            :         else
+<span class="lineNum">     237 </span>            :                 {
+<span class="lineNum">     238 </span><span class="lineCov">          1 :                         *pt_error = E_DRVTCPSOCKET_ERROR_DISCONNECT_SOCKET_NOT_OOPEN_ERROR ;</span>
+<span class="lineNum">     239 </span>            :                 }
+<span class="lineNum">     240 </span>            :     }
+<span class="lineNum">     241 </span>            :     else
+<span class="lineNum">     242 </span>            :     {
+<span class="lineNum">     243 </span>            :                 /* Module is not initialized, Halt */
+<span class="lineNum">     244 </span><span class="lineCov">          4 :         t_Status=E_NOT_OK;</span>
+<span class="lineNum">     245 </span>            :     }
+<span class="lineNum">     246 </span>            : 
+<span class="lineNum">     247 </span>            :     /*! return code */
+<span class="lineNum">     248 </span><span class="lineCov">         11 :     return(t_Status);</span>
+<span class="lineNum">     249 </span>            : }
+<span class="lineNum">     250 </span>            : 
+<span class="lineNum">     251 </span>            : 
+<span class="lineNum">     252 </span>            : 
+<span class="lineNum">     253 </span>            : /**
+<span class="lineNum">     254 </span>            : * \fn Std_ReturnType DrvTcpSocket_Send( const DrvTcpsocket_descriptor_type t_tcpsocket_desc , uint8 * const au8_buffer,
+<span class="lineNum">     255 </span>            : const uint32 u32_buffer_size , sint32 * const ps32_written )
+<span class="lineNum">     256 </span>            : * \brief this function sends datas on ethernet link
+<span class="lineNum">     257 </span>            : *
+<span class="lineNum">     258 </span>            : * \param t_tcpsocket_desc [in] : ethernet descriptor
+<span class="lineNum">     259 </span>            : * \param au8_buffer [in] : bytes to send
+<span class="lineNum">     260 </span>            : * \param u32_buffer_size [in] : Size of bytes to send
+<span class="lineNum">     261 </span>            : * \param ps32_written [out] : Number of datas written (&lt; 0 : error )
+<span class="lineNum">     262 </span>            : *
+<span class="lineNum">     263 </span>            : * \return Std_ReturnType :
+<span class="lineNum">     264 </span>            : * - E_OK if good return function
+<a name="265"><span class="lineNum">     265 </span>            : * - E_NOT_OK if not</a>
+<span class="lineNum">     266 </span>            : */
+<span class="lineNum">     267 </span><span class="lineCov">          9 : Std_ReturnType DrvTcpSocket_Send( const DrvTcpsocket_descriptor_type t_tcpsocket_desc , const uint8 * const au8_buffer,</span>
+<span class="lineNum">     268 </span>            : const uint32 u32_buffer_size , sint32 *
+<span class="lineNum">     269 </span>            :  const ps32_written )
+<span class="lineNum">     270 </span>            : {
+<span class="lineNum">     271 </span>            :     /*! Declaration */     
+<span class="lineNum">     272 </span>            :     Std_ReturnType t_Send_Status;
+<span class="lineNum">     273 </span>            :     fd_set rfds;
+<span class="lineNum">     274 </span>            :     fd_set wfds;
+<span class="lineNum">     275 </span><span class="lineCov">          9 :     FD_ZERO(&amp;rfds);</span>
+<span class="lineNum">     276 </span><span class="lineCov">          9 :     FD_ZERO(&amp;wfds);</span>
+<span class="lineNum">     277 </span>            :     sint32 s32_error ;
+<span class="lineNum">     278 </span>            : 
+<span class="lineNum">     279 </span>            :     /*! Initialization */
+<span class="lineNum">     280 </span><span class="lineCov">          9 :     t_Send_Status = E_NOT_OK ;</span>
+<span class="lineNum">     281 </span>            : 
+<span class="lineNum">     282 </span>            :     /*! Function Body */
+<span class="lineNum">     283 </span><span class="lineCov">          9 :     if( NULL_PTR != ps32_written )</span>
+<span class="lineNum">     284 </span>            :     {
+<span class="lineNum">     285 </span><span class="lineCov">          6 :                 *ps32_written = -1 ;</span>
+<span class="lineNum">     286 </span><span class="lineCov">          6 :                 if( (E_NOT_OK != gt_InitTcpSocketDriver_Status) &amp;&amp; (E_DRVTCPSOCKET_DESCRIPTOR_CLOSED != t_tcpsocket_desc) &amp;&amp; (NULL_PTR != au8_buffer) )</span>
+<span class="lineNum">     287 </span>            :                 {
+<span class="lineNum">     288 </span><span class="lineCov">          3 :                         FD_SET(t_tcpsocket_desc, &amp;rfds);</span>
+<span class="lineNum">     289 </span><span class="lineCov">          3 :                         FD_SET(t_tcpsocket_desc, &amp;wfds);</span>
+<span class="lineNum">     290 </span>            : 
+<span class="lineNum">     291 </span><span class="lineCov">          3 :                         s32_error = select(t_tcpsocket_desc + 1, &amp;rfds, &amp;wfds, NULL, NULL) ;</span>
+<span class="lineNum">     292 </span><span class="lineCov">          6 :                     if( 0 &gt; s32_error )</span>
+<span class="lineNum">     293 </span>            :                     {
+<span class="lineNum">     294 </span><span class="lineNoCov">          0 :                         perror(&quot;select&quot;);</span>
+<span class="lineNum">     295 </span><span class="lineNoCov">          0 :                         t_Send_Status = E_NOT_OK ;</span>
+<span class="lineNum">     296 </span>            :                     }
+<span class="lineNum">     297 </span>            :                     else
+<span class="lineNum">     298 </span>            :                     {
+<span class="lineNum">     299 </span>            :                         /*! Check if file descriptor ready to be written */
+<span class="lineNum">     300 </span><span class="lineCov">          3 :                         if(FD_ISSET(t_tcpsocket_desc, &amp;wfds))</span>
+<span class="lineNum">     301 </span>            :                         {
+<span class="lineNum">     302 </span><span class="lineCov">          3 :                                 *ps32_written = send( t_tcpsocket_desc , au8_buffer , u32_buffer_size , 0 ) ;</span>
+<span class="lineNum">     303 </span>            : 
+<span class="lineNum">     304 </span><span class="lineCov">          3 :                                         if( (0 == errno) )</span>
+<span class="lineNum">     305 </span>            :                                         {
+<span class="lineNum">     306 </span>            :                                                 /* SUCCESS */
+<span class="lineNum">     307 </span><span class="lineCov">          1 :                                                 t_Send_Status = E_OK ;</span>
+<span class="lineNum">     308 </span>            :                                         }
+<span class="lineNum">     309 </span>            :                                         else
+<span class="lineNum">     310 </span>            :                                         {
+<span class="lineNum">     311 </span><span class="lineCov">          2 :                                                 *ps32_written = -1 ;</span>
+<span class="lineNum">     312 </span><span class="lineCov">          2 :                                                 t_Send_Status = E_NOT_OK ;</span>
+<span class="lineNum">     313 </span>            :                                         }
+<span class="lineNum">     314 </span>            :                         }
+<span class="lineNum">     315 </span>            :                         else
+<span class="lineNum">     316 </span>            :                         {
+<span class="lineNum">     317 </span><span class="lineNoCov">          0 :                                         t_Send_Status = E_NOT_OK ;</span>
+<span class="lineNum">     318 </span>            :                         }
+<span class="lineNum">     319 </span>            :                     }
+<span class="lineNum">     320 </span>            : 
+<span class="lineNum">     321 </span>            :                 }
+<span class="lineNum">     322 </span>            :                 else
+<span class="lineNum">     323 </span>            :                 {
+<span class="lineNum">     324 </span>            :                         /* Module is not initialized, Halt */
+<span class="lineNum">     325 </span><span class="lineCov">          3 :                         t_Send_Status = E_NOT_OK ;</span>
+<span class="lineNum">     326 </span>            :                 }
+<span class="lineNum">     327 </span>            :     }
+<span class="lineNum">     328 </span>            : 
+<span class="lineNum">     329 </span>            :     /*! return code */
+<span class="lineNum">     330 </span><span class="lineCov">          9 :     return(t_Send_Status);</span>
+<span class="lineNum">     331 </span>            : }
+<span class="lineNum">     332 </span>            : 
+<span class="lineNum">     333 </span>            : /**
+<span class="lineNum">     334 </span>            :  * \fn  Std_ReturnType DrvTcpSocket_Receive( const DrvTcpsocket_descriptor_type t_tcpsocket_desc , const DrvTcpsocket_cfg_type * const pt_configuration ,
+<span class="lineNum">     335 </span>            :                 uint8 * const au8_buffer, const uint32 u32_buffer_size , sint32 * const ps32_read, E_DRVTCPSOCKET_ERROR * const pt_error )
+<span class="lineNum">     336 </span>            :  * \brief this function reads datas from ethernet link
+<span class="lineNum">     337 </span>            :  *
+<span class="lineNum">     338 </span>            :  * \param  t_tcpsocket_desc [in] : ethernet descriptor
+<span class="lineNum">     339 </span>            :  * \param  au8_buffer [in] : bytes to send
+<span class="lineNum">     340 </span>            :  * \param  u32_buffer_size [in] : Size of bytes to send
+<span class="lineNum">     341 </span>            :  * \param  ps32_written [out] : Number of datas written (&lt; 0 : error )
+<span class="lineNum">     342 </span>            :  *
+<span class="lineNum">     343 </span>            : * \return Std_ReturnType :
+<span class="lineNum">     344 </span>            : *         - E_OK if good return function
+<a name="345"><span class="lineNum">     345 </span>            : *         - E_NOT_OK if not</a>
+<span class="lineNum">     346 </span>            :  */
+<span class="lineNum">     347 </span><span class="lineCov">         11 : Std_ReturnType DrvTcpSocket_Receive( const DrvTcpsocket_descriptor_type t_tcpsocket_desc , const DrvTcpsocket_cfg_type * const pt_configuration ,</span>
+<span class="lineNum">     348 </span>            :                 uint8 * const au8_buffer, const uint32 u32_buffer_size , sint32 * const ps32_read, E_DRVTCPSOCKET_ERROR * const pt_error )
+<span class="lineNum">     349 </span>            : {
+<span class="lineNum">     350 </span>            :     /*! Declaration */     
+<span class="lineNum">     351 </span>            :     Std_ReturnType t_Receive_Status; 
+<span class="lineNum">     352 </span>            :     bool b_read ;
+<span class="lineNum">     353 </span>            :         fd_set readfds ;
+<span class="lineNum">     354 </span>            :         fd_set masterfds ;
+<span class="lineNum">     355 </span>            :         struct timeval t_timeout ;
+<span class="lineNum">     356 </span>            :     sint32 s32_error ;
+<span class="lineNum">     357 </span>            : 
+<span class="lineNum">     358 </span>            :     /*! Initialization */
+<span class="lineNum">     359 </span><span class="lineCov">         11 :     t_Receive_Status = E_NOT_OK ;</span>
+<span class="lineNum">     360 </span><span class="lineCov">         11 :         FD_ZERO(&amp;masterfds);</span>
+<span class="lineNum">     361 </span><span class="lineCov">         11 :         b_read = K_FALSE ;</span>
+<span class="lineNum">     362 </span>            : 
+<span class="lineNum">     363 </span>            :     /*! Function Body */
+<span class="lineNum">     364 </span><span class="lineCov">         11 :     if( (NULL_PTR != ps32_read) &amp;&amp; (NULL_PTR != pt_error) )</span>
+<span class="lineNum">     365 </span>            :     {
+<span class="lineNum">     366 </span><span class="lineCov">          8 :         *ps32_read = 0 ;</span>
+<span class="lineNum">     367 </span><span class="lineCov">          8 :         *pt_error = E_DRVTCPSOCKET_ERROR_NOERROR ;</span>
+<span class="lineNum">     368 </span>            : 
+<span class="lineNum">     369 </span><span class="lineCov">          8 :                 if( (E_NOT_OK != gt_InitTcpSocketDriver_Status) &amp;&amp; (NULL_PTR != au8_buffer) &amp;&amp; (NULL_PTR != pt_configuration) )</span>
+<span class="lineNum">     370 </span>            :                 {
+<span class="lineNum">     371 </span><span class="lineCov">         10 :                         if( (E_DRVTCPSOCKET_DESCRIPTOR_CLOSED != t_tcpsocket_desc) )</span>
+<span class="lineNum">     372 </span>            :                         {
+<span class="lineNum">     373 </span><span class="lineCov">          4 :                                 if( (K_TRUE == pt_configuration-&gt;b_blocking_mode) &amp;&amp; (0 &lt; pt_configuration-&gt;u32_timeout_sec ) )</span>
+<span class="lineNum">     374 </span>            :                                 {
+<span class="lineNum">     375 </span>            :                                         /* Prepare time-out in blocking mode */
+<span class="lineNum">     376 </span><span class="lineCov">          2 :                                         FD_SET( t_tcpsocket_desc , &amp;masterfds ) ;</span>
+<span class="lineNum">     377 </span><span class="lineCov">          2 :                                         memcpy( &amp;readfds , &amp;masterfds , sizeof(fd_set) ) ;</span>
+<span class="lineNum">     378 </span>            : 
+<span class="lineNum">     379 </span>            :                                         /* Configure time-out */
+<span class="lineNum">     380 </span><span class="lineCov">          2 :                                         t_timeout.tv_sec = pt_configuration-&gt;u32_timeout_sec ;</span>
+<span class="lineNum">     381 </span><span class="lineCov">          2 :                                         t_timeout.tv_usec = 0 ;</span>
+<span class="lineNum">     382 </span>            : 
+<span class="lineNum">     383 </span><span class="lineCov">          2 :                                         s32_error = select( t_tcpsocket_desc+1 , &amp;readfds , NULL , NULL , &amp;t_timeout ) ;</span>
+<span class="lineNum">     384 </span><span class="lineCov">          4 :                                         if( 0 &gt; s32_error )</span>
+<span class="lineNum">     385 </span>            :                                         {
+<span class="lineNum">     386 </span><span class="lineNoCov">          0 :                                                 *pt_error = E_DRVTCPSOCKET_ERROR_CONNECT_CONF_TIMEOUT_ERROR ;</span>
+<span class="lineNum">     387 </span>            :                                         }
+<span class="lineNum">     388 </span>            :                                         else
+<span class="lineNum">     389 </span>            :                                         {
+<span class="lineNum">     390 </span>            :                                                 /* Wait datas for time-out period */
+<span class="lineNum">     391 </span><span class="lineCov">          2 :                                                 if( 1 == FD_ISSET( t_tcpsocket_desc , &amp;readfds) )</span>
+<span class="lineNum">     392 </span>            :                                                 {
+<span class="lineNum">     393 </span>            :                                                         // If OK, we can reading data
+<span class="lineNum">     394 </span><span class="lineCov">          2 :                                                         b_read = K_TRUE ;</span>
+<span class="lineNum">     395 </span>            :                                                 }
+<span class="lineNum">     396 </span>            :                                                 else
+<span class="lineNum">     397 </span>            :                                                 {
+<span class="lineNum">     398 </span><span class="lineNoCov">          0 :                                                         *pt_error = E_DRVTCPSOCKET_ERROR_READ_FUNCTION_RECV_NO_DATA_BEFORE_TIMEOUT ;</span>
+<span class="lineNum">     399 </span>            :                                                 }
+<span class="lineNum">     400 </span>            :                                         }
+<span class="lineNum">     401 </span>            :                                 }
+<span class="lineNum">     402 </span>            :                                 else
+<span class="lineNum">     403 </span>            :                                 {
+<span class="lineNum">     404 </span><span class="lineCov">          2 :                                         b_read = K_TRUE ;</span>
+<span class="lineNum">     405 </span>            :                                 }
+<span class="lineNum">     406 </span>            : 
+<span class="lineNum">     407 </span><span class="lineCov">          4 :                                 if( K_TRUE == b_read )</span>
+<span class="lineNum">     408 </span>            :                                 {
+<span class="lineNum">     409 </span><span class="lineCov">          4 :                                         t_Receive_Status = E_OK ;</span>
+<span class="lineNum">     410 </span><span class="lineCov">          4 :                                         *ps32_read = recv( t_tcpsocket_desc , au8_buffer , u32_buffer_size , 0 ) ;</span>
+<span class="lineNum">     411 </span><span class="lineCov">          4 :                                         if( 0 &gt; *ps32_read )</span>
+<span class="lineNum">     412 </span>            :                                         {
+<span class="lineNum">     413 </span><span class="lineNoCov">          0 :                                                 *ps32_read = 0 ;</span>
+<span class="lineNum">     414 </span>            :                                         }
+<span class="lineNum">     415 </span>            :                                 }
+<span class="lineNum">     416 </span>            :                         }
+<span class="lineNum">     417 </span>            :             else
+<span class="lineNum">     418 </span>            :             {
+<span class="lineNum">     419 </span><span class="lineCov">          1 :                 *pt_error = E_DRVTCPSOCKET_ERROR_READ_SOCKET_NOT_OPEN_ERROR ;</span>
+<span class="lineNum">     420 </span>            :             }
+<span class="lineNum">     421 </span>            :                 }
+<span class="lineNum">     422 </span>            :                 else
+<span class="lineNum">     423 </span>            :                 {
+<span class="lineNum">     424 </span>            :                         /* Module is not initialized, Halt */
+<span class="lineNum">     425 </span><span class="lineCov">          3 :                     t_Receive_Status = E_NOT_OK ;</span>
+<span class="lineNum">     426 </span>            :                 }
+<span class="lineNum">     427 </span>            :     }
+<span class="lineNum">     428 </span>            : 
+<span class="lineNum">     429 </span>            :     /*! return code */
+<span class="lineNum">     430 </span><span class="lineCov">         11 :     return(t_Receive_Status);</span>
+<span class="lineNum">     431 </span>            : }
+<span class="lineNum">     432 </span>            : 
+<span class="lineNum">     433 </span>            : /**
+<span class="lineNum">     434 </span>            :  * \fn  Std_ReturnType DrvTcpSocket_Get_NumberOfBytes( const DrvTcpsocket_descriptor_type t_tcpsocket_desc , uint32 * const pu32_byteSize )
+<span class="lineNum">     435 </span>            :  * \brief this function gets the number of available data
+<span class="lineNum">     436 </span>            :  *
+<span class="lineNum">     437 </span>            :  * \param  t_tcpsocket_desc [in] : Socket descriptor
+<span class="lineNum">     438 </span>            :  * \param  pu32_byteSize [out] : Positive value = Number of Bytes availables , if an error occurs negative value among
+<span class="lineNum">     439 </span>            :  *
+<span class="lineNum">     440 </span>            : * \return Std_ReturnType :
+<span class="lineNum">     441 </span>            : *         - E_OK if good return function
+<a name="442"><span class="lineNum">     442 </span>            : *         - E_NOT_OK if not</a>
+<span class="lineNum">     443 </span>            :  */
+<span class="lineNum">     444 </span><span class="lineCov">          6 : Std_ReturnType DrvTcpSocket_Get_NumberOfBytes( const DrvTcpsocket_descriptor_type t_tcpsocket_desc , uint32 * const pu32_byteSize )</span>
+<span class="lineNum">     445 </span>            : {
+<span class="lineNum">     446 </span>            :     /*! Declaration */
+<span class="lineNum">     447 </span>            :     Std_ReturnType t_Status;
+<span class="lineNum">     448 </span>            : 
+<span class="lineNum">     449 </span>            :     /*! Initialization */
+<span class="lineNum">     450 </span><span class="lineCov">          6 :     t_Status = E_NOT_OK ;</span>
+<span class="lineNum">     451 </span>            : 
+<span class="lineNum">     452 </span>            :     /*! Function Body */
+<span class="lineNum">     453 </span><span class="lineCov">          6 :     if( NULL_PTR != pu32_byteSize )</span>
+<span class="lineNum">     454 </span>            :     {
+<span class="lineNum">     455 </span><span class="lineCov">          5 :                 *pu32_byteSize = 0 ;</span>
+<span class="lineNum">     456 </span>            : 
+<span class="lineNum">     457 </span><span class="lineCov">          5 :                 if( (E_NOT_OK != gt_InitTcpSocketDriver_Status) &amp;&amp; (E_DRVTCPSOCKET_DESCRIPTOR_CLOSED != t_tcpsocket_desc) )</span>
+<span class="lineNum">     458 </span>            :                 {
+<span class="lineNum">     459 </span><span class="lineCov">          3 :                         ioctl( t_tcpsocket_desc , FIONREAD , pu32_byteSize ) ;</span>
+<span class="lineNum">     460 </span><span class="lineCov">          6 :                         if( 0 == errno )</span>
+<span class="lineNum">     461 </span>            :                         {
+<span class="lineNum">     462 </span>            :                                 /* SUCCESS */
+<span class="lineNum">     463 </span><span class="lineCov">          1 :                                 t_Status = E_OK ;</span>
+<span class="lineNum">     464 </span>            :                         }
+<span class="lineNum">     465 </span>            :                         else
+<span class="lineNum">     466 </span>            :                         {
+<span class="lineNum">     467 </span><span class="lineCov">          2 :                                 *pu32_byteSize = 0 ;</span>
+<span class="lineNum">     468 </span><span class="lineCov">          2 :                                 t_Status = E_NOT_OK ;</span>
+<span class="lineNum">     469 </span>            :                         }
+<span class="lineNum">     470 </span>            :                 }
+<span class="lineNum">     471 </span>            :                 else
+<span class="lineNum">     472 </span>            :                 {
+<span class="lineNum">     473 </span>            :                         /* Module is not initialized, Halt */
+<span class="lineNum">     474 </span><span class="lineCov">          2 :                     t_Status = E_NOT_OK ;</span>
+<span class="lineNum">     475 </span>            :                 }
+<span class="lineNum">     476 </span>            :     }
+<span class="lineNum">     477 </span>            : 
+<span class="lineNum">     478 </span>            :     /*! return code */
+<span class="lineNum">     479 </span><span class="lineCov">          6 :     return(t_Status);</span>
+<span class="lineNum">     480 </span>            : }
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

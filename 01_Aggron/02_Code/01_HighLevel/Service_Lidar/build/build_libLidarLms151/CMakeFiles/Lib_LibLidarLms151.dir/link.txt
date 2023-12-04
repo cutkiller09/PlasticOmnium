@@ -1,0 +1,2 @@
+/usr/bin/ar cr libLib_LibLidarLms151.a  CMakeFiles/Lib_LibLidarLms151.dir/src/Library_LibLidarLms151.o
+/usr/bin/ranlib libLib_LibLidarLms151.a

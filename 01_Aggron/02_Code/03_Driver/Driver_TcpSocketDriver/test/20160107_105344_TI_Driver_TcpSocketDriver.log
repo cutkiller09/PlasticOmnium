@@ -1,0 +1,30 @@
+/**************** TI_Driver_TcpSocketDriver ****************** 
+ * Hardware request :                                        * 
+ *  - Server TCP                                             * 
+ * Software request :                                        * 
+ *   - Server address : 192.168.1.10                         * 
+ *   - Server port : 10940                                   * 
+ *************************************************************/ 
+
+Case 1 : \************ Test call all functions if driver not initialized ************\ 
+Case 1 : tested_value = 5 (expected : 5) : SUCCESS
+
+Case 2 : \************ Test call all function if driver is initialized but not opened ************\ 
+Case 2 : tested_value = 3 (expected : 3) : SUCCESS
+
+Case 3 : \************ Test Open multiple call : /!\ Need server TCP ************\ 
+Case 3 : tested_value = 0 (expected : 0) : SUCCESS
+
+Waiting reset server service 
+Case 4 : \************ Test normal case : /!\ Need server TCP ************\ 
+Case 4 : tested_value = 0 (expected : 0) : SUCCESS
+
+Waiting reset server service 
+Case 5 : \************ Test parameters limit : /!\ Need server TCP ************\ 
+Case 5 : tested_value = 16 (expected : 16) : SUCCESS
+
+Waiting reset server service 
+Case 6 : \************ Test Lost communication ************\ 
+Disconnect ethernet cable (or wifi connection) and then press "X+Enter" 
+Case 6 : tested_value = 2 (expected : 2) : SUCCESS
+

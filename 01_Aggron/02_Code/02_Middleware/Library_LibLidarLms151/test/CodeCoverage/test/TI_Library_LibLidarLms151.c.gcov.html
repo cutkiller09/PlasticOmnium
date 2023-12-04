@@ -1,0 +1,391 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - couverture de code des tests - test/TI_Library_LibLidarLms151.c</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">test</a> - TI_Library_LibLidarLms151.c<span style="font-size: 80%;"> (source / <a href="TI_Library_LibLidarLms151.c.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">couverture de code des tests</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">97</td>
+            <td class="headerCovTableEntry">105</td>
+            <td class="headerCovTableEntryHi">92.4 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-02-01</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /*============================================================================*/</a>
+<span class="lineNum">       2 </span>            : /*                              ROBOSOFT                                      */
+<span class="lineNum">       3 </span>            : /*============================================================================*/
+<span class="lineNum">       4 </span>            : /*                        OBJECT SPECIFICATION                                */
+<span class="lineNum">       5 </span>            : /*============================================================================*/
+<span class="lineNum">       6 </span>            : /*! 
+<span class="lineNum">       7 </span>            :  * $Source: TI_Library_LibLidarLms151.c 
+<span class="lineNum">       8 </span>            :  * $Author: MDega 
+<span class="lineNum">       9 </span>            :  * $Date: 2015/12/08  
+<span class="lineNum">      10 </span>            :  */
+<span class="lineNum">      11 </span>            : /*============================================================================*/
+<span class="lineNum">      12 </span>            : /* DESCRIPTION :                                                              */
+<span class="lineNum">      13 </span>            : /** \file  TI_Library_LibLidarLms151.c 
+<span class="lineNum">      14 </span>            :   * \brief Fichier Source file of Integration Test LibLidarLms151
+<span class="lineNum">      15 </span>            : */
+<span class="lineNum">      16 </span>            : /*============================================================================*/
+<span class="lineNum">      17 </span>            : /* COPYRIGHT (C) ROBOSOFT 2015                                                */ 
+<span class="lineNum">      18 </span>            : /* ALL RIGHTS RESERVED                                                        */
+<span class="lineNum">      19 </span>            : /*                                                                            */
+<span class="lineNum">      20 </span>            : /* The reproduction, transmission, or use of this document or its content is  */
+<span class="lineNum">      21 </span>            : /* not permitted without express written authority. Offenders will be liable  */
+<span class="lineNum">      22 </span>            : /* for damages.                                                               */
+<span class="lineNum">      23 </span>            : /* All rights, including rights created by patent grant or registration of a  */
+<span class="lineNum">      24 </span>            : /* utility model or design, are reserved.                                     */
+<span class="lineNum">      25 </span>            : /*                                                                            */
+<span class="lineNum">      26 </span>            : /*============================================================================*/ 
+<span class="lineNum">      27 </span>            : 
+<span class="lineNum">      28 </span>            : /* Includes                                                                   */
+<span class="lineNum">      29 </span>            : /*============================================================================*/ 
+<span class="lineNum">      30 </span>            : #include &quot;types.h&quot;
+<span class="lineNum">      31 </span>            : #include &quot;Library_StdLib.h&quot;
+<span class="lineNum">      32 </span>            : #include &quot;Library_LibLidarLms151.h&quot;
+<span class="lineNum">      33 </span>            : #include &lt;stdio.h&gt;
+<span class="lineNum">      34 </span>            : #include &lt;stdlib.h&gt;
+<span class="lineNum">      35 </span>            : #include &lt;string.h&gt;
+<span class="lineNum">      36 </span>            : #include &lt;unistd.h&gt;
+<span class="lineNum">      37 </span>            : 
+<span class="lineNum">      38 </span>            : /* Constants and types                                                        */
+<span class="lineNum">      39 </span>            : /*============================================================================*/  
+<span class="lineNum">      40 </span>            : #define K_1_MS 1000
+<span class="lineNum">      41 </span>            : #define K_10_MS 10000
+<span class="lineNum">      42 </span>            : #define K_100_MS 100000
+<span class="lineNum">      43 </span>            : #define K_1_S 1000000
+<span class="lineNum">      44 </span>            : #define K_10_S 10000000
+<span class="lineNum">      45 </span>            : 
+<span class="lineNum">      46 </span>            : #define K_LMS151_SERVER_ADDRESS                                         (uint8 *)&quot;192.168.1.30&quot;
+<span class="lineNum">      47 </span>            : #define K_LMS151_PORT_SERVER                                            2111
+<span class="lineNum">      48 </span>            : #define K_LMS151_BLOCKING_MODE_ACTIVATED                        K_FALSE
+<span class="lineNum">      49 </span>            :    
+<span class="lineNum">      50 </span>            : /* Variables                                                                  */
+<span class="lineNum">      51 </span>            : /*============================================================================*/ 
+<span class="lineNum">      52 </span>            : static bool gb_FirstCall_ModeConfigureScanDataContent;
+<span class="lineNum">      53 </span>            : static bool gb_FirstCall_ModeConfigureScanDataOutput;
+<span class="lineNum">      54 </span>            : static bool gb_FirstCall_ModeLogin;
+<span class="lineNum">      55 </span>            : static bool gb_FirstCall_ModeLogout;
+<span class="lineNum">      56 </span>            : static bool gb_FirstCall_ModeScanContinuous;
+<span class="lineNum">      57 </span>            : static bool gb_FirstCall_ModeGetData;
+<span class="lineNum">      58 </span>            : static bool gb_FirstCall_ModeAskStatus;
+<span class="lineNum">      59 </span>            : static bool gb_FirstCall_ModeSetFrequencyAndResolution;
+<span class="lineNum">      60 </span>            : static bool gb_FirstCall_ModeSetTimestamp;
+<span class="lineNum">      61 </span>            : static bool gb_FirstCall_ModeStoreParameters;
+<span class="lineNum">      62 </span>            : static bool gb_FirstCall_ModeUndefined;
+<span class="lineNum">      63 </span>            : static uint32 gau32_Timestamp[201800];
+<span class="lineNum">      64 </span>            : 
+<span class="lineNum">      65 </span>            : static const sint32 gs32_angle_min=-420000;
+<span class="lineNum">      66 </span>            : static const sint32 gs32_angle_max=2100000;
+<span class="lineNum">      67 </span>            : static const uint32 gu32_angular_resolution_0_25_deg=2500;
+<span class="lineNum">      68 </span>            : static const uint32 gu32_angular_resolution_0_5_deg=5000;
+<span class="lineNum">      69 </span>            : static const uint32 gu32_frequency_25_Hz=2500;
+<span class="lineNum">      70 </span>            : static const uint32 gu32_frequency_50_Hz=5000;
+<span class="lineNum">      71 </span>            : 
+<span class="lineNum">      72 </span>            : /* Private functions prototypes                                               */
+<span class="lineNum">      73 </span>            : /*============================================================================*/ 
+<span class="lineNum">      74 </span>            : 
+<span class="lineNum">      75 </span>            : /* Inline functions                                                           */
+<span class="lineNum">      76 </span>            : /*============================================================================*/
+<span class="lineNum">      77 </span>            : 
+<span class="lineNum">      78 </span>            : /* Private functions                                                          */
+<span class="lineNum">      79 </span>            : /*============================================================================*/
+<span class="lineNum">      80 </span>            : 
+<span class="lineNum">      81 </span>            : /**
+<span class="lineNum">      82 </span>            :  * \fn  Std_ReturnType main(void)  
+<span class="lineNum">      83 </span>            :  * \brief this function is the entry point of the integration test
+<span class="lineNum">      84 </span>            :  *
+<span class="lineNum">      85 </span>            :  * \param  
+<span class="lineNum">      86 </span>            :  *
+<span class="lineNum">      87 </span>            : * \return Std_ReturnType :
+<span class="lineNum">      88 </span>            : *         - E_OK if good return function
+<a name="89"><span class="lineNum">      89 </span>            : *         - E_NOT_OK if not</a>
+<span class="lineNum">      90 </span>            :  */
+<span class="lineNum">      91 </span><span class="lineCov">          2 : int main(void) </span>
+<span class="lineNum">      92 </span>            : {
+<span class="lineNum">      93 </span>            :     /* Declaration */     
+<span class="lineNum">      94 </span>            :     Std_ReturnType t_main_Status; 
+<span class="lineNum">      95 </span>            :     uint16 u16_i;
+<span class="lineNum">      96 </span>            :     uint32 u32_Timestamp;
+<span class="lineNum">      97 </span>            :     ts_LibLidarLms151_scan_data s_LibLidarLms151_scan_data;
+<span class="lineNum">      98 </span>            :     te_mode e_Mode;
+<span class="lineNum">      99 </span>            :     ts_LibLidarLms151_Configuration s_Configuration;
+<span class="lineNum">     100 </span>            : 
+<span class="lineNum">     101 </span>            :         uint32 u32_idx;
+<span class="lineNum">     102 </span>            :         uint16 u16_scan_data_size;
+<span class="lineNum">     103 </span>            :         float32 f32_angle;
+<span class="lineNum">     104 </span>            :         float32 f32_angle_step;
+<span class="lineNum">     105 </span>            :         FILE * fd ;
+<span class="lineNum">     106 </span><span class="lineCov">          2 :         u32_idx = 0 ;</span>
+<span class="lineNum">     107 </span>            : 
+<span class="lineNum">     108 </span>            :     /* Initialization */ 
+<span class="lineNum">     109 </span><span class="lineCov">          2 :     t_main_Status = E_OK;</span>
+<span class="lineNum">     110 </span><span class="lineCov">          2 :         gb_FirstCall_ModeConfigureScanDataContent = K_FALSE;</span>
+<span class="lineNum">     111 </span><span class="lineCov">          2 :         gb_FirstCall_ModeConfigureScanDataOutput = K_FALSE;</span>
+<span class="lineNum">     112 </span><span class="lineCov">          2 :         gb_FirstCall_ModeLogin= K_FALSE;</span>
+<span class="lineNum">     113 </span><span class="lineCov">          2 :         gb_FirstCall_ModeLogout= K_FALSE;</span>
+<span class="lineNum">     114 </span><span class="lineCov">          2 :         gb_FirstCall_ModeScanContinuous= K_FALSE;</span>
+<span class="lineNum">     115 </span><span class="lineCov">          2 :         gb_FirstCall_ModeGetData= K_FALSE;</span>
+<span class="lineNum">     116 </span><span class="lineCov">          2 :         gb_FirstCall_ModeAskStatus= K_FALSE;</span>
+<span class="lineNum">     117 </span><span class="lineCov">          2 :         gb_FirstCall_ModeSetFrequencyAndResolution= K_FALSE;</span>
+<span class="lineNum">     118 </span><span class="lineCov">          2 :         gb_FirstCall_ModeSetTimestamp= K_FALSE;</span>
+<span class="lineNum">     119 </span><span class="lineCov">          2 :         gb_FirstCall_ModeStoreParameters= K_FALSE;</span>
+<span class="lineNum">     120 </span><span class="lineCov">          2 :         gb_FirstCall_ModeUndefined= K_FALSE;</span>
+<span class="lineNum">     121 </span>            : 
+<span class="lineNum">     122 </span><span class="lineCov">          2 :         system (&quot;rm ./02_Code/02_Middleware/Library_LibLidarLms151/test/trace.txt&quot;);</span>
+<span class="lineNum">     123 </span>            : 
+<span class="lineNum">     124 </span>            : 
+<span class="lineNum">     125 </span><span class="lineCov">          2 :         s_Configuration.s_LibLidarLms151_dataconf.b_comment=K_FALSE;</span>
+<span class="lineNum">     126 </span><span class="lineCov">          2 :         s_Configuration.s_LibLidarLms151_dataconf.b_device_name=K_TRUE;</span>
+<span class="lineNum">     127 </span><span class="lineCov">          2 :         s_Configuration.s_LibLidarLms151_dataconf.b_position=K_TRUE;</span>
+<span class="lineNum">     128 </span><span class="lineCov">          2 :         s_Configuration.s_LibLidarLms151_dataconf.b_remission=K_TRUE;</span>
+<span class="lineNum">     129 </span><span class="lineCov">          2 :         s_Configuration.s_LibLidarLms151_dataconf.b_time=K_TRUE;</span>
+<span class="lineNum">     130 </span><span class="lineCov">          2 :         s_Configuration.s_LibLidarLms151_dataconf.e_resolution=E_LMS151_16_BIT;</span>
+<span class="lineNum">     131 </span><span class="lineCov">          2 :         s_Configuration.s_LibLidarLms151_dataconf.u16_output_rate=0;</span>
+<span class="lineNum">     132 </span><span class="lineCov">          2 :         s_Configuration.s_LibLidarLms151_dataconf.u8_data_channel_0=0;</span>
+<span class="lineNum">     133 </span><span class="lineCov">          2 :         s_Configuration.s_LibLidarLms151_dataconf.u8_data_channel_1=0;</span>
+<span class="lineNum">     134 </span><span class="lineCov">          2 :         s_Configuration.s_LibLidarLms151_dataconf.u8_encoder=0;</span>
+<span class="lineNum">     135 </span><span class="lineCov">          2 :         s_Configuration.s_LibLidarLms151_dataconf.u8_unit=0;</span>
+<span class="lineNum">     136 </span><span class="lineCov">          2 :         s_Configuration.s_LibLidarLms151_laserconf.s32_start_angle=gs32_angle_min;</span>
+<span class="lineNum">     137 </span><span class="lineCov">          2 :         s_Configuration.s_LibLidarLms151_laserconf.s32_stop_angle=gs32_angle_max;</span>
+<span class="lineNum">     138 </span><span class="lineCov">          2 :         s_Configuration.s_LibLidarLms151_laserconf.u32_angle_resolution=gu32_angular_resolution_0_25_deg;</span>
+<span class="lineNum">     139 </span><span class="lineCov">          2 :         s_Configuration.s_LibLidarLms151_laserconf.u32_scaning_frequency=gu32_frequency_25_Hz;</span>
+<span class="lineNum">     140 </span><span class="lineCov">          2 :         s_Configuration.s_LibLidarLms151_socket.b_blocking_mode=K_LMS151_BLOCKING_MODE_ACTIVATED;</span>
+<span class="lineNum">     141 </span><span class="lineCov">          2 :         s_Configuration.s_LibLidarLms151_socket.u32_server_port=(uint32)K_LMS151_PORT_SERVER;</span>
+<span class="lineNum">     142 </span><span class="lineCov">          2 :         s_Configuration.s_LibLidarLms151_socket.u32_timeout_sec=100;</span>
+<span class="lineNum">     143 </span><span class="lineCov">          2 :         strcpy((char *)s_Configuration.s_LibLidarLms151_socket.au8_serverAddress,(const char *)K_LMS151_SERVER_ADDRESS);</span>
+<span class="lineNum">     144 </span>            : 
+<span class="lineNum">     145 </span>            :         /*! Configure Module */
+<span class="lineNum">     146 </span><span class="lineCov">          2 :     LibLidarLms151_Initialize();</span>
+<span class="lineNum">     147 </span><span class="lineCov">          2 :     LibLidarLms151_Configure(&amp;s_Configuration);</span>
+<span class="lineNum">     148 </span><span class="lineCov">          2 :     LibLidarLms151_Open();</span>
+<span class="lineNum">     149 </span>            : 
+<span class="lineNum">     150 </span>            :     /* Function Body */
+<span class="lineNum">     151 </span>            : 
+<span class="lineNum">     152 </span><span class="lineCov">     104270 :     while (u32_idx&lt;10)</span>
+<span class="lineNum">     153 </span>            :     {
+<span class="lineNum">     154 </span><span class="lineCov">     104266 :         LibLidarLms151_Manage();</span>
+<span class="lineNum">     155 </span><span class="lineCov">     104266 :         usleep(K_1_MS);</span>
+<span class="lineNum">     156 </span>            : 
+<span class="lineNum">     157 </span><span class="lineCov">     104266 :         LibLidarLms151_Get_Mode(&amp;e_Mode);</span>
+<span class="lineNum">     158 </span>            : 
+<span class="lineNum">     159 </span><span class="lineCov">     104266 :         switch(e_Mode)</span>
+<span class="lineNum">     160 </span>            :         {
+<span class="lineNum">     161 </span>            :                 case E_MODE_CONFIGURE_SCAN_DATA_CONTENT:
+<span class="lineNum">     162 </span><span class="lineCov">          7 :                                 if (K_FALSE == gb_FirstCall_ModeConfigureScanDataContent)</span>
+<span class="lineNum">     163 </span>            :                                 {
+<span class="lineNum">     164 </span><span class="lineCov">          2 :                                         gb_FirstCall_ModeConfigureScanDataContent=K_TRUE;</span>
+<span class="lineNum">     165 </span><span class="lineCov">          2 :                                         printf(&quot;E_MODE_CONFIGURE_SCAN_DATA_CONTENT \n&quot;);</span>
+<span class="lineNum">     166 </span>            :                                 }
+<span class="lineNum">     167 </span>            :                                 else
+<span class="lineNum">     168 </span>            :                                 {
+<span class="lineNum">     169 </span>            :                                         ;
+<span class="lineNum">     170 </span>            :                                 }
+<span class="lineNum">     171 </span><span class="lineCov">          7 :                                 break;</span>
+<span class="lineNum">     172 </span>            :                 case E_MODE_CONFIGURE_SCAN_DATA_OUTPUT :
+<span class="lineNum">     173 </span><span class="lineCov">          7 :                                 if (K_FALSE == gb_FirstCall_ModeConfigureScanDataOutput)</span>
+<span class="lineNum">     174 </span>            :                                 {
+<span class="lineNum">     175 </span><span class="lineCov">          2 :                                         gb_FirstCall_ModeConfigureScanDataOutput=K_TRUE;</span>
+<span class="lineNum">     176 </span><span class="lineCov">          2 :                                         printf(&quot;E_MODE_CONFIGURE_SCAN_DATA_OUTPUT \n&quot;);</span>
+<span class="lineNum">     177 </span>            :                                 }
+<span class="lineNum">     178 </span>            :                                 else
+<span class="lineNum">     179 </span>            :                                 {
+<span class="lineNum">     180 </span>            :                                         ;
+<span class="lineNum">     181 </span>            :                                 }
+<span class="lineNum">     182 </span><span class="lineCov">          7 :                                 break;</span>
+<span class="lineNum">     183 </span>            :                 case E_MODE_LOGIN :
+<span class="lineNum">     184 </span><span class="lineCov">         20 :                                 if (K_FALSE == gb_FirstCall_ModeLogin)</span>
+<span class="lineNum">     185 </span>            :                                 {
+<span class="lineNum">     186 </span><span class="lineCov">          2 :                                         gb_FirstCall_ModeLogin=K_TRUE;</span>
+<span class="lineNum">     187 </span><span class="lineCov">          2 :                                         printf(&quot;E_MODE_LOGIN \n&quot;);</span>
+<span class="lineNum">     188 </span>            :                                 }
+<span class="lineNum">     189 </span>            :                                 else
+<span class="lineNum">     190 </span>            :                                 {
+<span class="lineNum">     191 </span>            :                                         ;
+<span class="lineNum">     192 </span>            :                                 }
+<span class="lineNum">     193 </span><span class="lineCov">         20 :                                 break;</span>
+<span class="lineNum">     194 </span>            :                 case E_MODE_LOGOUT :
+<span class="lineNum">     195 </span><span class="lineCov">          9 :                                 if (K_FALSE == gb_FirstCall_ModeLogout)</span>
+<span class="lineNum">     196 </span>            :                                 {
+<span class="lineNum">     197 </span><span class="lineCov">          2 :                                         gb_FirstCall_ModeLogout=K_TRUE;</span>
+<span class="lineNum">     198 </span><span class="lineCov">          2 :                                         printf(&quot;E_MODE_LOGOUT \n&quot;);</span>
+<span class="lineNum">     199 </span>            :                                 }
+<span class="lineNum">     200 </span>            :                                 else
+<span class="lineNum">     201 </span>            :                                 {
+<span class="lineNum">     202 </span>            :                                         ;
+<span class="lineNum">     203 </span>            :                                 }
+<span class="lineNum">     204 </span><span class="lineCov">          9 :                                 break;</span>
+<span class="lineNum">     205 </span>            :                 case E_MODE_SCAN_CONTINUOUS :
+<span class="lineNum">     206 </span><span class="lineCov">          7 :                                 if (K_FALSE == gb_FirstCall_ModeScanContinuous)</span>
+<span class="lineNum">     207 </span>            :                                 {
+<span class="lineNum">     208 </span><span class="lineCov">          2 :                                         gb_FirstCall_ModeScanContinuous=K_TRUE;</span>
+<span class="lineNum">     209 </span><span class="lineCov">          2 :                                         printf(&quot;E_MODE_SCAN_CONTINUOUS \n&quot;);</span>
+<span class="lineNum">     210 </span>            :                                 }
+<span class="lineNum">     211 </span>            :                                 else
+<span class="lineNum">     212 </span>            :                                 {
+<span class="lineNum">     213 </span>            :                                         ;
+<span class="lineNum">     214 </span>            :                                 }
+<span class="lineNum">     215 </span><span class="lineCov">          7 :                                 break;</span>
+<span class="lineNum">     216 </span>            :                 case E_MODE_GET_DATA :
+<span class="lineNum">     217 </span><span class="lineCov">        469 :                                 if (K_FALSE == gb_FirstCall_ModeGetData)</span>
+<span class="lineNum">     218 </span>            :                                 {
+<span class="lineNum">     219 </span><span class="lineCov">          2 :                                         gb_FirstCall_ModeGetData=K_TRUE;</span>
+<span class="lineNum">     220 </span><span class="lineCov">          2 :                                         printf(&quot;E_MODE_GET_DATA \n&quot;);</span>
+<span class="lineNum">     221 </span>            :                                 }
+<span class="lineNum">     222 </span>            :                                 else
+<span class="lineNum">     223 </span>            :                                 {
+<span class="lineNum">     224 </span>            :                                         ;
+<span class="lineNum">     225 </span>            :                                 }
+<span class="lineNum">     226 </span><span class="lineCov">        469 :                                 LibLidarLms151_Get_Scan(&amp;s_LibLidarLms151_scan_data);</span>
+<span class="lineNum">     227 </span>            : 
+<span class="lineNum">     228 </span><span class="lineCov">        469 :                                 u16_scan_data_size = s_LibLidarLms151_scan_data.u16_dist_len1;</span>
+<span class="lineNum">     229 </span><span class="lineCov">        469 :                                 f32_angle = 270-45 ;</span>
+<span class="lineNum">     230 </span><span class="lineCov">        469 :                                 f32_angle_step = 270.0 / u16_scan_data_size ;</span>
+<span class="lineNum">     231 </span>            : 
+<span class="lineNum">     232 </span><span class="lineCov">        469 :                                 if( 0 &lt; u16_scan_data_size )</span>
+<span class="lineNum">     233 </span>            :                                 {
+<span class="lineNum">     234 </span><span class="lineCov">         20 :                                         fd = fopen( &quot;./02_Code/02_Middleware/Library_LibLidarLms151/test/trace.txt&quot; , &quot;wb&quot;) ;</span>
+<span class="lineNum">     235 </span>            : 
+<span class="lineNum">     236 </span><span class="lineCov">         20 :                                         if( fd  != NULL_PTR )</span>
+<span class="lineNum">     237 </span>            :                                         {
+<span class="lineNum">     238 </span><span class="lineCov">         20 :                                                 u32_idx++ ;</span>
+<span class="lineNum">     239 </span><span class="lineCov">      20200 :                                                 for( u16_i = 0 ; u16_i &lt; u16_scan_data_size ; u16_i++ )</span>
+<span class="lineNum">     240 </span>            :                                                 {
+<span class="lineNum">     241 </span><span class="lineCov">      20180 :                                                         fprintf( fd , &quot;%d %.05f %d\n&quot; , (int)u32_idx , f32_angle , (int) s_LibLidarLms151_scan_data.u16_dist1[u16_i] ) ;</span>
+<span class="lineNum">     242 </span><span class="lineCov">      20180 :                                                         f32_angle = f32_angle - f32_angle_step ;</span>
+<span class="lineNum">     243 </span>            :                                                 }
+<span class="lineNum">     244 </span><span class="lineCov">         20 :                                                 fprintf( fd , &quot;\n&quot; ) ;</span>
+<span class="lineNum">     245 </span>            :                                         }
+<span class="lineNum">     246 </span><span class="lineCov">         20 :                                         printf(&quot;%i Trace added in trace.txt\n&quot;,u32_idx);</span>
+<span class="lineNum">     247 </span><span class="lineCov">         20 :                                         LibLidarLms151_Get_Timestamp(&amp;u32_Timestamp);</span>
+<span class="lineNum">     248 </span><span class="lineCov">         20 :                                         gau32_Timestamp[u32_idx]=u32_Timestamp;</span>
+<span class="lineNum">     249 </span><span class="lineCov">         20 :                                         printf(&quot;Timestamp %d \n&quot;,u32_Timestamp);</span>
+<span class="lineNum">     250 </span><span class="lineCov">         20 :                                         fclose( fd ) ;</span>
+<span class="lineNum">     251 </span>            :                                 }
+<span class="lineNum">     252 </span><span class="lineCov">        469 :                                 break;</span>
+<span class="lineNum">     253 </span>            :                 case E_MODE_ASK_STATUS :
+<span class="lineNum">     254 </span><span class="lineCov">     100156 :                                 if (K_FALSE == gb_FirstCall_ModeAskStatus)</span>
+<span class="lineNum">     255 </span>            :                                 {
+<span class="lineNum">     256 </span><span class="lineCov">          2 :                                         gb_FirstCall_ModeAskStatus=K_TRUE;</span>
+<span class="lineNum">     257 </span><span class="lineCov">          2 :                                         printf(&quot;E_MODE_ASK_STATUS \n&quot;);</span>
+<span class="lineNum">     258 </span>            :                                 }
+<span class="lineNum">     259 </span>            :                                 else
+<span class="lineNum">     260 </span>            :                                 {
+<span class="lineNum">     261 </span>            :                                         ;
+<span class="lineNum">     262 </span>            :                                 }
+<span class="lineNum">     263 </span><span class="lineCov">     100156 :                                 break;</span>
+<span class="lineNum">     264 </span>            :                 case E_MODE_SET_FREQUENCY_AND_RESOLUTION :
+<span class="lineNum">     265 </span><span class="lineCov">        213 :                                 if (K_FALSE == gb_FirstCall_ModeSetFrequencyAndResolution)</span>
+<span class="lineNum">     266 </span>            :                                 {
+<span class="lineNum">     267 </span><span class="lineCov">          2 :                                         gb_FirstCall_ModeSetFrequencyAndResolution=K_TRUE;</span>
+<span class="lineNum">     268 </span><span class="lineCov">          2 :                                         printf(&quot;E_MODE_SET_FREQUENCY_AND_RESOLUTION \n&quot;);</span>
+<span class="lineNum">     269 </span>            :                                 }
+<span class="lineNum">     270 </span>            :                                 else
+<span class="lineNum">     271 </span>            :                                 {
+<span class="lineNum">     272 </span>            :                                         ;
+<span class="lineNum">     273 </span>            :                                 }
+<span class="lineNum">     274 </span><span class="lineCov">        213 :                                 break;</span>
+<span class="lineNum">     275 </span>            :                 case E_MODE_SET_TIMESTAMP :
+<span class="lineNum">     276 </span><span class="lineNoCov">          0 :                                 if (K_FALSE == gb_FirstCall_ModeSetTimestamp)</span>
+<span class="lineNum">     277 </span>            :                                 {
+<span class="lineNum">     278 </span><span class="lineNoCov">          0 :                                         gb_FirstCall_ModeSetTimestamp=K_TRUE;</span>
+<span class="lineNum">     279 </span><span class="lineNoCov">          0 :                                         printf(&quot;E_MODE_SET_FREQUENCY_AND_RESOLUTION \n&quot;);</span>
+<span class="lineNum">     280 </span>            :                                 }
+<span class="lineNum">     281 </span>            :                                 else
+<span class="lineNum">     282 </span>            :                                 {
+<span class="lineNum">     283 </span>            :                                         ;
+<span class="lineNum">     284 </span>            :                                 }
+<span class="lineNum">     285 </span><span class="lineNoCov">          0 :                                 break;</span>
+<span class="lineNum">     286 </span>            :                 case E_MODE_STORE_PARAMETERS :
+<span class="lineNum">     287 </span><span class="lineCov">       3348 :                                 if (K_FALSE == gb_FirstCall_ModeStoreParameters)</span>
+<span class="lineNum">     288 </span>            :                                 {
+<span class="lineNum">     289 </span><span class="lineCov">          2 :                                         gb_FirstCall_ModeStoreParameters=K_TRUE;</span>
+<span class="lineNum">     290 </span><span class="lineCov">          2 :                                         printf(&quot;E_MODE_STORE_PARAMETERS \n&quot;);</span>
+<span class="lineNum">     291 </span>            :                                 }
+<span class="lineNum">     292 </span>            :                                 else
+<span class="lineNum">     293 </span>            :                                 {
+<span class="lineNum">     294 </span>            :                                         ;
+<span class="lineNum">     295 </span>            :                                 }
+<span class="lineNum">     296 </span><span class="lineCov">       3348 :                                 break;</span>
+<span class="lineNum">     297 </span>            :                 case E_MODE_UNDEFINED :
+<span class="lineNum">     298 </span><span class="lineNoCov">          0 :                                 if (K_FALSE == gb_FirstCall_ModeUndefined)</span>
+<span class="lineNum">     299 </span>            :                                 {
+<span class="lineNum">     300 </span><span class="lineNoCov">          0 :                                         gb_FirstCall_ModeUndefined=K_TRUE;</span>
+<span class="lineNum">     301 </span><span class="lineNoCov">          0 :                                         printf(&quot;E_MODE_UNDEFINED \n&quot;);</span>
+<span class="lineNum">     302 </span>            :                                 }
+<span class="lineNum">     303 </span>            :                                 else
+<span class="lineNum">     304 </span>            :                                 {
+<span class="lineNum">     305 </span>            :                                         ;
+<span class="lineNum">     306 </span>            :                                 }
+<span class="lineNum">     307 </span><span class="lineNoCov">          0 :                                 break;</span>
+<span class="lineNum">     308 </span>            :                 default :
+<span class="lineNum">     309 </span><span class="lineCov">         30 :                                 break;</span>
+<span class="lineNum">     310 </span>            :         }
+<span class="lineNum">     311 </span>            :     }
+<span class="lineNum">     312 </span>            : 
+<span class="lineNum">     313 </span>            :     /* return code */ 
+<span class="lineNum">     314 </span><span class="lineCov">          2 :     return(t_main_Status);</span>
+<span class="lineNum">     315 </span>            : } 
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.10</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

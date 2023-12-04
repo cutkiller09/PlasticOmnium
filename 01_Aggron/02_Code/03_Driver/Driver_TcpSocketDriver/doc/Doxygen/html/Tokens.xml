@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+  <Token>
+    <TokenIdentifier>
+      <Name>DrvTcpSocket_Initialize</Name>
+      <APILanguage>c</APILanguage>
+      <Type>func</Type>
+    </TokenIdentifier>
+    <Path>Driver__TcpSocketDriver_8c.html</Path>
+    <Anchor>ae4864de1aa2ccaa085ec95be15fdd514</Anchor>
+    <Abstract>this function initializes internal variables </Abstract>
+    <DeclaredIn>Driver_TcpSocketDriver.c</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>DrvTcpSocket_Open</Name>
+      <APILanguage>c</APILanguage>
+      <Type>func</Type>
+    </TokenIdentifier>
+    <Path>Driver__TcpSocketDriver_8c.html</Path>
+    <Anchor>a83e148a3b73c8a83dbf8d35c6b4676f9</Anchor>
+    <Abstract>this function opens tcp socket link </Abstract>
+    <DeclaredIn>Driver_TcpSocketDriver.c</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>DrvTcpSocket_Close</Name>
+      <APILanguage>c</APILanguage>
+      <Type>func</Type>
+    </TokenIdentifier>
+    <Path>Driver__TcpSocketDriver_8c.html</Path>
+    <Anchor>a43a5289d8e2f1a4b36656cd6ec174a80</Anchor>
+    <Abstract>this function closes link </Abstract>
+    <DeclaredIn>Driver_TcpSocketDriver.c</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>DrvTcpSocket_Send</Name>
+      <APILanguage>c</APILanguage>
+      <Type>func</Type>
+    </TokenIdentifier>
+    <Path>Driver__TcpSocketDriver_8c.html</Path>
+    <Anchor>a6cc6b027de8d80500dbb1987bd27fdef</Anchor>
+    <DeclaredIn>Driver_TcpSocketDriver.c</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>DrvTcpSocket_Receive</Name>
+      <APILanguage>c</APILanguage>
+      <Type>func</Type>
+    </TokenIdentifier>
+    <Path>Driver__TcpSocketDriver_8c.html</Path>
+    <Anchor>a056d8e2e3ee6d61985677dbf80be9a8b</Anchor>
+    <Abstract>this function reads datas from ethernet link </Abstract>
+    <DeclaredIn>Driver_TcpSocketDriver.c</DeclaredIn>
+  </Token>
+  <Token>
+    <TokenIdentifier>
+      <Name>DrvTcpSocket_Get_NumberOfBytes</Name>
+      <APILanguage>c</APILanguage>
+      <Type>func</Type>
+    </TokenIdentifier>
+    <Path>Driver__TcpSocketDriver_8c.html</Path>
+    <Anchor>a21cfd415598c17b7fd0e900421e12375</Anchor>
+    <Abstract>this function gets the number of available data </Abstract>
+    <DeclaredIn>Driver_TcpSocketDriver.c</DeclaredIn>
+  </Token>
+</Tokens>

@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../../../02_Middleware/Library_LibLidarLms151/inc/Library_LibLidarLms151.h
+
+../../../02_Middleware/Library_StdLib/inc/Library_StdLib.h
+
+../../../02_Middleware/Library_StdLib/inc/types.h
+
+../../../03_Driver/Driver_TcpSocketDriver/inc/Driver_TcpSocketDriver.h
+
+.././inc/Service_Lidar.h
+types.h
+.././inc/types.h
+Library_StdLib.h
+.././inc/Library_StdLib.h
+Library_LibLidarLms151.h
+.././inc/Library_LibLidarLms151.h
+
+/home/seb/01_Project/07_Aggron/01_Aggron/02_Code/01_HighLevel/Service_Lidar/test/TV_Service_Lidar.c
+types.h
+/home/seb/01_Project/07_Aggron/01_Aggron/02_Code/01_HighLevel/Service_Lidar/test/types.h
+Library_StdLib.h
+/home/seb/01_Project/07_Aggron/01_Aggron/02_Code/01_HighLevel/Service_Lidar/test/Library_StdLib.h
+Service_Lidar.h
+/home/seb/01_Project/07_Aggron/01_Aggron/02_Code/01_HighLevel/Service_Lidar/test/Service_Lidar.h
+Driver_TcpSocketDriver.h
+/home/seb/01_Project/07_Aggron/01_Aggron/02_Code/01_HighLevel/Service_Lidar/test/Driver_TcpSocketDriver.h
+stdio.h
+-
+string.h
+-
+unistd.h
+-
+

@@ -1,0 +1,2 @@
+/usr/bin/ar cr libLib_StdLib.a  CMakeFiles/Lib_StdLib.dir/src/Library_StdLib.c.o
+/usr/bin/ranlib libLib_StdLib.a

@@ -1,0 +1,80 @@
+/**************** TI_Driver_TcpSocketDriver ****************** 
+ * Hardware request :                                        * 
+ *  - Server TCP                                             * 
+ * Software request :                                        * 
+ *   - Server address : 192.168.1.10                         * 
+ *   - Server port : 10940                                   * 
+ *************************************************************/ 
+
+
+Case 1 : \************ Test call all functions if driver not initialized ************\ 
+Case 1 : tested_value = 1 (expected : 1) : SUCCESS
+Case 1 : tested_value = 1 (expected : 1) : SUCCESS
+Case 1 : tested_value = 1 (expected : 1) : SUCCESS
+Case 1 : tested_value = 1 (expected : 1) : SUCCESS
+Case 1 : tested_value = 1 (expected : 1) : SUCCESS
+
+Case 2 : \************ Test call all function if driver is initialized but not opened ************\ 
+Case 2 : tested_value = 0 (expected : 0) : SUCCESS
+Case 2 : tested_value = 0 (expected : 0) : SUCCESS
+Case 2 : tested_value = 1 (expected : 1) : SUCCESS
+Case 2 : tested_value = 1 (expected : 1) : SUCCESS
+Case 2 : tested_value = 1 (expected : 1) : SUCCESS
+
+Case 3 : \************ Test Open multiple call : /!\ Need server TCP ************\ 
+Case 3 : tested_value = 0 (expected : 0) : SUCCESS
+Case 3 : tested_value = 0 (expected : 0) : SUCCESS
+Case 3 : tested_value = 0 (expected : 0) : SUCCESS
+Waiting reset server service 
+
+Case 4 : \************ Test normal case (non-blocking mode) : /!\ Need server TCP ************\ 
+Case 4 : tested_value = 0 (expected : 0) : SUCCESS
+Case 4 : tested_value = 0 (expected : 0) : SUCCESS
+Case 4 : tested_value = 0 (expected : 0) : SUCCESS
+Case 4 : tested_value = 0 (expected : 0) : SUCCESS
+Case 4 : tested_value = 0 (expected : 0) : SUCCESS
+Waiting reset server service 
+
+Case 5 : \************ Test normal case (blocking mode) : /!\ Need server TCP ************\ 
+Case 5 : tested_value = 0 (expected : 0) : SUCCESS
+Case 5 : tested_value = 1 (expected : 1) : SUCCESS
+Case 5 : tested_value = 1 (expected : 1) : SUCCESS
+Case 5 : tested_value = 1 (expected : 1) : SUCCESS
+Case 5 : tested_value = 0 (expected : 0) : SUCCESS
+Waiting reset server service 
+
+Case 6 : \************ Test parameters limit : /!\ Need server TCP ************\ 
+Case 6 : tested_value = 1 (expected : 1) : SUCCESS
+Case 6 : tested_value = 1 (expected : 1) : SUCCESS
+Case 6 : tested_value = 1 (expected : 1) : SUCCESS
+Case 6 : tested_value = 1 (expected : 1) : SUCCESS
+Case 6 : tested_value = 0 (expected : 0) : SUCCESS
+Case 6 : tested_value = 1 (expected : 1) : SUCCESS
+Case 6 : tested_value = 1 (expected : 1) : SUCCESS
+Case 6 : tested_value = 1 (expected : 1) : SUCCESS
+Case 6 : tested_value = 1 (expected : 1) : SUCCESS
+Case 6 : tested_value = 1 (expected : 1) : SUCCESS
+Case 6 : tested_value = 1 (expected : 1) : SUCCESS
+Case 6 : tested_value = 1 (expected : 1) : SUCCESS
+Case 6 : tested_value = 1 (expected : 1) : SUCCESS
+Case 6 : tested_value = 1 (expected : 1) : SUCCESS
+Case 6 : tested_value = 1 (expected : 1) : SUCCESS
+Case 6 : tested_value = 1 (expected : 1) : SUCCESS
+Case 6 : tested_value = 1 (expected : 1) : SUCCESS
+Case 6 : tested_value = 0 (expected : 0) : SUCCESS
+Case 6 : tested_value = 1 (expected : 1) : SUCCESS
+Case 6 : tested_value = 1 (expected : 1) : SUCCESS
+Waiting reset server service 
+
+Case 7 : \************ Test Lost communication : /!\ Need server TCP  ************\ 
+Case 7 : tested_value = 0 (expected : 0) : SUCCESS
+Disconnect ethernet cable (or wifi connection) and then press "X+Enter" 
+X
+Case 7 : tested_value = 1 (expected : 1) : SUCCESS
+Case 7 : tested_value = 0 (expected : 0) : SUCCESS
+Case 7 : tested_value = 1 (expected : 1) : SUCCESS
+Case 7 : tested_value = 0 (expected : 0) : SUCCESS
+
+Case 8 : \************ Test No communication  ************\ 
+Case 8 : tested_value = 1 (expected : 1) : SUCCESS
+Case 8 : tested_value = 1 (expected : 1) : SUCCESS

@@ -1,0 +1,97 @@
+\documentclass[11pt,origdate]{lettre}
+\usepackage{palatino}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage[frenchb]{babel} 
+\usepackage{graphicx}
+
+\begin{document}
+
+\makeatletter
+\newcommand*{\NoRule}{\renewcommand*{\rule@length}{0}}
+\makeatother
+
+	\begin{letter}{BNP Paribas\\ % Destinataire
+		           22 Route de Toulouse\\
+							 31190 Auterive} 
+						
+		\address{Sébastien Loisel\\ % Mon adresse
+		         22 rue Anatole France\\
+						 31 190 Auterive}
+		\name{Sébastien Loisel} % Mon nom
+		%\location{Mon département dans l'entreprise}
+		\telephone{+33 06 27 76 51 33}
+		\email{sebastien.loisel@free.fr}
+		\nofax % pas de fax. Alternative: \fax{numero}
+		
+		\francais % Met les labels en français et le \closing{} en pleine largeur
+		          % Variantes: \anglais, \americain, et \allemand
+		\pagestyle{empty} % alternatives : plain (numéro de page en pied), headings (entête avec lieu et date)
+		
+		\conc{\textbf{Clôture des comptes XXX et XXX}}
+		\lieu{Auterive} % L'endroit d'où j'écris
+		%\date{\today} % Mis par défaut à la date du jour
+		%\signature{Pierre FRITSCH} % Remplacé par défaut par le contenu de \name{}
+		%\vref{vos réf.}
+		%\nref{nos réf.}
+	
+		% MISE EN PAGE ET PERSONNALISATION DU PACKAGE
+	
+		%\marge{15mm} % Marge du côté gauche, default: 15mm
+		%\tension{-6} % Espace entre les blocs: -6 resserré, 6 serré
+		
+		%\renewcommand{\tellabelname}{Téléphone :} 
+		%\renewcommand{\ccname}{CC :}
+		%\renewcommand{\enclname}{PJ :}
+		%\renewcommand{\concname}{} % Elimine l'affichage du texte "Objet :"
+		\renewcommand{\emaillabelname}{} % Elimine l'affichage du texte "E-mail :"
+		
+		%\def\openingspace{10mm} % ajuste l'espace vertical autour du champ sujet, default: 1cm
+ 		\def\sigspace{10mm} % Espacement vertical entre texte et signature(s), default: 1.5cm
+		
+		\makeatletter
+		% BOITE D'ENTETE
+		\def\pict@let@width{185}       % default: 185
+		\def\pict@let@height{65}       % default: 65
+		\def\pict@let@hoffset{0}       % default: 0
+		\def\pict@let@voffset{0}       % default: 0
+		% TRAIT DE PLIAGE	
+		\NoRule  
+		% ADRESSE DE L'EXPEDITEUR
+		\def\fromaddress@let@hpos{-10} % default: -10
+		\def\fromaddress@let@vpos{80}  % default: 70
+		                               % je remonte légèrement l'adresse vers le coin haut gauche
+		\fromaddress@let@width=69mm    % default: 69
+		% LIEU D'EXPEDITION
+		\def\fromlieu@let@hpos{90}     % default: 90
+		\def\fromlieu@let@vpos{0}      % default: 62 
+		                               % je déplace lieu et date sous l'adresse du destinataire
+		\fromlieu@let@width=69mm       % default: 69
+		% ADRESSE DU DESTINATAIRE
+		\def\toaddress@let@hpos{90}    % default: 90
+		\def\toaddress@let@vpos{40}    % default: 40
+		\toaddress@let@width=80mm      % default: 80
+		\makeatother
+
+
+		% DEBUT DE LA LETTRE
+		\opening{Madame, Monsieur,\\}
+		
+		Par la présente, je souhaiterais cloturer les comtpes XXX et XXX détenus chez vous.
+		
+		Je vous demanderai de bien vouloir transférer les fonds restants sur ces comptes sur le compte dont je vous ai fourni le RIB en pièce jointe à ce message.		 
+		
+		\closing{Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées.}
+		 
+		
+		\begin{flushright}
+		\includegraphics[scale=0.5]{./signature.png}
+		\end{flushright} 
+	
+		%\encl{Une brochure de notre dernier produit}
+		
+	
+	\end{letter}
+	
+
+\end{document}

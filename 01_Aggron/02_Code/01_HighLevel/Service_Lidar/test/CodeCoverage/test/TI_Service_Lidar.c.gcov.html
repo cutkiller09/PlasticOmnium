@@ -1,0 +1,459 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - couverture de code des tests - test/TI_Service_Lidar.c</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">test</a> - TI_Service_Lidar.c<span style="font-size: 80%;"> (source / <a href="TI_Service_Lidar.c.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">couverture de code des tests</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">216</td>
+            <td class="headerCovTableEntry">216</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2016-03-29 10:50:17</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /*============================================================================*/</a>
+<span class="lineNum">       2 </span>            : /*                              ROBOSOFT                                      */
+<span class="lineNum">       3 </span>            : /*============================================================================*/
+<span class="lineNum">       4 </span>            : /*                        OBJECT SPECIFICATION                                */
+<span class="lineNum">       5 </span>            : /*============================================================================*/
+<span class="lineNum">       6 </span>            : /*! 
+<span class="lineNum">       7 </span>            :  * $Source: TI_Service_Lidar.c 
+<span class="lineNum">       8 </span>            :  * $Author: MDega 
+<span class="lineNum">       9 </span>            :  * $Date: 2015/12/08  
+<span class="lineNum">      10 </span>            :  */
+<span class="lineNum">      11 </span>            : /*============================================================================*/
+<span class="lineNum">      12 </span>            : /* DESCRIPTION :                                                              */
+<span class="lineNum">      13 </span>            : /** \file  TI_Service_Lidar.c 
+<span class="lineNum">      14 </span>            :   * \brief Fichier Source file of Integration Test Lidar
+<span class="lineNum">      15 </span>            : */
+<span class="lineNum">      16 </span>            : /*============================================================================*/
+<span class="lineNum">      17 </span>            : /* COPYRIGHT (C) ROBOSOFT 2015                                                */ 
+<span class="lineNum">      18 </span>            : /* ALL RIGHTS RESERVED                                                        */
+<span class="lineNum">      19 </span>            : /*                                                                            */
+<span class="lineNum">      20 </span>            : /* The reproduction, transmission, or use of this document or its content is  */
+<span class="lineNum">      21 </span>            : /* not permitted without express written authority. Offenders will be liable  */
+<span class="lineNum">      22 </span>            : /* for damages.                                                               */
+<span class="lineNum">      23 </span>            : /* All rights, including rights created by patent grant or registration of a  */
+<span class="lineNum">      24 </span>            : /* utility model or design, are reserved.                                     */
+<span class="lineNum">      25 </span>            : /*                                                                            */
+<span class="lineNum">      26 </span>            : /*============================================================================*/ 
+<span class="lineNum">      27 </span>            : 
+<span class="lineNum">      28 </span>            : 
+<span class="lineNum">      29 </span>            : #define MACRO_START_UT(u16_num_case, sz_title_case) printf( &quot;\nCase %d : \\************ %s ************\\ \n&quot; , u16_num_case , sz_title_case ) ;
+<span class="lineNum">      30 </span>            : #define MACRO_ASSERT_UT(u16_num_case , u16_error_count , u16_num_error_expected ) \
+<span class="lineNum">      31 </span>            :                 printf( &quot;Case %d : tested_value = %d (expected : %d) : %s\n&quot; , \
+<span class="lineNum">      32 </span>            :                                 u16_num_case , \
+<span class="lineNum">      33 </span>            :                                 u16_error_count , \
+<span class="lineNum">      34 </span>            :                                 u16_num_error_expected , \
+<span class="lineNum">      35 </span>            :                                 (u16_num_error_expected==u16_error_count)?&quot;SUCCESS&quot;:&quot;FAILED&quot; ) ;
+<span class="lineNum">      36 </span>            : 
+<span class="lineNum">      37 </span>            : /* Includes                                                                   */
+<span class="lineNum">      38 </span>            : /*============================================================================*/ 
+<span class="lineNum">      39 </span>            : #include &quot;types.h&quot;
+<span class="lineNum">      40 </span>            : #include &quot;Library_StdLib.h&quot;
+<span class="lineNum">      41 </span>            : #include &quot;Service_Lidar.h&quot;
+<span class="lineNum">      42 </span>            : #include &lt;stdio.h&gt;
+<span class="lineNum">      43 </span>            : #include &lt;string.h&gt;
+<span class="lineNum">      44 </span>            : #include &lt;unistd.h&gt;
+<span class="lineNum">      45 </span>            : 
+<span class="lineNum">      46 </span>            : /* Constants and types                                                        */
+<span class="lineNum">      47 </span>            : /*============================================================================*/  
+<span class="lineNum">      48 </span>            : #define K_LMS151_SERVER_ADDRESS                                         (uint8 *)&quot;192.168.1.30&quot;
+<span class="lineNum">      49 </span>            : #define K_LMS151_PORT_SERVER                                            2111
+<span class="lineNum">      50 </span>            : #define K_LMS151_BLOCKING_MODE_ACTIVATED                        K_FALSE
+<span class="lineNum">      51 </span>            : #define K_LMS151_ALL_SCANS &quot;+1&quot;
+<span class="lineNum">      52 </span>            : 
+<span class="lineNum">      53 </span>            : /* Variables                                                                  */
+<span class="lineNum">      54 </span>            : /*============================================================================*/ 
+<span class="lineNum">      55 </span>            : static const sint32 gs32_angle_min=-450000;
+<span class="lineNum">      56 </span>            : static const sint32 gs32_angle_max=2250000;
+<span class="lineNum">      57 </span>            : static const uint32 gu32_angular_resolution_0_25_deg=2500;
+<span class="lineNum">      58 </span>            : static const uint32 gu32_angular_resolution_0_5_deg=5000;
+<span class="lineNum">      59 </span>            : static const uint32 gu32_frequency_25_Hz=2500;
+<span class="lineNum">      60 </span>            : static const uint32 gu32_frequency_50_Hz=5000;
+<span class="lineNum">      61 </span>            : 
+<span class="lineNum">      62 </span>            : /* Private functions prototypes                                               */
+<span class="lineNum">      63 </span>            : /*============================================================================*/ 
+<span class="lineNum">      64 </span>            : 
+<span class="lineNum">      65 </span>            : /* Inline functions                                                           */
+<span class="lineNum">      66 </span>            : /*============================================================================*/
+<span class="lineNum">      67 </span>            : 
+<span class="lineNum">      68 </span>            : /* Private functions                                                          */
+<span class="lineNum">      69 </span>            : /*============================================================================*/
+<span class="lineNum">      70 </span>            : 
+<span class="lineNum">      71 </span>            : /* Public functions                                                           */
+<span class="lineNum">      72 </span>            : /*============================================================================*/
+<span class="lineNum">      73 </span>            : /**
+<span class="lineNum">      74 </span>            :  * \fn  Std_ReturnType main(void)  
+<span class="lineNum">      75 </span>            :  * \brief this function is the entry point of the integration test
+<span class="lineNum">      76 </span>            :  *
+<span class="lineNum">      77 </span>            :  * \param  
+<span class="lineNum">      78 </span>            :  *
+<span class="lineNum">      79 </span>            : * \return Std_ReturnType :
+<span class="lineNum">      80 </span>            : *         - E_OK if good return function
+<a name="81"><span class="lineNum">      81 </span>            : *         - E_NOT_OK if not</a>
+<span class="lineNum">      82 </span>            :  */
+<span class="lineNum">      83 </span><span class="lineCov">          1 : int main(void)</span>
+<span class="lineNum">      84 </span>            : {
+<span class="lineNum">      85 </span>            :     /*! Declaration */     
+<span class="lineNum">      86 </span>            :     Std_ReturnType t_main_Status; 
+<span class="lineNum">      87 </span>            :     ts_SrvLidar_configuration s_configuration ;
+<span class="lineNum">      88 </span>            :     te_SrvLidar_StateMachine e_stateMachine ;
+<span class="lineNum">      89 </span>            :     ts_SrvLidar_data s_data ;
+<span class="lineNum">      90 </span>            :     uint16 u16_i ;
+<span class="lineNum">      91 </span>            :     uint16 u16_j ;
+<span class="lineNum">      92 </span>            :     te_SrvLidar_error e_error ;
+<span class="lineNum">      93 </span>            : 
+<span class="lineNum">      94 </span>            :     /*! Initialization */ 
+<span class="lineNum">      95 </span><span class="lineCov">          1 :     t_main_Status = E_OK;</span>
+<span class="lineNum">      96 </span>            : 
+<span class="lineNum">      97 </span><span class="lineCov">          1 :         strcpy( s_configuration.s_s300_configuration.sz_serialport_name , &quot;/dev/ttyUSB0&quot; ) ;</span>
+<span class="lineNum">      98 </span><span class="lineCov">          1 :         s_configuration.s_s300_configuration.u32_baudrate = 38400 ;</span>
+<span class="lineNum">      99 </span><span class="lineCov">          1 :         s_configuration.s_s300_configuration.u8_bitsize = 8 ;</span>
+<span class="lineNum">     100 </span><span class="lineCov">          1 :         s_configuration.s_s300_configuration.t_parity_mode = E_DRVSERIAL_NO_PARITY ;</span>
+<span class="lineNum">     101 </span><span class="lineCov">          1 :         s_configuration.s_s300_configuration.b_stopbitena = K_TRUE ;</span>
+<span class="lineNum">     102 </span>            : 
+<span class="lineNum">     103 </span><span class="lineCov">          1 :         strcpy( (char*)s_configuration.s_ust_configuration.s_socket_configuration.au8_serverAddress , &quot;192.168.1.10&quot; ) ;</span>
+<span class="lineNum">     104 </span><span class="lineCov">          1 :         s_configuration.s_ust_configuration.s_socket_configuration.u32_server_port = 10940 ;</span>
+<span class="lineNum">     105 </span><span class="lineCov">          1 :         s_configuration.s_ust_configuration.s_socket_configuration.b_blocking_mode = K_FALSE ;</span>
+<span class="lineNum">     106 </span><span class="lineCov">          1 :         s_configuration.s_ust_configuration.s_socket_configuration.u32_timeout_sec = 0 ;</span>
+<span class="lineNum">     107 </span><span class="lineCov">          1 :         s_configuration.s_ust_configuration.s_settings.b_asynch_mode    = K_TRUE ;</span>
+<span class="lineNum">     108 </span><span class="lineCov">          1 :         s_configuration.s_ust_configuration.s_settings.u16_start_step   = 0 ;</span>
+<span class="lineNum">     109 </span><span class="lineCov">          1 :         s_configuration.s_ust_configuration.s_settings.u16_stop_step    = 1080 ;</span>
+<span class="lineNum">     110 </span><span class="lineCov">          1 :         s_configuration.s_ust_configuration.s_settings.u8_cluster_count = 1 ;</span>
+<span class="lineNum">     111 </span><span class="lineCov">          1 :         s_configuration.s_ust_configuration.s_settings.u8_scan_interval = 0 ;</span>
+<span class="lineNum">     112 </span><span class="lineCov">          1 :         s_configuration.s_ust_configuration.s_settings.u8_numb_of_scan  = 0 ;</span>
+<span class="lineNum">     113 </span><span class="lineCov">          1 :         s_configuration.s_ust_configuration.e_orientation = E_LIBLIDARUST1020LX_ORIENTATION_NORMAL ;</span>
+<span class="lineNum">     114 </span>            : 
+<span class="lineNum">     115 </span>            : 
+<span class="lineNum">     116 </span><span class="lineCov">          1 :         s_configuration.s_lms_Configuration.s_LibLidarLms151_dataconf.b_comment=K_FALSE;</span>
+<span class="lineNum">     117 </span><span class="lineCov">          1 :         s_configuration.s_lms_Configuration.s_LibLidarLms151_dataconf.b_device_name=K_TRUE;</span>
+<span class="lineNum">     118 </span><span class="lineCov">          1 :         s_configuration.s_lms_Configuration.s_LibLidarLms151_dataconf.b_position=K_TRUE;</span>
+<span class="lineNum">     119 </span><span class="lineCov">          1 :         s_configuration.s_lms_Configuration.s_LibLidarLms151_dataconf.b_remission=K_TRUE;</span>
+<span class="lineNum">     120 </span><span class="lineCov">          1 :         s_configuration.s_lms_Configuration.s_LibLidarLms151_dataconf.b_time=K_TRUE;</span>
+<span class="lineNum">     121 </span><span class="lineCov">          1 :         s_configuration.s_lms_Configuration.s_LibLidarLms151_dataconf.e_resolution=E_LMS151_16_BIT;</span>
+<span class="lineNum">     122 </span><span class="lineCov">          1 :         strcpy((char *)s_configuration.s_lms_Configuration.s_LibLidarLms151_dataconf.au8_output_rate,(const char *)K_LMS151_ALL_SCANS);</span>
+<span class="lineNum">     123 </span><span class="lineCov">          1 :         s_configuration.s_lms_Configuration.s_LibLidarLms151_dataconf.u8_data_channel_0=3; // Output channel 1+2: 03 00</span>
+<span class="lineNum">     124 </span><span class="lineCov">          1 :         s_configuration.s_lms_Configuration.s_LibLidarLms151_dataconf.u8_data_channel_1=0;</span>
+<span class="lineNum">     125 </span><span class="lineCov">          1 :         s_configuration.s_lms_Configuration.s_LibLidarLms151_dataconf.u8_encoder_0=0;</span>
+<span class="lineNum">     126 </span><span class="lineCov">          1 :         s_configuration.s_lms_Configuration.s_LibLidarLms151_dataconf.u8_encoder_1=0;</span>
+<span class="lineNum">     127 </span><span class="lineCov">          1 :         s_configuration.s_lms_Configuration.s_LibLidarLms151_dataconf.u8_unit=0;</span>
+<span class="lineNum">     128 </span><span class="lineCov">          1 :         s_configuration.s_lms_Configuration.s_LibLidarLms151_laserconf.s32_start_angle=gs32_angle_min;</span>
+<span class="lineNum">     129 </span><span class="lineCov">          1 :         s_configuration.s_lms_Configuration.s_LibLidarLms151_laserconf.s32_stop_angle=gs32_angle_max;</span>
+<span class="lineNum">     130 </span><span class="lineCov">          1 :         s_configuration.s_lms_Configuration.s_LibLidarLms151_laserconf.u32_angle_resolution=gu32_angular_resolution_0_25_deg;</span>
+<span class="lineNum">     131 </span><span class="lineCov">          1 :         s_configuration.s_lms_Configuration.s_LibLidarLms151_laserconf.u32_scaning_frequency=gu32_frequency_25_Hz;</span>
+<span class="lineNum">     132 </span><span class="lineCov">          1 :         s_configuration.s_lms_Configuration.s_LibLidarLms151_socket.b_blocking_mode=K_LMS151_BLOCKING_MODE_ACTIVATED;</span>
+<span class="lineNum">     133 </span><span class="lineCov">          1 :         s_configuration.s_lms_Configuration.s_LibLidarLms151_socket.u32_server_port=(uint32)K_LMS151_PORT_SERVER;</span>
+<span class="lineNum">     134 </span><span class="lineCov">          1 :         s_configuration.s_lms_Configuration.s_LibLidarLms151_socket.u32_timeout_sec=100;</span>
+<span class="lineNum">     135 </span><span class="lineCov">          1 :         strcpy((char *)s_configuration.s_lms_Configuration.s_LibLidarLms151_socket.au8_serverAddress,(const char *)K_LMS151_SERVER_ADDRESS);</span>
+<span class="lineNum">     136 </span>            : 
+<span class="lineNum">     137 </span><span class="lineCov">          1 :         u16_i = 0 ;</span>
+<span class="lineNum">     138 </span><span class="lineCov">          1 :         gs_LibLidarLms151_status = E_OK ;</span>
+<span class="lineNum">     139 </span><span class="lineCov">          1 :         gs_LibLidarS300_status = E_OK ;</span>
+<span class="lineNum">     140 </span><span class="lineCov">          1 :         gs_LibLidarUst1020lx_status = E_OK ;</span>
+<span class="lineNum">     141 </span>            : 
+<span class="lineNum">     142 </span>            :     /*! Function Body */
+<span class="lineNum">     143 </span>            : 
+<span class="lineNum">     144 </span>            :         /***************************************************************************************/
+<span class="lineNum">     145 </span>            :         /* CASE 1 : Test call all functions if service not initialized */
+<span class="lineNum">     146 </span><span class="lineCov">          1 :         MACRO_START_UT( u16_i , &quot;Test call all functions if service not initialized&quot; )</span>
+<span class="lineNum">     147 </span>            : 
+<span class="lineNum">     148 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Get_Error( &amp;e_error );</span>
+<span class="lineNum">     149 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_OK )</span>
+<span class="lineNum">     150 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , e_error , E_SRVLIDAR_ERR_NOT_INITIALIZED )</span>
+<span class="lineNum">     151 </span>            : 
+<span class="lineNum">     152 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Configure( &amp;s_configuration ) ;</span>
+<span class="lineNum">     153 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_NOT_OK )</span>
+<span class="lineNum">     154 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Get_State( &amp;e_stateMachine ) ;</span>
+<span class="lineNum">     155 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_OK )</span>
+<span class="lineNum">     156 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , e_stateMachine , E_STATE_SRVLIDAR_UNDEFINED )</span>
+<span class="lineNum">     157 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Manage() ;</span>
+<span class="lineNum">     158 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_NOT_OK )</span>
+<span class="lineNum">     159 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Get_Data( &amp;s_data ) ;</span>
+<span class="lineNum">     160 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_NOT_OK )</span>
+<span class="lineNum">     161 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Close() ;</span>
+<span class="lineNum">     162 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_NOT_OK )</span>
+<span class="lineNum">     163 </span>            : 
+<span class="lineNum">     164 </span>            :         /***************************************************************************************/
+<span class="lineNum">     165 </span>            :         /* CASE 2 : Test initialize failed */
+<span class="lineNum">     166 </span><span class="lineCov">          1 :         u16_i++ ;</span>
+<span class="lineNum">     167 </span><span class="lineCov">          1 :         MACRO_START_UT( u16_i , &quot;Test initialize failed&quot; )</span>
+<span class="lineNum">     168 </span><span class="lineCov">          1 :         gs_LibLidarUst1020lx_status = E_NOT_OK ;</span>
+<span class="lineNum">     169 </span><span class="lineCov">          1 :         ge_LibLidarUst1020lx_error = E_LIBLIDARUST1020LX_ERR_NOT_INITIALIZED ;</span>
+<span class="lineNum">     170 </span><span class="lineCov">          1 :         ge_LibLidarS300_error = E_LIBLIDARS300_ERRORCODE_NO_INIT ;</span>
+<span class="lineNum">     171 </span><span class="lineCov">          1 :         ge_LibLidarLms151_error = E_LIBLMS151_ERR_NOT_INITIALIZED ;</span>
+<span class="lineNum">     172 </span>            : 
+<span class="lineNum">     173 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Initialize() ;</span>
+<span class="lineNum">     174 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i, t_main_Status , E_NOT_OK )</span>
+<span class="lineNum">     175 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Configure( &amp;s_configuration ) ;</span>
+<span class="lineNum">     176 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_NOT_OK )</span>
+<span class="lineNum">     177 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Get_State( &amp;e_stateMachine ) ;</span>
+<span class="lineNum">     178 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_OK )</span>
+<span class="lineNum">     179 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , e_stateMachine , E_STATE_SRVLIDAR_UNDEFINED )</span>
+<span class="lineNum">     180 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Manage() ;</span>
+<span class="lineNum">     181 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_NOT_OK )</span>
+<span class="lineNum">     182 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Get_Data( &amp;s_data ) ;</span>
+<span class="lineNum">     183 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_NOT_OK )</span>
+<span class="lineNum">     184 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Close() ;</span>
+<span class="lineNum">     185 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_NOT_OK )</span>
+<span class="lineNum">     186 </span><span class="lineCov">          1 :         gs_LibLidarUst1020lx_status = E_OK ;</span>
+<span class="lineNum">     187 </span>            : 
+<span class="lineNum">     188 </span>            :         /***************************************************************************************/
+<span class="lineNum">     189 </span>            :         /* CASE 2 : Test call all function if driver is initialized but not configured */
+<span class="lineNum">     190 </span><span class="lineCov">          1 :         u16_i++ ;</span>
+<span class="lineNum">     191 </span><span class="lineCov">          1 :         MACRO_START_UT( u16_i , &quot;Test call all function if driver is initialized but not configured&quot; )</span>
+<span class="lineNum">     192 </span>            : 
+<span class="lineNum">     193 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Initialize() ;</span>
+<span class="lineNum">     194 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i, t_main_Status , E_OK )</span>
+<span class="lineNum">     195 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Get_State( &amp;e_stateMachine ) ;</span>
+<span class="lineNum">     196 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_OK )</span>
+<span class="lineNum">     197 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , e_stateMachine , E_STATE_SRVLIDAR_UNDEFINED )</span>
+<span class="lineNum">     198 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Manage() ;</span>
+<span class="lineNum">     199 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_NOT_OK )</span>
+<span class="lineNum">     200 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Get_Data( &amp;s_data ) ;</span>
+<span class="lineNum">     201 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_NOT_OK )</span>
+<span class="lineNum">     202 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Close() ;</span>
+<span class="lineNum">     203 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_NOT_OK )</span>
+<span class="lineNum">     204 </span>            : 
+<span class="lineNum">     205 </span>            :         /***************************************************************************************/
+<span class="lineNum">     206 </span>            :         /* CASE 3 : Test NULL_PTR */
+<span class="lineNum">     207 </span><span class="lineCov">          1 :         u16_i++ ;</span>
+<span class="lineNum">     208 </span><span class="lineCov">          1 :         MACRO_START_UT( u16_i , &quot;Test NULL_PTR&quot; )</span>
+<span class="lineNum">     209 </span>            : 
+<span class="lineNum">     210 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Configure( NULL_PTR ) ;</span>
+<span class="lineNum">     211 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_NOT_OK )</span>
+<span class="lineNum">     212 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Get_State( NULL_PTR ) ;</span>
+<span class="lineNum">     213 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_NOT_OK )</span>
+<span class="lineNum">     214 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Get_Data( NULL_PTR ) ;</span>
+<span class="lineNum">     215 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_NOT_OK )</span>
+<span class="lineNum">     216 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Get_Error( NULL_PTR );</span>
+<span class="lineNum">     217 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_NOT_OK )</span>
+<span class="lineNum">     218 </span>            : 
+<span class="lineNum">     219 </span>            :         /***************************************************************************************/
+<span class="lineNum">     220 </span>            :         /* CASE 4 : Configuration failed */
+<span class="lineNum">     221 </span><span class="lineCov">          1 :         u16_i++ ;</span>
+<span class="lineNum">     222 </span><span class="lineCov">          1 :         MACRO_START_UT( u16_i , &quot;Configuration failed&quot; )</span>
+<span class="lineNum">     223 </span>            : 
+<span class="lineNum">     224 </span><span class="lineCov">          1 :         gs_LibLidarUst1020lx_status = E_NOT_OK ;</span>
+<span class="lineNum">     225 </span><span class="lineCov">          1 :         ge_LibLidarUst1020lx_error = E_LIBLIDARUST1020LX_ERR_NOT_OPENED ;</span>
+<span class="lineNum">     226 </span><span class="lineCov">          1 :         ge_LibLidarS300_error = E_LIBLIDARS300_ERRORCODE_OPEN_FAILED ;</span>
+<span class="lineNum">     227 </span><span class="lineCov">          1 :         ge_LibLidarLms151_error = E_LIBLMS151_ERR_CONFIGURE_SCAN_DATA_CONTENT ;</span>
+<span class="lineNum">     228 </span>            : 
+<span class="lineNum">     229 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Get_State( &amp;e_stateMachine ) ;</span>
+<span class="lineNum">     230 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_OK )</span>
+<span class="lineNum">     231 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , e_stateMachine , E_STATE_SRVLIDAR_UNDEFINED )</span>
+<span class="lineNum">     232 </span>            : 
+<span class="lineNum">     233 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Configure( &amp;s_configuration ) ;</span>
+<span class="lineNum">     234 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_NOT_OK )</span>
+<span class="lineNum">     235 </span>            : 
+<span class="lineNum">     236 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Get_State( &amp;e_stateMachine ) ;</span>
+<span class="lineNum">     237 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_OK )</span>
+<span class="lineNum">     238 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , e_stateMachine , E_STATE_SRVLIDAR_UNDEFINED )</span>
+<span class="lineNum">     239 </span>            : 
+<span class="lineNum">     240 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Manage() ;</span>
+<span class="lineNum">     241 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_NOT_OK )</span>
+<span class="lineNum">     242 </span>            : 
+<span class="lineNum">     243 </span><span class="lineCov">          1 :         gs_LibLidarUst1020lx_status = E_OK ;</span>
+<span class="lineNum">     244 </span>            : 
+<span class="lineNum">     245 </span>            :         /***************************************************************************************/
+<span class="lineNum">     246 </span>            :         /* CASE 5 : Test normal case */
+<span class="lineNum">     247 </span><span class="lineCov">          1 :         u16_i++ ;</span>
+<span class="lineNum">     248 </span><span class="lineCov">          1 :         MACRO_START_UT( u16_i , &quot;Test normal case&quot; )</span>
+<span class="lineNum">     249 </span>            : 
+<span class="lineNum">     250 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Get_State( &amp;e_stateMachine ) ;</span>
+<span class="lineNum">     251 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_OK )</span>
+<span class="lineNum">     252 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , e_stateMachine , E_STATE_SRVLIDAR_UNDEFINED )</span>
+<span class="lineNum">     253 </span>            : 
+<span class="lineNum">     254 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Configure( &amp;s_configuration ) ;</span>
+<span class="lineNum">     255 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_OK )</span>
+<span class="lineNum">     256 </span>            : 
+<span class="lineNum">     257 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Get_State( &amp;e_stateMachine ) ;</span>
+<span class="lineNum">     258 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_OK )</span>
+<span class="lineNum">     259 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , e_stateMachine , E_STATE_SRVLIDAR_READY )</span>
+<span class="lineNum">     260 </span>            : 
+<span class="lineNum">     261 </span>            :         /***************************************************************************************/
+<span class="lineNum">     262 </span>            :         /* CASE 5 : Test normal case : no datas */
+<span class="lineNum">     263 </span><span class="lineCov">          1 :         u16_i++ ;</span>
+<span class="lineNum">     264 </span><span class="lineCov">          1 :         MACRO_START_UT( u16_i , &quot;Test normal case : no datas&quot; )</span>
+<span class="lineNum">     265 </span>            : 
+<span class="lineNum">     266 </span><span class="lineCov">          1 :         gs_LibLidarS300_data.b_is_new_data = K_FALSE ;</span>
+<span class="lineNum">     267 </span><span class="lineCov">          1 :         gs_LibLidarUst1020lx_data.b_is_new_data = K_FALSE ;</span>
+<span class="lineNum">     268 </span><span class="lineCov">          1 :         gs_LibLidarLms151_scan_data.b_is_new_data = K_FALSE ;</span>
+<span class="lineNum">     269 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Manage() ;</span>
+<span class="lineNum">     270 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_OK )</span>
+<span class="lineNum">     271 </span>            : 
+<span class="lineNum">     272 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Get_Data( &amp;s_data ) ;</span>
+<span class="lineNum">     273 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_OK )</span>
+<span class="lineNum">     274 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , s_data.s_S300.u32_timestamp_sec , 0 )</span>
+<span class="lineNum">     275 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , s_data.s_S300.u32_timestamp_ns , 0 )</span>
+<span class="lineNum">     276 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , s_data.s_lms151.u32_timestamp_sec , 0 )</span>
+<span class="lineNum">     277 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , s_data.s_lms151.u32_timestamp_ns , 0 )</span>
+<span class="lineNum">     278 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , s_data.s_ust1020lx.u32_timestamp_sec , 0 )</span>
+<span class="lineNum">     279 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , s_data.s_ust1020lx.u32_timestamp_ns , 0 )</span>
+<span class="lineNum">     280 </span>            : 
+<span class="lineNum">     281 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Get_State( &amp;e_stateMachine ) ;</span>
+<span class="lineNum">     282 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_OK )</span>
+<span class="lineNum">     283 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , e_stateMachine , E_STATE_SRVLIDAR_READY )</span>
+<span class="lineNum">     284 </span>            : 
+<span class="lineNum">     285 </span>            :         /***************************************************************************************/
+<span class="lineNum">     286 </span>            :         /* CASE 5 : Test normal case : new datas */
+<span class="lineNum">     287 </span><span class="lineCov">          1 :         u16_i++ ;</span>
+<span class="lineNum">     288 </span><span class="lineCov">          1 :         MACRO_START_UT( u16_i , &quot;Test normal case : new datas&quot; )</span>
+<span class="lineNum">     289 </span>            : 
+<span class="lineNum">     290 </span><span class="lineCov">          1 :         gs_LibLidarS300_data.b_is_new_data = K_TRUE ;</span>
+<span class="lineNum">     291 </span><span class="lineCov">          1 :         gs_LibLidarS300_data.u16_scan_data_size = 541 ;</span>
+<span class="lineNum">     292 </span><span class="lineCov">        542 :         for( u16_j = 0 ; u16_j &lt; gs_LibLidarS300_data.u16_scan_data_size ; u16_j++ )</span>
+<span class="lineNum">     293 </span>            :         {
+<span class="lineNum">     294 </span><span class="lineCov">        541 :                 gs_LibLidarS300_data.au16_scan_data[u16_j] = 200 ;</span>
+<span class="lineNum">     295 </span>            :         }
+<span class="lineNum">     296 </span><span class="lineCov">          1 :         gs_LibLidarUst1020lx_data.b_is_new_data = K_TRUE ;</span>
+<span class="lineNum">     297 </span><span class="lineCov">          1 :         gs_LibLidarUst1020lx_data.u16_scan_data_size = 1081 ;</span>
+<span class="lineNum">     298 </span><span class="lineCov">       1082 :         for( u16_j = 0 ; u16_j &lt; gs_LibLidarUst1020lx_data.u16_scan_data_size ; u16_j++ )</span>
+<span class="lineNum">     299 </span>            :         {
+<span class="lineNum">     300 </span><span class="lineCov">       1081 :                 gs_LibLidarUst1020lx_data.au32_scan_data[u16_j] = 300 ;</span>
+<span class="lineNum">     301 </span>            :         }
+<span class="lineNum">     302 </span><span class="lineCov">          1 :         gs_LibLidarLms151_scan_data.b_is_new_data = K_TRUE ;</span>
+<span class="lineNum">     303 </span><span class="lineCov">          1 :         gs_LibLidarLms151_scan_data.u16_dist_len1 = 1081 ;</span>
+<span class="lineNum">     304 </span><span class="lineCov">       1082 :         for( u16_j = 0 ; u16_j &lt; gs_LibLidarLms151_scan_data.u16_dist_len1 ; u16_j++ )</span>
+<span class="lineNum">     305 </span>            :         {
+<span class="lineNum">     306 </span><span class="lineCov">       1081 :                 gs_LibLidarLms151_scan_data.u16_dist1[u16_j] = 400 ;</span>
+<span class="lineNum">     307 </span>            :         }
+<span class="lineNum">     308 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Manage() ;</span>
+<span class="lineNum">     309 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_OK )</span>
+<span class="lineNum">     310 </span>            : 
+<span class="lineNum">     311 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Get_Data( &amp;s_data ) ;</span>
+<span class="lineNum">     312 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_OK )</span>
+<span class="lineNum">     313 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , (s_data.s_S300.u32_timestamp_sec &gt; 0) , K_TRUE )</span>
+<span class="lineNum">     314 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , (s_data.s_S300.u32_timestamp_ns &gt; 0) , K_TRUE )</span>
+<span class="lineNum">     315 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , (s_data.s_S300.s16_angle_offset) , -270 )</span>
+<span class="lineNum">     316 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , (s_data.s_S300.u16_angular_tick_per_revolution) , 720 )</span>
+<span class="lineNum">     317 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , (s_data.s_S300.u16_impact_count) , 541 )</span>
+<span class="lineNum">     318 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , ((1.99&lt;s_data.s_S300.f32_distance_list[0])&amp;&amp;(2.01&gt;s_data.s_S300.f32_distance_list[0])) , K_TRUE )</span>
+<span class="lineNum">     319 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , (s_data.s_lms151.u32_timestamp_sec &gt; 0) , K_TRUE )</span>
+<span class="lineNum">     320 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , (s_data.s_lms151.u32_timestamp_ns &gt; 0) , K_TRUE )</span>
+<span class="lineNum">     321 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , (s_data.s_lms151.s16_angle_offset) , -540 )</span>
+<span class="lineNum">     322 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , (s_data.s_lms151.u16_angular_tick_per_revolution) , 1440 )</span>
+<span class="lineNum">     323 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , (s_data.s_lms151.u16_impact_count) , 1081 )</span>
+<span class="lineNum">     324 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , ((0.399&lt;s_data.s_lms151.f32_distance_list[0])&amp;&amp;(0.401&gt;s_data.s_lms151.f32_distance_list[0])) , K_TRUE )</span>
+<span class="lineNum">     325 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , (s_data.s_ust1020lx.u32_timestamp_sec &gt; 0) , K_TRUE )</span>
+<span class="lineNum">     326 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , (s_data.s_ust1020lx.u32_timestamp_ns &gt; 0) , K_TRUE )</span>
+<span class="lineNum">     327 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , (s_data.s_ust1020lx.s16_angle_offset) , -540 )</span>
+<span class="lineNum">     328 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , (s_data.s_ust1020lx.u16_angular_tick_per_revolution) , 1440 )</span>
+<span class="lineNum">     329 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , (s_data.s_ust1020lx.u16_impact_count) , 1081 )</span>
+<span class="lineNum">     330 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , ((0.299&lt;s_data.s_ust1020lx.f32_distance_list[0])&amp;&amp;(0.301&gt;s_data.s_ust1020lx.f32_distance_list[0])) , K_TRUE )</span>
+<span class="lineNum">     331 </span>            : 
+<span class="lineNum">     332 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Get_State( &amp;e_stateMachine ) ;</span>
+<span class="lineNum">     333 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_OK )</span>
+<span class="lineNum">     334 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , e_stateMachine , E_STATE_SRVLIDAR_READY )</span>
+<span class="lineNum">     335 </span>            : 
+<span class="lineNum">     336 </span>            :         /***************************************************************************************/
+<span class="lineNum">     337 </span>            :         /* CASE 5 : Test manage failed */
+<span class="lineNum">     338 </span><span class="lineCov">          1 :         u16_i++ ;</span>
+<span class="lineNum">     339 </span><span class="lineCov">          1 :         MACRO_START_UT( u16_i , &quot;Test manage failed&quot; )</span>
+<span class="lineNum">     340 </span>            : 
+<span class="lineNum">     341 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Get_State( &amp;e_stateMachine ) ;</span>
+<span class="lineNum">     342 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_OK )</span>
+<span class="lineNum">     343 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , e_stateMachine , E_STATE_SRVLIDAR_READY )</span>
+<span class="lineNum">     344 </span>            : 
+<span class="lineNum">     345 </span><span class="lineCov">          1 :         gs_LibLidarUst1020lx_status = E_NOT_OK ;</span>
+<span class="lineNum">     346 </span><span class="lineCov">          1 :         ge_LibLidarUst1020lx_error = E_LIBLIDARUST1020LX_ERR_COM_LOST ;</span>
+<span class="lineNum">     347 </span><span class="lineCov">          1 :         ge_LibLidarS300_error = E_LIBLIDARS300_ERRORCODE_COM_LOST ;</span>
+<span class="lineNum">     348 </span><span class="lineCov">          1 :         ge_LibLidarLms151_error = E_LIBLMS151_ERR_SCAN_CONTINUOUS ;</span>
+<span class="lineNum">     349 </span>            : 
+<span class="lineNum">     350 </span><span class="lineCov">          1 :         gs_LibLidarS300_data.b_is_new_data = K_FALSE ;</span>
+<span class="lineNum">     351 </span><span class="lineCov">          1 :         gs_LibLidarUst1020lx_data.b_is_new_data = K_FALSE ;</span>
+<span class="lineNum">     352 </span><span class="lineCov">          1 :         gs_LibLidarLms151_scan_data.b_is_new_data = K_FALSE ;</span>
+<span class="lineNum">     353 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Manage() ;</span>
+<span class="lineNum">     354 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_NOT_OK )</span>
+<span class="lineNum">     355 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Get_State( &amp;e_stateMachine ) ;</span>
+<span class="lineNum">     356 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_OK )</span>
+<span class="lineNum">     357 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , e_stateMachine , E_STATE_SRVLIDAR_UNDEFINED )</span>
+<span class="lineNum">     358 </span>            : 
+<span class="lineNum">     359 </span><span class="lineCov">          1 :         gs_LibLidarUst1020lx_status = E_OK ;</span>
+<span class="lineNum">     360 </span>            : 
+<span class="lineNum">     361 </span>            : 
+<span class="lineNum">     362 </span>            :         /***************************************************************************************/
+<span class="lineNum">     363 </span>            :         /* CASE 5 : Test re-init */
+<span class="lineNum">     364 </span><span class="lineCov">          1 :         u16_i++ ;</span>
+<span class="lineNum">     365 </span><span class="lineCov">          1 :         MACRO_START_UT( u16_i , &quot;Test re-init&quot; )</span>
+<span class="lineNum">     366 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Close() ;</span>
+<span class="lineNum">     367 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_OK )</span>
+<span class="lineNum">     368 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Initialize() ;</span>
+<span class="lineNum">     369 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_OK )</span>
+<span class="lineNum">     370 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Configure( &amp;s_configuration ) ;</span>
+<span class="lineNum">     371 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_OK )</span>
+<span class="lineNum">     372 </span>            : 
+<span class="lineNum">     373 </span><span class="lineCov">          1 :         gs_LibLidarS300_data.b_is_new_data = K_FALSE ;</span>
+<span class="lineNum">     374 </span><span class="lineCov">          1 :         gs_LibLidarUst1020lx_data.b_is_new_data = K_FALSE ;</span>
+<span class="lineNum">     375 </span><span class="lineCov">          1 :         gs_LibLidarLms151_scan_data.b_is_new_data = K_FALSE ;</span>
+<span class="lineNum">     376 </span><span class="lineCov">          1 :         t_main_Status = SrvLidar_Manage() ;</span>
+<span class="lineNum">     377 </span><span class="lineCov">          1 :         MACRO_ASSERT_UT( u16_i , t_main_Status , E_OK )</span>
+<span class="lineNum">     378 </span>            : 
+<span class="lineNum">     379 </span>            : 
+<span class="lineNum">     380 </span>            : 
+<span class="lineNum">     381 </span>            :     /*! return code */ 
+<span class="lineNum">     382 </span><span class="lineCov">          1 :     return(t_main_Status);</span>
+<span class="lineNum">     383 </span>            : } 
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.12</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

@@ -1,0 +1,363 @@
+%% Exemple de CV en LaTeX. 
+%% Émilia Robin (Emilia.Robin@ens.fr)
+%% janvier 2000
+
+\documentclass[a4paper,12pt]{article} % fonte 11 points, papier a4
+
+\usepackage[francais]{babel}    % faire du français
+\usepackage[latin1]{inputenc}   % accents dans le source
+\usepackage[T1]{fontenc}        % accents dans le DVI
+\usepackage{url}                % citer des adresses électroniques et des URL
+
+% La page
+%#########
+\pagestyle{plain}                % On numérote les pages
+%\usepackage{vmargin}            % redéfinir les marges
+%\setmarginsrb{2.5cm}{3cm}{2.5cm}{3cm}{0cm}{0cm}{0cm}{0cm}
+\usepackage{layout}
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+
+% Marge gauche, haute, droite, basse; espace entre la marge et le texte à
+% gauche, en  haut, à droite, en bas
+
+% Je redéfinis le comportement des guillemets
+%#############################################
+\catcode`\«=\active             
+\catcode`\»=\active
+\def«{\og\ignorespaces}
+\def»{{\fg}}
+
+% Diverses nouvelles commandes
+%#############################
+
+% Pour laisser de l'espace entre les lignes du tableau
+\newcommand\espace{\vrule height 20pt width 0pt}
+
+% Pour mes grands titres
+\newcommand{\titre}[1]{%
+	\begin{center}
+	\rule{\textwidth}{1pt}
+	\par\vspace{0.3cm}
+        \textbf{\large #1}
+	\par\rule{\textwidth}{1pt}
+	\end{center}
+	\bigskip
+	}
+
+% Début du document
+%###################
+\begin{document}
+%###################
+
+\begin{center}
+\par\textbf{\huge BAIL LOCATIF}
+\end{center}
+  
+\titre{\Large Le bailleur } 
+%############# 
+\vspace{-1cm}
+
+\begin{flushleft}
+{\bfseries Sebastien Loisel } au  2440, chemin de Laurentie, 31 660 Buzet sur Tarn \\
+\end{flushleft} 
+
+\titre{\Large Le(s) locataire(s) }
+%#############
+\vspace{-1cm}
+
+\begin{flushleft}
+{\bfseries Flavia Daniela CastroGomez} né le 11 Mai 2000 à Guimaraes(Portugual) de nationalité Portuguaise.
+\end{flushleft} 
+
+\titre{\Large Le bien }
+%#############
+\vspace{-1cm}
+
+\begin{flushleft}
+Le bien loué se trouve à l'adresse indiquée :\\
+{\bfseries 24 rue Anatole France  31190 Auterive }
+\end{flushleft}
+
+\begin{flushleft}
+\underline {Désignation des locaux et équipements privatifs} :  un appartement de type T3, comprenant deux chambres avec lit, un sejour avec canape, une cuisine avec frigo Liebherr et Lave linge, une salle d eau et un WC .
+\end{flushleft}
+ 
+\titre{\Large La durée }
+%#############
+\vspace{-1cm}
+
+\begin{flushleft}
+Le présent bail est consenti pour une durée de \emph{ 3 } années.Il prendra effet à compter du \emph{01   Janvier   2019 } et se terminera le \emph{01   Janvier   2022 } ou sera reconduit par tacite reconduction pour une durée de  3  années supplémentaires suivant l'article L632-1
+\end{flushleft}
+
+\titre{\Large Le loyer }
+%#############
+\vspace{-1cm}
+
+\begin{flushleft}
+\underline {Le loyer mensuel}: il est payable le \emph{5} de chaque mois au bailleur.
+Le loyer est de \emph{610 } euros hors charges et de \emph{ 620 } euros charges comprises
+\end{flushleft}
+
+\begin{flushleft}
+\underline {La révision du loyer} : le loyer sera révisé automatiquement, sans que le bailleur ait a effectuer 
+quelque notification ou formalité particulière, en fonction de l'indice de référence des loyers (IRL)
+publié par l'INSEE ou de tout autre indice qui viendrait à lui être substitué chaque année le \emph{01   Janvier  }
+\end{flushleft}
+
+\begin{flushleft}
+L'indice IRL au jour des présentes est de \emph{128,45 } correspondant au \emph{ 3eme trimestre 2018}
+\end{flushleft}
+
+\titre{\Large Les charges }
+%#############
+\vspace{-1cm}
+
+\begin{flushleft}
+En plus du loyer contenu, le preneur devra rembourser au bailleur, les charges dites récupérables exigibles en contrepartie :\\
+\begin{itemize} 
+\item des services rendus liés à l'usage des différents éléments de la chose louée, \\
+\item des dépenses d'entretien courant et des menues réparations sur les éléments d'usage commun de la chose louée. \\
+\item de l'eau consommée à l'usage de la chose louée.\\
+\end{itemize} 
+\end{flushleft}
+
+\begin{flushleft}
+Les charges ainsi visées sont notamment celles fixées par le décret n° 87-713 du 26 août 1987.
+\end{flushleft}
+
+\begin{flushleft}
+Le paiement de ces charges donnera lieu au paiement de provisions mensuelles justifiées par 
+les résultats constatés par l'année précédente ou par l'état prévisionnel des dépenses pour l'année en cours.
+Pour la première année, ces provisions mensuelles seront de \emph{ 10} euros.
+Elles seront réajustées en fonction de l'évolution réelle du coût des charges.
+\end{flushleft}
+
+\titre{\Large Autres charges}
+%#############
+\vspace{-1cm}
+
+\begin{flushleft}
+Les abonnements et consommations d'électricité et de téléphone sont pris en charge par le locataire en fonction du relevé des compteurs lors de l'état des lieux d'entrée et de sortie.
+\end{flushleft} 
+
+\titre{\Large Animaux de compagnie}
+%#############
+\vspace{-1cm}
+
+\begin{flushleft}
+La présence d'animaux de compagnie dans l'hébergement est strictement interdite, quelle que soit sa durée, sauf autorisation express ou écrite du bailleur
+\end{flushleft} 
+
+\titre{\Large Dépôt de garantie}
+%#############
+\vspace{-1cm}
+
+\begin{flushleft}
+Le dépôt de garantie est de \emph{610 } euros, correspondant à un mois de loyer hors charges.
+\end{flushleft} 
+
+\begin{flushleft}
+Ce dépôt ne dispense en aucun cas le locataire de paiement du loyer et des charges aux dates 
+fixées. Il sera restitué dans le délai maximum de 2 mois à compter du départ du locataire, 
+déduction faite, le cas échéant, des sommes restants dues au bailleur et des paiements dont ce 
+dernier pourrait être tenu responsable au lieu et place du locataire. Le départ s'entend après 
+complet déménagement et établissement de l'état des lieux contradictoires de sorties, 
+résiliation des abonnements EDF, téléphone, exécution des répartitions locatives et remises 
+des clefs
+\end{flushleft} 
+
+\titre{\Large Résiliation du contrat}
+%#############
+\vspace{-1cm}
+
+\begin{flushleft}
+Le locataire peut, à tout moment, notifier au bailleur, son intention de quitter les locaux en 
+respectant également un délai de préavis de \emph{ 3 } mois.
+\end{flushleft} 
+
+\begin{flushleft}
+Toute notification devra être adressée en recommandé avec demande d'avis de réception ou par signification d'huissier.
+\end{flushleft} 
+
+\titre{\Large Obligations du preneur}
+%#############
+\vspace{-1cm}
+
+\begin{flushleft}
+Le locataire est tenu des obligations principales suivantes :
+\begin{itemize} 
+\item Payer le loyer et les charges récupérables aux termes convenus.
+\item User PAISIBLEMENT des locaux et équipements loués suivant la destination prévue au contrat.
+\item Répondre des dégradations et pertes survenus durant la durée du contrat dans les locaux dont il a la jouissance exclusive, à moins qu'il ne prouve qu'elles aient eues lieu par cas de force majeure, par la faute du bailleur ou par le fait d'un tiers qu'il n'a pas introduit dans les locaux.
+\item Prendre à sa charge l'entretien courant du local et des équipements mentionnés au 
+contrat, les menues répartitions et l'ensemble des réparations locatives définies par le décret n° 87-712 du 26 août 1987, sauf si elles sont occasionnées par vétusté, malfaçon, vice de construction, cas fortuit ou force majeure.
+\item Informer immédiatement le bailleur de tout sinistre ou dégradation se produisant dans les lieux loués, même s'il n'en résulte aucun dommage apparent.
+\item Ne pas transformer sans accord écrit du bailleur les locaux et leurs équipements; le 
+bailleur pourra, si le locataire a méconnu cette obligation, exiger la remise en état des locaux et des équipements au départ du locataire ou conserver les transformations effectuées sans que locataire puisse réclamer une indemnité pour les frais engagés; le bailleur aura toutefois la faculté d'exiger au frais du locataire la remise immédiate des lieux en état si les transformations mettent en péril le bon fonctionnement des équipements ou la sécurité du local.
+\item Laisser exécuter dans les lieux loués les travaux d'amélioration des parties communes 
+ou des parties privatives du même immeuble, ainsi que les travaux nécessaires au maintien en état et à l'entretien normal des locaux loués; les dispositions des deuxième et troisième alinéas de l'article 1724 du code civil étant applicables à ces travaux.
+\item Respecter les règles de sécurité prescrites par la législation en vigueur en cas 
+d'installation de matériels professionnels susceptibles de présenter des dommages pour le voisinage.
+\item Ne faire installer et ne faire usage d'aucun nouveau système de chauffage sans avoir 
+vérifié à ses frais, et sous sa responsabilité, la conformité des cheminées avec les règles de sécurité en vigueur.
+\item Respecter le règlement intérieur de l'immeuble, affiché dans les parties communes des 
+immeubles collectifs.
+Se conformer à toutes les demandes ou instructions pouvant être formulées par le 
+bailleur en vertu des décisions d'Assemblées Générales des copropriétaires, ou du 
+règlement  intérieur de l'immeuble et en exécuter strictement toutes les dispositions.
+\item S'assurer contre les risques locatifs habituels dont il doit répondre en sa qualité de 
+locataire : incendie, dégât des eaux, ... et tous ceux qui pourraient naître de son 
+activité. Et en justifier au bailleur à la remise des clefs, en lui transmettant l'attes
+tation émise par son assureur ou son représentant. Il devra en justifier ainsi chaque année, à 
+la demande du bailleur.
+\item Occuper personnellement les lieux loués: ne pas céder le contrat de location, ni sous-louer le local, sauf avec l'accord écrit du bailleur, y compris sur le prix du loyer. En cas de cessation du contrat principal, le sous-locataire ne pourra se prévaloir d'aucun droit à l'encontre du bailleur, ni d'aucun titre d'occupation.
+\item Laisser visiter, en vue de la vente ou de la location durant les six mois qui précéderont 
+son départ.
+\item Ne pas déménager sans s'être conformé à ses obligations (paiement des loyers, des charges et 
+des contributions diverses lui incombant personnellement, relevé des différents compteurs, exécution des 
+réparations locatives, etc ...),
+\item Remettre au bailleur, dès son départ, toutes les clefs des locaux loués et lui faire 
+connaître sa nouvelle adresse.
+\end{itemize} 
+\end{flushleft}  
+
+\titre{\Large Obligations du bailleur}
+%#############
+\vspace{-1cm}
+
+\begin{flushleft}
+Le bailleur est tenu des obligations principales suivantes :
+\begin{itemize} 
+\item Délivrer au locataire le local en bon état d'usage et de réparation, ainsi que les 
+équipements mentionnés au contrat en bon état de fonctionnement;
+\item Entretenir les locaux en état de servir à l'usage prévu par le contrat et faire toutes les 
+réparations autres que locatives, nécessaires au maintient en état et à l'entretien normal 
+des locaux loués;
+\item Ne pas s'opposer aux aménagements réalisés par le locataire, dès lors que ceux-ci ne 
+constituent pas une transformation de la chose louée;
+\item Délivrer gratuitement une quittance au locataire lorsque celui-ci en fait la demande;
+\item Assurer au locataire la jouissance paisible du local et sans préjudice des dispositions 
+de l'article 1721 du code Civil, le garantir des vices ou défauts de nature à y faire obstacle.
+\end{itemize} 
+\end{flushleft} 
+
+
+
+\titre{\Large Etat des lieux contradictoire}
+%#############
+\vspace{-1cm}
+
+\begin{flushleft}
+Un état des lieux contradictoire sera établi lors de la remise des clefs au locataire, et lors de la 
+restitution de celles-ci.
+L'état des lieux sera annexé au présent contrat. Dans le cas où l'état des lieux serait établi par 
+un huissier, les parties en supporteront les frais par moitié.
+\end{flushleft} 
+
+\begin{flushleft}
+Le locataire devra restituer le local propre le jour de l'état des lieux de sortie, ou il sera retenu 
+la somme \emph{50} euros pour frais de ménage sur le montant de la caution.
+\end{flushleft} 
+
+
+\titre{\Large Clause résolutoire}
+%#############
+\vspace{-1cm}
+
+\begin{flushleft}
+Le présent bail sera résilié de plein droit, sans qu'il soit besoin de remplir aucune formalité 
+judiciaire et 2 mois après un commandement de payer resté sans effet, pour l'un des motifs suivants
+:
+\begin{itemize} 
+\item Non paiement d'un ou plusieurs termes de loyer.
+\item Non versement du dépôt de garantie.
+\item Non paiements des charges
+\end{itemize} 
+\end{flushleft} 
+
+\begin{flushleft}
+Toute offre de paiement intervenant après les délais prévus par le présent bail n'empêcherait 
+pas que la résiliation dudit bail soit acquise au bailleur.
+\end{flushleft}
+
+\begin{flushleft}
+Le bail sera également résilié de plein droit, sans qu'il soit besoin de remplir aucune formalité 
+judiciaire et 1 mois après un commandement resté sans effets, si le locataire n'a pas justifié au 
+bailleur  d'une assurance
+\end{flushleft} 
+
+
+
+\titre{\Large Clause pénale}
+%#############
+\vspace{-1cm}
+
+\begin{flushleft}
+Le présent bail sera résilié de plein droit, sans qu'il soit besoin de remplir aucune formalité 
+judiciaire et 2 mois après un commandement de payer resté sans effet, pour l'un des motifs suivants
+:
+\begin{itemize} 
+\item Nonpaiement d'un ou plusieurs termes de loyer.
+\item Non versement du dépôt de garantie.
+\item Non paiements des charges
+\end{itemize} 
+\end{flushleft} 
+
+\begin{flushleft}
+Sans préjudice d'application de la clause résolutoire, le preneur s'engage à payer, après mise en demeure du bailleur resté sans effet, et en sus des frais de recouvrement et des sommes pouvant être dues au titre de l'article 700 du nouveau code de procédure civile, une indemnité forfaitaire égale à 10\% de la totalité des sommes dues pour:
+\begin{itemize} 
+\item Défaut de paiement d'un ou plusieurs termes du loyer
+\item Non versement du dépôt de garantie
+\item Non paiement des charges
+\end{itemize} 
+\end{flushleft} 
+
+\begin{flushleft}
+Cette indemnité est destinée à dédommager le bailleur tant du préjudice pouvant résulter du 
+retard dans le paiement que des désagréments causés par les démarches et diligences 
+nécessaires pour parvenir au recouvrement de la créance.
+De plus, le bailleur se réserve le droit de réclamer des dommages et intérêts supplémentaire s'il était contraint de saisir le tribunal pour faire valoir ses droits.
+\end{flushleft} 
+
+\titre{\Large Clause de solidarité}
+%#############
+\vspace{-1cm}
+
+\begin{flushleft}
+Il y aura solidarité et indivisibilité entre les parties désignées sous le nom de locataire, et leurs 
+ayants causes, pour le paiement de toutes les sommes dues en application du présent bail
+\end{flushleft}  
+
+\titre{\Large Election de domicile}
+%#############
+\vspace{-1cm}
+
+\begin{flushleft}
+Pour l'exécution des présentes et de leur suite, le bailleur déclare faire élection de domicile à 
+l'adresse indiquée au présent contrat et le preneur dans les lieux loués, objet du présent bail.
+\end{flushleft}  
+
+
+\titre{\Large Piéces annexes au contrat}
+%#############
+\vspace{-1cm}
+
+\begin{flushleft}
+\begin{itemize} 
+\item Etat des lieux établi contradictoirement (ou par huissier) lors de la remise des clefs au locataire.
+\item Caution solidaire.
+\end{itemize}
+\end{flushleft}  
+
+\begin{flushleft}
+Fait à Toulouse, le 01   Janvier   2019  en 3 originaux dont un remis au(x) preneur(s)\\
+\scriptsize {(Signature précédées de la mention "<lu et approuvé">)}\\
+\end{flushleft}    
+
+\begin{tabbing}
+\hspace{12cm}\=\hspace{12cm}\=\kill
+\itshape{Le Bailleur} \> \itshape{Le(s) Preneur(s)}
+\end{tabbing}    
+
+\end{document}

@@ -1,0 +1,2 @@
+/usr/bin/ar cr libLib_TcpSocketDriver.a  CMakeFiles/Lib_TcpSocketDriver.dir/src/Driver_TcpSocketDriver.o
+/usr/bin/ranlib libLib_TcpSocketDriver.a
