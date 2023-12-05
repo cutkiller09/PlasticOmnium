@@ -17,6 +17,7 @@ BEGIN {
             Product_Name=$1
             gsub(/(^ *)|( *$)/,"",Product_Name)  	# Suppression des espaces  
 			
+			system("mkdir ../03_Generation_Source")	
 			system("mkdir ../03_Generation_Source/01_Architecture")	
 			system("mkdir ../03_Generation_Source/01_Architecture/images")	
 			system("mkdir ../03_Generation_Source/02_Code")	
