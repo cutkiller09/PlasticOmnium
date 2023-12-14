@@ -37,6 +37,7 @@
 /* Includes 								      */
 /*============================================================================*/  
 #include "$COMPONENT.h" 
+#include "TI_Reports.h"
 
 /* Constants and types  						      */
 /*============================================================================*/   
@@ -71,12 +72,41 @@ int main(void)
     Std_ReturnType t_main_Status;  
 
     /*! Initialization */
+	t_main_Status = E_OK;
  
     /*! Function Body */
+	if (!ti_report_open(argv[0]))
+    {
+      printf("Fatal: Failed to create new report\n");
+      return -1;
+    }
 
-	/***************************************************************************************/
-	/* CASE 1 : Test call all functions if service not initialized */
-	MACRO_START_UT( u16_i , "Test call all functions if service not initialized" )  
+    /*
+     * Legend
+     */
+    fprintf(fReport, "Legend:\n");
+    fprintf(fReport, "- *Italic*: debug/traces\n");
+    fprintf(fReport, "- <span style=\"color:green\">Green</span>: success message\n");
+    fprintf(fReport, "- <span style=\"color:orange\">Orange</span>: warning message\n");
+    fprintf(fReport, "- <span style=\"color:red\">Red</span>: error message\n");
+    fprintf(fReport, "\n");
+
+	/*************************************************************************************/
+	/* CASE 0  Nominal test case														*/
+	MACRO_ASSERT_TI( u16_i , "Nominal Test Case" )  
+
+	// t_main_Status = TBD Function call to be tested ;
+    MACRO_ASSERT_TI( u16_error_count , t_main_Status , E_OK );
+
+	/*************************************************************************************/
+	/* 						Tests To Be completed 										 */
+	/*************************************************************************************/
+
+	MACRO_END_TI("TI completed");
+
+    printf("\nReport file name: %s\n", report_name);
+
+    ti_report_close();
 
     /*! return code */ 
     return(t_main_Status);

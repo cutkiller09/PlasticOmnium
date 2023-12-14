@@ -8,10 +8,10 @@
 #################################################################################################################################################### 
 
 #Product
-#$NAME
-INVERTER
+#$NAME | $PROJECT_ID | $OEM
+INVERTER | 1272489 | IVECO
 
-#Component
+#Component_COM
 #$NAME
 Service_Lidar
 
@@ -26,7 +26,7 @@ SrvLidar | Close
 SrvLidar | Get_Error
 #FinComponent
 
-#Component
+#Component_COM
 #$NAME
 Service_Configuration
 
@@ -37,6 +37,60 @@ srvConf | Get
 srvConf | Set
 srvConf | Initialize
 srvConf | Get_Error
+#FinComponent 
+
+#Component_CORE
+#$NAME
+Lib_Toto
+
+#Units
+#$UNIT | $FUNCTION  
+LibToto | Initialize  
+LibToto | Configure
+LibToto | Manage
+LibToto | Get_Data
+LibToto | Get_State
+LibToto | Close
+LibToto | Get_Error
+#FinComponent
+
+#Component_CORE
+#$NAME
+Lib_Titi
+
+#Units
+#$UNIT | $FUNCTION  
+Lib_Titi | Manage 
+Lib_Titi | Get
+Lib_Titi | Set
+Lib_Titi | Initialize
+Lib_Titi | Get_Error
+#FinComponent 
+
+#Component_DRV
+#$NAME
+Driver_Can
+
+#Units
+#$UNIT | $FUNCTION  
+DrvCan | Manage 
+DrvCan | Get
+DrvCan | Set
+DrvCan | Initialize
+DrvCan | Get_Error
+#FinComponent
+
+#Component_DRV
+#$NAME
+Driver_Eth
+
+#Units
+#$UNIT | $FUNCTION  
+DrvEth | Manage 
+DrvEth | Get
+DrvEth | Set
+DrvEth | Initialize
+DrvEth | Get_Error
 #FinComponent
 
 #FinTraitement 
