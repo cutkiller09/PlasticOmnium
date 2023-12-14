@@ -24,9 +24,7 @@ project($COMPONENT)
 
 #--------------------------------------------------------------------------------------------------#
 set (SRCS  
-	./src/$COMPONENT.c	
-	./test/02_SWE5_Integration_Test/stubs/src 
-	./test/02_SWE5_Integration_Test/src 
+	./src/$COMPONENT.c	 
 )
 
 include_directories ( 
@@ -37,7 +35,7 @@ include_directories (
 
 set (TI_SRCS 
 	#./test/02_SWE5_Integration_Tests/stubs/TBC.c #Complete with the good stubs
-	./test/02_SWE5_Integration_Tests/TI_$COMPONENT.c
+	./test/02_SWE5_Integration_Tests/src/TI_$COMPONENT.c
 )        
  
 #-- if(NOT TARGET Lib_$COMPONENT) 					--#

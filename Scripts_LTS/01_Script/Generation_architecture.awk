@@ -82,7 +82,7 @@ BEGIN {
 				system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Doxyfile.in >" Dossier_Component"/Doxyfile.in" )
 				system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Readme >" Dossier_Component"/Readme" )		
 				system ("cp Templates/*SWDD*.docx " Dossier_Component"/doc/SWDD_"Product_Name"_"Oem"_"Project_ID".docx")		 
-				system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/TI_Template.c >" Dossier_Integration_tests"/TI_"Component_Name".c" )
+				system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/TI_Template.c >" Dossier_Integration_tests"/src/TI_"Component_Name".c" )
 				system ("cp Templates/TI_Report.c " Dossier_Integration_tests"/src" )			
 				system ("cp Templates/TI_Report.h " Dossier_Integration_tests"/inc" )						 						 
 			}     
@@ -147,7 +147,7 @@ BEGIN {
 						system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Doxyfile.in >" Dossier_Component"/Doxyfile.in" )
 						system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Readme >" Dossier_Component"/Readme" )		
 						system ("cp Templates/*SWDD*.docx " Dossier_Component"/doc/SWDD_"Product_Name"_"Oem"_"Project_ID".docx")		 
-						system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/TI_Template.c >" Dossier_Integration_tests"/TI_"Component_Name".c" )	
+						system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/TI_Template.c >" Dossier_Integration_tests"/src/TI_"Component_Name".c" )	
 						system ("cp Templates/TI_Report.c " Dossier_Integration_tests"/src" )			
 						system ("cp Templates/TI_Report.h " Dossier_Integration_tests"/inc" )			
 						system ("cp Templates/main_types.h " Dossier_Base"/inc" )						 						 					 						 
