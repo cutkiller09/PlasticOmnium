@@ -25,11 +25,19 @@ project($COMPONENT)
 #--------------------------------------------------------------------------------------------------#
 set (SRCS  
 	./src/$COMPONENT.c	
+	./test/02_SWE5_Integration_Test/stubs/src 
+	./test/02_SWE5_Integration_Test/src 
 )
 
+include_directories ( 
+	./inc 
+	../02_CORE/Base/inc
+) 
+
+
 set (TI_SRCS 
-	./test/stub/TBC.c #Complete with the good stubs
-	./test/TI_$COMPONENT.c
+	#./test/02_SWE5_Integration_Tests/stubs/TBC.c #Complete with the good stubs
+	./test/02_SWE5_Integration_Tests/TI_$COMPONENT.c
 )        
  
 #-- if(NOT TARGET Lib_$COMPONENT) 					--#
@@ -54,10 +62,11 @@ set_target_properties(TI_$COMPONENT PROPERTIES EXCLUDE_FROM_ALL TRUE)
 
 
 target_include_directories (TI_$COMPONENT PRIVATE
-	../../01_HighLevel/Service_TBC/inc	# OPTIONNAL & Complete with the good name
-	../../02_Middleware/Library_TBC/inc # OPTIONNAL & with the good name
-	../../03_Driver/Driver_TBC/inc 		# OPTIONNAL & with the good name
-	./test/stub
+	#../../01_COM/Service_TBC/inc	# OPTIONNAL & Complete with the good name
+	#../../02_CORE/Library_TBC/inc # OPTIONNAL & with the good name
+	#../../03_DRV/Driver_TBC/inc 		# OPTIONNAL & with the good name
+	./test/02_SWE5_Integration_Tests/stubs/inc
+	./test/02_SWE5_Integration_Tests/inc
 	./inc
 )   
  

@@ -14,6 +14,7 @@ BEGIN {
 	Dossier_SWE6_Qualification_Tests = Dossier_Doc"/04_SWE6_Qualification_Tests"
 	Dossier_Code = Dossier_Source"/02_Components" 
 	Dossier_Settings = Dossier_Source"/03_Settings"	 
+	Dossier_Libs = Dossier_Source"/04_Libs"	 
 
    while ($1 != "#FinTraitement")
    {     
@@ -72,15 +73,18 @@ BEGIN {
 				system("mkdir " Dossier_Integration_tests"/stubs")
 				system("mkdir " Dossier_Integration_tests"/stubs/inc")
 				system("mkdir " Dossier_Integration_tests"/stubs/src")
+				system("mkdir " Dossier_Integration_tests"/inc")
+				system("mkdir " Dossier_Integration_tests"/src")
 				system("mkdir " Dossier_Units_tests)
 				system ("sed -e 's/$COMPONENT/"Component_Name"/g' -e 's/$FUNCTION/"Function"/g' Templates/Template_Unit.c >" Dossier_Component"/src/"Component_Name".c" )
 				system ("sed -e 's/$COMPONENT/"Component_Name"/g' -e 's/$FUNCTION/"Function"/g' Templates/Template_Unit.h >" Dossier_Component"/inc/"Component_Name".h" )
 				system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/CMakeLists.txt >" Dossier_Component"/CMakeLists.txt" )
 				system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Doxyfile.in >" Dossier_Component"/Doxyfile.in" )
 				system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Readme >" Dossier_Component"/Readme" )		
-				system ("cp Templates/*SWDD*.docx " Dossier_Component"/doc/SWDD_"Product_Name"_"Oem"_"Project_ID".docx")		
-				system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/TU_Template.c >" Dossier_Units_tests"/TU_"Component_Name".c" )	
-				system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/TI_Template.c >" Dossier_Integration_tests"/TI_"Component_Name".c" )						 						 
+				system ("cp Templates/*SWDD*.docx " Dossier_Component"/doc/SWDD_"Product_Name"_"Oem"_"Project_ID".docx")		 
+				system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/TI_Template.c >" Dossier_Integration_tests"/TI_"Component_Name".c" )
+				system ("cp Templates/TI_Report.c " Dossier_Integration_tests"/src" )			
+				system ("cp Templates/TI_Report.h " Dossier_Integration_tests"/inc" )						 						 
 			}     
 			else
 			{          
@@ -116,11 +120,15 @@ BEGIN {
 
 						#Creation du fichier Source			 
 						Composant = Component_Name".c"  
-						Dossier_Core = Dossier_Code"/02_CORE" 	 
+						Dossier_Core = Dossier_Code"/02_CORE" 	
+						Dossier_Base = Dossier_Core"/Base" 	 
 						Dossier_Component = Dossier_Core"/"Component_Name
 						Dossier_Integration_tests = Dossier_Component"/test/02_SWE5_Integration_Tests"
 						Dossier_Units_tests = Dossier_Component"/test/01_SWE4_Units_Tests" 
 						system("mkdir "Dossier_Core)		 		 	 
+						system("mkdir "Dossier_Base)	 		 	 
+						system("mkdir "Dossier_Base"/inc")	 		 	 
+						system("mkdir "Dossier_Base"/src")		 		 	 
 						system("mkdir "Dossier_Component)	
 						system("mkdir "Dossier_Component"/doc")
 						system("mkdir "Dossier_Component"/inc")
@@ -130,15 +138,19 @@ BEGIN {
 						system("mkdir " Dossier_Integration_tests"/stubs")
 						system("mkdir " Dossier_Integration_tests"/stubs/inc")
 						system("mkdir " Dossier_Integration_tests"/stubs/src")
+						system("mkdir " Dossier_Integration_tests"/inc")
+						system("mkdir " Dossier_Integration_tests"/src")
 						system("mkdir " Dossier_Units_tests)
 						system ("sed -e 's/$COMPONENT/"Component_Name"/g' -e 's/$FUNCTION/"Function"/g' Templates/Template_Unit.c >" Dossier_Component"/src/"Component_Name".c" )
 						system ("sed -e 's/$COMPONENT/"Component_Name"/g' -e 's/$FUNCTION/"Function"/g' Templates/Template_Unit.h >" Dossier_Component"/inc/"Component_Name".h" )
 						system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/CMakeLists.txt >" Dossier_Component"/CMakeLists.txt" )
 						system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Doxyfile.in >" Dossier_Component"/Doxyfile.in" )
 						system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Readme >" Dossier_Component"/Readme" )		
-						system ("cp Templates/*SWDD*.docx " Dossier_Component"/doc/SWDD_"Product_Name"_"Oem"_"Project_ID".docx")		
-						system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/TU_Template.c >" Dossier_Units_tests"/TU_"Component_Name".c" )	
-						system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/TI_Template.c >" Dossier_Integration_tests"/TI_"Component_Name".c" )						 						 
+						system ("cp Templates/*SWDD*.docx " Dossier_Component"/doc/SWDD_"Product_Name"_"Oem"_"Project_ID".docx")		 
+						system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/TI_Template.c >" Dossier_Integration_tests"/TI_"Component_Name".c" )	
+						system ("cp Templates/TI_Report.c " Dossier_Integration_tests"/src" )			
+						system ("cp Templates/TI_Report.h " Dossier_Integration_tests"/inc" )			
+						system ("cp Templates/main_types.h " Dossier_Base"/inc" )						 						 					 						 
 					}     
 					else
 					{          
@@ -163,67 +175,7 @@ BEGIN {
 						}    
 						else
 						{ 	
-							if ($1 == "#Component_DRV")   
-							{    
-								getline 
-								getline 
-								
-								#$NAME 
-								Component_Name=$1
-								gsub(/(^ *)|( *$)/,"",Component_Name)  	# Suppression des espaces    
-
-								#Creation du fichier Source			 
-								Composant = Component_Name".c"  
-								Dossier_Drv = Dossier_Code"/03_DRV" 	  
-								Dossier_Component = Dossier_Drv"/"Component_Name
-								Dossier_Integration_tests = Dossier_Component"/test/02_SWE5_Integration_Tests"
-								Dossier_Units_tests = Dossier_Component"/test/01_SWE4_Units_Tests" 
-								system("mkdir "Dossier_Drv)		 		 
-								system("mkdir "Dossier_Component)	
-								system("mkdir "Dossier_Component"/doc")
-								system("mkdir "Dossier_Component"/inc")
-								system("mkdir "Dossier_Component"/src")
-								system("mkdir "Dossier_Component"/test")
-								system("mkdir " Dossier_Integration_tests)
-								system("mkdir " Dossier_Integration_tests"/stubs")
-								system("mkdir " Dossier_Integration_tests"/stubs/inc")
-								system("mkdir " Dossier_Integration_tests"/stubs/src")
-								system("mkdir " Dossier_Units_tests)
-								system ("sed -e 's/$COMPONENT/"Component_Name"/g' -e 's/$FUNCTION/"Function"/g' Templates/Template_Unit.c >" Dossier_Component"/src/"Component_Name".c" )
-								system ("sed -e 's/$COMPONENT/"Component_Name"/g' -e 's/$FUNCTION/"Function"/g' Templates/Template_Unit.h >" Dossier_Component"/inc/"Component_Name".h" )
-								system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/CMakeLists.txt >" Dossier_Component"/CMakeLists.txt" )
-								system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Doxyfile.in >" Dossier_Component"/Doxyfile.in" )
-								system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Readme >" Dossier_Component"/Readme" )		
-								system ("cp Templates/*SWDD*.docx " Dossier_Component"/doc/SWDD_"Product_Name"_"Oem"_"Project_ID".docx")		
-								system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/TU_Template.c >" Dossier_Units_tests"/TU_"Component_Name".c" )	
-								system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/TI_Template.c >" Dossier_Integration_tests"/TI_"Component_Name".c" )						 						 
-							}     
-							else
-							{          
-
-								if ($1 == "#Units")   
-								{  
-									getline 				
-									getline 
-									while ($1 != "#FinComponent") 
-									{      
-
-										#$UNIT | $FUNCTION  
-										Unit=$1     
-										gsub(/(^ *)|( *$)/,"",Unit)  	# Suppression des espaces  
-										Function=$2 	
-										gsub(/(^ *)|( *$)/,"",Function)  	# Suppression des espaces  
-										
-										system ("sed -e 's/$UNIT/"Unit"/g' -e 's/$FUNCTION/"Function"/g' Templates/Template_Function.c >>" Dossier_Component"/src/"Component_Name".c" )					
-										system ("echo 'Std_ReturnType "Unit"_"Function"(void);' >>" Dossier_Component"/inc/"Component_Name".h")
-										getline 
-									}											
-								}    
-								else
-								{ 			
-								}    
-							}			
-						}    
+						}
 					}		
 				}    
 			}	
