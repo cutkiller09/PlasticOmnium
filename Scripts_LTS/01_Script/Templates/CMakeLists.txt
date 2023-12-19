@@ -29,13 +29,14 @@ set (SRCS
 
 include_directories ( 
 	./inc 
-	../02_CORE/Base/inc
+	../../02_CORE/Base/inc
 ) 
 
 
 set (TI_SRCS 
 	#./test/02_SWE5_Integration_Tests/stubs/TBC.c #Complete with the good stubs
 	./test/02_SWE5_Integration_Tests/src/TI_$COMPONENT.c
+	./test/02_SWE5_Integration_Tests/src/TI_Report.c
 )        
  
 #-- if(NOT TARGET Lib_$COMPONENT) 					--#

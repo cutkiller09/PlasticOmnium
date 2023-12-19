@@ -37,7 +37,8 @@
 /* Includes 								      */
 /*============================================================================*/  
 #include "$COMPONENT.h" 
-#include "TI_Reports.h"
+#include "TI_Report.h"
+#include "main_types.h"
 
 /* Constants and types  						      */
 /*============================================================================*/   
@@ -57,7 +58,7 @@
 /* Public functions 							      */
 /*============================================================================*/
 /**
- * \fn  Std_ReturnType main(void)  
+ * \fn  Std_ReturnType main(int argc, char **argv)
  * \brief this function is the entry point of the integration test
  *
  * \param  
@@ -66,10 +67,11 @@
 *         - E_OK if good return function
 *         - E_NOT_OK if not
  */
-int main(void)
+Std_ReturnType main(int argc, char **argv)
 {
     /*! Declaration */     
     Std_ReturnType t_main_Status;  
+    TU16 u16_i=0;
 
     /*! Initialization */
 	t_main_Status = E_OK;
@@ -78,35 +80,38 @@ int main(void)
 	if (!ti_report_open(argv[0]))
     {
       printf("Fatal: Failed to create new report\n");
-      return -1;
+      t_main_Status = E_NOT_OK;
     }
+    else
+    {
 
-    /*
-     * Legend
-     */
-    fprintf(fReport, "Legend:\n");
-    fprintf(fReport, "- *Italic*: debug/traces\n");
-    fprintf(fReport, "- <span style=\"color:green\">Green</span>: success message\n");
-    fprintf(fReport, "- <span style=\"color:orange\">Orange</span>: warning message\n");
-    fprintf(fReport, "- <span style=\"color:red\">Red</span>: error message\n");
-    fprintf(fReport, "\n");
+        /*
+        * Legend
+        */
+        fprintf(fReport, "Legend:\n");
+        fprintf(fReport, "- *Italic*: debug/traces\n");
+        fprintf(fReport, "- <span style=\"color:green\">Green</span>: success message\n");
+        fprintf(fReport, "- <span style=\"color:orange\">Orange</span>: warning message\n");
+        fprintf(fReport, "- <span style=\"color:red\">Red</span>: error message\n");
+        fprintf(fReport, "\n");
 
-	/*************************************************************************************/
-	/* CASE 0  Nominal test case														*/
-	MACRO_ASSERT_TI( u16_i , "Nominal Test Case" )  
+        /*************************************************************************************/
+        /* CASE 0  Nominal test case														*/
+        MACRO_ASSERT_TI( u16_i++ , "Nominal Test Case", E_OK ) ; 
 
-	// t_main_Status = TBD Function call to be tested ;
-    MACRO_ASSERT_TI( u16_error_count , t_main_Status , E_OK );
+        // t_main_Status = TBD Function call to be tested ;
+        MACRO_ASSERT_TI( u16_i++ , t_main_Status , E_OK );
 
-	/*************************************************************************************/
-	/* 						Tests To Be completed 										 */
-	/*************************************************************************************/
+        /*************************************************************************************/
+        /* 						Tests To Be completed 										 */
+        /*************************************************************************************/
 
-	MACRO_END_TI("TI completed");
+        MACRO_END_TI("TI completed");
 
-    printf("\nReport file name: %s\n", report_name);
+        printf("\nReport file name: %s\n", report_name);
 
-    ti_report_close();
+        ti_report_close();
+    }
 
     /*! return code */ 
     return(t_main_Status);

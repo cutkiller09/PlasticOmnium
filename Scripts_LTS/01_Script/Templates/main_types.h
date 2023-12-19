@@ -49,7 +49,8 @@ typedef unsigned short 		TU16;
 typedef unsigned short		*TU16_p;
 typedef signed int			TS32;
 typedef unsigned int 		TU32;
-typedef unsigned int		*TU32_p;
+typedef unsigned int		*TU32_p; 
+
 
 #if (SU64SUPPORT>0U)
 typedef signed long long	TS64;
@@ -64,11 +65,11 @@ typedef enum
 
 #define K_ERROR_RETURN (-1)
 
-#define NULL (bool)0
+#define NULL 0
 #define NULL_PTR (void*)0
 
-#define K_FALSE (bool)0
-#define K_TRUE  (bool)1
+#define K_FALSE 0
+#define K_TRUE  1
 
 #define TBITF	int				// Used exclusively for Bitfield definition 
 
