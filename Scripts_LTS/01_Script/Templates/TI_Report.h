@@ -46,7 +46,7 @@
 #define MACRO_ASSERT_TI(u16_num_case , u16_error_count , u16_num_error_expected ) { \
 		printf("- Case %d : tested_value = %d (expected : %d) : %s\n" , u16_num_case, u16_error_count, u16_num_error_expected, (u16_num_error_expected==u16_error_count)?"SUCCESS":"FAILED"); \
     fflush( stdout ); \
-    fprintf(fReport, "\n**[%s]** (Case %d) tested_value = %d (expected : %d)\n", (u16_num_error_expected==u16_error_count)?"<span style=\"color:green\">SUCCESS</span>":"<span style=\"color:green\">FAILED</span>", u16_num_case, u16_error_count, u16_num_error_expected); \
+    fprintf(fReport, "\n**[%s]** (Case %d) tested_value = %d (expected : %d)\n", (u16_num_error_expected==u16_error_count)?"<span style=\"color:green\">SUCCESS</span>":"<span style=\"color:red\">FAILED</span>", u16_num_case, u16_error_count, u16_num_error_expected); \
 }
 
 #define MACRO_END_TI(sz_title_case) { \

@@ -9,7 +9,7 @@ endif()
 set(CMAKE_C_OUTPUT_EXTENSION_REPLACE 1)
 
 # Options
-option(COVERAGE "Enable code coverage" OFF)
+option(COVERAGE "Enable code coverage" ON)
 
 # first we can indicate the documentation build as an option and set it to ON by default
 option(BUILD_DOC "Build documentation" ON)

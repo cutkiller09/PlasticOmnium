@@ -94,25 +94,3 @@ Std_ReturnType main(int argc, char **argv)
         fprintf(fReport, "- <span style=\"color:orange\">Orange</span>: warning message\n");
         fprintf(fReport, "- <span style=\"color:red\">Red</span>: error message\n");
         fprintf(fReport, "\n");
-
-        /*************************************************************************************/
-        /* CASE 0  Nominal test case														*/
-        MACRO_ASSERT_TI( u16_i++ , "Nominal Test Case", E_OK ) ; 
-
-        // t_main_Status = TBD Function call to be tested ;
-        MACRO_ASSERT_TI( u16_i++ , t_main_Status , E_OK );
-
-        /*************************************************************************************/
-        /* 						Tests To Be completed 										 */
-        /*************************************************************************************/
-
-        MACRO_END_TI("TI completed");
-
-        printf("\nReport file name: %s\n", report_name);
-
-        ti_report_close();
-    }
-
-    /*! return code */ 
-    return(t_main_Status);
-} 
