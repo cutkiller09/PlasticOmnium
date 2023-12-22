@@ -1,31 +1,66 @@
+> **IMPORTANT NOTE : THE TERMINAL TO BE USED IS <span style="color:green">*MSYS 2 MINGW 64*</span>. and no OTHER ONE**
+> 
+> **IF You HAVE SOME TROUBLES USING GCC TOOLCHAIN, YOU CAN UPDATE ALL PACKAGES USING `pacman -Suy` COMMAND**
+
 Integration tests
 ==================
 
-An Integration file inside test directory is created.
+An Integration test file inside test directory is created.
 His name is TI_$COMPONENT.c.
 This file contain the "main" to test and validate module. 
 The executable generated is the integration test executable.
 
+An Unit test file inside test directory is created.
+His name is TU_$COMPONENT.c.
+This file contain the "main" to test and validate module. 
+The executable generated is the unit test executable.
+
 Cmake Usage
 ============ 
 
-To create Cmake files, launch shell command :
-	terminal$ mkdir build
-	terminal$ cd build
-	terminal$ cmake .. -G "MinGW Makefiles" (For Windows Version)
+To create Cmake files, launch <span style="color:green">*MSYS 2 MINGW 64*</span> shell command :
+```bash
+	MINGW64 terminal$ mkdir build
+	MINGW64 terminal$ cd build
+	MINGW64 terminal$ cmake ..
+``` 
 
 Compilation
 ============
-launch shell command :
-	terminal$ mingw32-make.exe all
+launch <span style="color:green">*MSYS 2 MINGW 64*</span> shell command :
+```bash
+	MINGW64 terminal$ make TI_$COMPONENT
+	MINGW64 terminal$ make TU_$COMPONENT
+``` 
 
-Execution	
+Tests
 ============
-A new Executable is created under build directory, launch it using shell command 
-	terminal$ ./TI_$COMPONENT
 
-Documentation	
-==============
-To Generate html and latex documentatin from doxygen code tags, launch it using shell command
-	terminal$ mingw32-make.exe doc$COMPONENT
+A new Executable is created under build directory, launch it using <span style="color:green">*MSYS 2 MINGW 64*</span> shell command 
+```bash
+	MINGW64 terminal$ ./TI_$COMPONENT
+	MINGW64 terminal$ ./TU_$COMPONENT
+``` 
+
+## Report
+> **IMPORTANT NOTE : Be sure that you have previously executed the tests in order to generate coverage '.gcno' and '.gcda' files needed for html coverage report generation file**
+```bash
+	MINGW64 terminal$ cd ..
+	MINGW64 terminal$ ./CoverageReport.sh
+``` 
+
+Coverage Results are generated under :
+ 1. **test/01_SWE4_Units_Tests/doc/coverage** 
+ 2. **test/02_SWE5_Integration_Tests/doc/coverage** 
+
+**TU_$COMPONENT_Test_Result.md** and **TI_$COMPONENT_Test_Result.md** tests reports are generated under :
+ 1. **test/01_SWE4_Units_Tests/doc** 
+ 2. **test/02_SWE5_Integration_Tests/doc**  
+
+Automatic Generated Detailed Design	
+====================================
+To Generate html and latex documentation from doxygen code tags, launch it using <span style="color:green">*MSYS 2 MINGW 64*</span> shell command
+```bash
+	MINGW64 terminal$ make doc$COMPONENT
+``` 
 

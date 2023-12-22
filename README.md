@@ -4,6 +4,10 @@
 > the programming and Integration environment have been configured on a Windows 10 system environment.
 > It is based on Visual Studio Code and Cmake , Gnu GCC compiler.
 
+> **IMPORTANT NOTE : THE TERMINAL TO BE USED IS "MSYS 2 MINGW 64" and no OTHER ONE**
+> 
+> **IF You HAVE SOME TROUBLES USING GCC TOOLCHAIN, YOU CAN UPDATE ALL PACKAGES USING `pacman -Suy` COMMAND**
+
 ### Using GCC with MinGW
 
 In this tutorial, you configure Visual Studio Code to use the GCC C++ compiler (g++) and GDB debugger from [mingw-w64](http://mingw-w64.org) to create programs that run on Windows.
@@ -12,9 +16,7 @@ After configuring VS Code, you will compile and debug a simple Hello World progr
 
 If you have any problems, feel free to file an issue for this tutorial in the [VS Code documentation repository](https://github.com/microsoft/vscode-docs/issues).
 
-### Prerequisites
-
-**IMPORTANT NOTE : THE TERMINAL TO BE USED IS "MSYS 2 MINGW 64" and no OTHER ONE**
+### Prerequisites 
 
 To successfully complete this tutorial, you must do the following steps:
 

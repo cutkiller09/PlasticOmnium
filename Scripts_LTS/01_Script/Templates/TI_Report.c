@@ -19,13 +19,9 @@ FILE *fReport;     /*!< Address of the report file. */
  */
 TU8 ti_report_open(char *program_path)
 {
-  char program_name[PATH_MAX];
-  time_t timestamp; 
-  struct tm *t; 
+  char program_name[PATH_MAX]; 
   int i;
-
-  u16_ti_cases = 0;
-  u16_ti_steps = 0;
+ 
   report_name[0] = '\0';
   fReport = NULL;
 
@@ -40,14 +36,9 @@ TU8 ti_report_open(char *program_path)
       program_name[i] = '\0';
       break;
     }
-  }
+  } 
 
-  timestamp = time(NULL); 
-  t = localtime(&timestamp); 
-
-  snprintf(report_name, sizeof(report_name), "%04u%02u%02u_%02u%02u%02u_%s_report.md",
-    1900 + t->tm_year, t->tm_mon, t->tm_mday,
-    t->tm_hour, t->tm_min, t->tm_sec,
+  snprintf(report_name, sizeof(report_name), "%s_Results.md",
     program_name);
 
   printf("Opening report: %s\n", report_name);
