@@ -26,6 +26,7 @@ lcov --capture --directory . --output-file coverage.info
 genhtml coverage.info --output-directory out
 
 # Unit tests Coverage Report
+cd -
 cd test/01_SWE4_Units_Tests/doc/coverage
 
 # Generate reports (.gcov files). All .gcda files in the build directory are passed as gcov args.

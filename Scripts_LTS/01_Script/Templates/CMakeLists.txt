@@ -24,19 +24,26 @@ project($COMPONENT)
 
 #--------------------------------------------------------------------------------------------------#
 set (SRCS  
-	./src/$COMPONENT.c	 
+	src/$COMPONENT.c	 
 )
 
 include_directories ( 
-	./inc 
+	inc 
+  test/lib/inc
 	../../02_CORE/Base/inc
 ) 
 
 
 set (TI_SRCS 
-	#./test/02_SWE5_Integration_Tests/stubs/TBC.c #Complete with the good stubs
-	./test/02_SWE5_Integration_Tests/src/TI_$COMPONENT.c
-	./test/02_SWE5_Integration_Tests/src/TI_Report.c
+	#test/02_SWE5_Integration_Tests/stubs/TBC.c #Complete with the good stubs
+	test/02_SWE5_Integration_Tests/src/TI_$COMPONENT.c
+	test/lib/src/Test_Report.c
+)  
+
+set (TU_SRCS 
+	#test/02_SWE5_Integration_Tests/stubs/TBC.c #Complete with the good stubs
+	test/01_SWE4_Units_Tests/src/TU_$COMPONENT.c
+	test/lib/src/Test_Report.c
 )        
  
 #-- if(NOT TARGET Lib_$COMPONENT) 					--#
@@ -53,6 +60,11 @@ add_test(
   COMMAND $<TARGET_FILE:TI_$COMPONENT>
 )
 
+add_test(
+  NAME TU_$COMPONENT
+  COMMAND $<TARGET_FILE:TU_$COMPONENT>
+)
+
 #--------------------------------------------------------------------------------------------------#
 
 add_executable(TI_$COMPONENT ${TI_SRCS} ${SRCS} )   
@@ -64,22 +76,53 @@ target_include_directories (TI_$COMPONENT PRIVATE
 	#../../01_COM/Service_TBC/inc	# OPTIONNAL & Complete with the good name
 	#../../02_CORE/Library_TBC/inc # OPTIONNAL & with the good name
 	#../../03_DRV/Driver_TBC/inc 		# OPTIONNAL & with the good name
-	./test/02_SWE5_Integration_Tests/stubs/inc
-	./test/02_SWE5_Integration_Tests/inc
-	./inc
+	test/02_SWE5_Integration_Tests/stubs/inc
+	test/02_SWE5_Integration_Tests/inc
+  test/lib/inc
+	inc
 )   
  
 #--------------------------------------------------------------------------------------------------#
 
-# add a target to generate API documentation with Doxygen
-find_package(Doxygen)
-if(DOXYGEN_FOUND)
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
-add_custom_target(doc$COMPONENT
-${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
-WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-COMMENT "Generating API documentation with Doxygen" VERBATIM
-)
-endif(DOXYGEN_FOUND)
+add_executable(TU_$COMPONENT ${TU_SRCS} ${SRCS} )   
+target_link_libraries(TU_$COMPONENT --coverage)  
+set_target_properties(TU_$COMPONENT PROPERTIES EXCLUDE_FROM_ALL TRUE) 
 
+
+target_include_directories (TU_$COMPONENT PRIVATE
+	#../../01_COM/Service_TBC/inc	# OPTIONNAL & Complete with the good name
+	#../../02_CORE/Library_TBC/inc # OPTIONNAL & with the good name
+	#../../03_DRV/Driver_TBC/inc 		# OPTIONNAL & with the good name
+	test/01_SWE4_Units_Tests/stubs/inc
+	test/01_SWE4_Units_Tests/inc
+  test/lib/inc
+	inc
+)   
+ 
 #--------------------------------------------------------------------------------------------------#
+
+# check if Doxygen is installed
+find_package(Doxygen)
+if (DOXYGEN_FOUND)
+
+    # set native source dir path to "c:/" instead of "/c/" in Build/Doxyfile.in  
+    string(REPLACE "/c/" "c:/" CMAKE_SOURCE_DIR_NATIVE ${CMAKE_SOURCE_DIR})  
+    MESSAGE("CMAKE_SOURCE_DIR_NATIVE ${CMAKE_SOURCE_DIR_NATIVE}") 
+
+    # set input and output files
+    set(DOXYGEN_IN ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in)
+    set(DOXYGEN_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
+
+    # request to configure the file
+    configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
+    message("Doxygen build started")
+
+    # note the option ALL which allows to build the docs together with the application
+    add_custom_target( doc_doxygen ALL
+        COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
+        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+        COMMENT "Generating API documentation with Doxygen"
+        VERBATIM )
+else (DOXYGEN_FOUND)
+  message("Doxygen need to be installed to generate the doxygen documentation")
+endif (DOXYGEN_FOUND)

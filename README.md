@@ -43,9 +43,11 @@ To successfully complete this tutorial, you must do the following steps:
    4. Select **New** and add the Mingw-w64 destination folder path to the system path. The exact path depends on which version of Mingw-w64 you have installed and where you installed it. If you used the settings above to install Mingw-w64, then add this to the path: `C:\msys64\mingw64\bin`. 
    5. Select **OK** to save the updated PATH. You will need to reopen any console windows for the new PATH location to be available.
 
-5. Install the Mingw-w64 Lcov (`pacman -S lcov`). Run the `pacman` command in a MSYS2 terminal. Selet "all". cd into the lcov package folder, run makepkg-mingw -sCLf
+5. Install `pacman -S mingw-w64-x86_64-cmake`
+
+6. Install the Mingw-w64 Lcov (`pacman -S lcov`). Run the `pacman` command in a MSYS2 terminal. Selet "all". cd into the lcov package folder, run makepkg-mingw -sCLf
    
-6. Install Package on Vscode the [VSCode LCOV] (https://marketplace.visualstudio.com/items?itemName=alexdima.vscode-lcov)
+7. Install Package on Vscode the [VSCode LCOV] (https://marketplace.visualstudio.com/items?itemName=alexdima.vscode-lcov)
 
 
 ### Using CMake
@@ -74,6 +76,24 @@ make --version (Warning, perhaps, you will need to replace it using : mingw32-ma
 ```bash
 cmake .. -G "MinGW Makefiles"
 ``` 
+
+## Doxygen
+
+If needed, you can compile Doxygen Source code 
+In a specific folder, using <span style="color:green">*MSYS 2 MINGW 64*</span> shell command :
+```bash
+git clone https://github.com/doxygen/doxygen.git
+cd doxygen && mkdir build && cd build
+cmake -G "Unix Makefiles" ..
+make
+cp bin/doxygen.exe /c/msys64/mingw64
+``` 
+
+Install Graphviz if needed
+```bash
+pacman -S mingw64/mingw-w64-x86_64-graphviz,
+``` 
+
 ## Collaborate with your team
 
 - [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
