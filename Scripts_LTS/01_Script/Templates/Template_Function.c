@@ -1,14 +1,14 @@
 /**
- * \fn  Std_ReturnType $UNIT_$FUNCTION(void)
- * \brief this function  
+ * \fn  Std_ReturnType $UNIT_$FUNCTION($PARAMETER)
+ * \brief $ROLE 
  *
- * \param void
+ * \param $PARAMETER
  *
 * \return Std_ReturnType :
-*         - E_OK if module is
+*         - E_OK if module is TBC
 *         - E_NOT_OK if not
- */
-Std_ReturnType $UNIT_$FUNCTION(void)
+ */ 
+Std_ReturnType $UNIT_$FUNCTION($PARAMETER)
 {
     /* Declaration */
     Std_ReturnType t_$FUNCTION_Status;
