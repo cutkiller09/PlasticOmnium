@@ -3,11 +3,11 @@
 awk -f Generation_architecture.awk ../02_Canevas/*.c 
 
 #COM Cmake Generation 
-ls -R ../03_Project_Skeleton2 | grep : | grep inc | cut -f'1' -d':' | grep -v test > Headers.txt
-ls -R ../03_Project_Skeleton2 | grep : | grep src | cut -f'1' -d':' | grep -v test > Sources.txt
+ls -R ../03_Project_Skeleton/02_Components/ | grep : | grep inc | cut -f'1' -d':' | grep -v test > Headers.txt
+ls -R ../03_Project_Skeleton/02_Components/ | grep : | grep src | cut -f'1' -d':' | grep -v test > Sources.txt
      
-file1=../03_Project_Skeleton2/02_Components/01_COM/CMakeLists.txt
-file2=../03_Project_Skeleton2/02_Components/01_COM/CMakeLists_test.txt
+file1=../03_Project_Skeleton/02_Components/01_COM/CMakeLists.txt
+file2=../03_Project_Skeleton/02_Components/01_COM/CMakeLists_test.txt
 
 #sed 's/\(.*\)%HEADERS\(.*\)/echo '\''\1'\''$(cat '"$Header_files"')'\''\2'\''/e' "$file2" 
 

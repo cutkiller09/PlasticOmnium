@@ -95,7 +95,7 @@ BEGIN {
 				system("mkdir " Dossier_Units_tests_doc"/coverage")
 				system ("sed -e 's/$COMPONENT/"Component_Name"/g' -e 's/$FUNCTION/"Function"/g' Templates/Template_Unit.c >" Dossier_Component"/src/"Component_Name".c" )
 				system ("sed -e 's/$COMPONENT/"Component_Name"/g' -e 's/$FUNCTION/"Function"/g' Templates/Template_Unit.h >" Dossier_Component"/inc/"Component_Name".h" )
-				system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/CMakeLists_COMPONENT.txt >" Dossier_Com"/CMakeLists.txt" )
+				system ("sed -e 's/$COMPONENT/"Component_Name"/g' -e 's/$NAME/"Product_Name"/g' Templates/CMakeLists_COMPONENT.txt >" Dossier_Com"/CMakeLists.txt" )
 				system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/CMakeLists_UNIT.txt >" Dossier_Component"/CMakeLists.txt" )
 				system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Doxyfile.in >" Dossier_Component"/Doxyfile.in" )
 				system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Readme >" Dossier_Component"/Readme" )		

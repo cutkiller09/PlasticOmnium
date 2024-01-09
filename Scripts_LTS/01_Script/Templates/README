@@ -28,8 +28,7 @@ To create Cmake files, launch <span style="color:green">*MSYS 2 MINGW 64*</span>
 Compilation
 ============
 launch <span style="color:green">*MSYS 2 MINGW 64*</span> shell command :
-```bash
-	MINGW64 terminal$ mingw32-make.exe  TI_$COMPONENT
+```bash 
 	MINGW64 terminal$ mingw32-make.exe  TU_$COMPONENT
 ``` 
 
@@ -37,8 +36,7 @@ Tests
 ============
 
 A new Executable is created under build directory, launch it using <span style="color:green">*MSYS 2 MINGW 64*</span> shell command 
-```bash
-	MINGW64 terminal$ ./TI_$COMPONENT
+```bash 
 	MINGW64 terminal$ ./TU_$COMPONENT
 ``` 
 
