@@ -22,15 +22,15 @@ To create Cmake files, launch <span style="color:green">*MSYS 2 MINGW 64*</span>
 ```bash
 	MINGW64 terminal$ mkdir build
 	MINGW64 terminal$ cd build
-	MINGW64 terminal$ cmake ..
+	MINGW64 terminal$ cmake .. -G "MinGW Makefiles"
 ``` 
 
 Compilation
 ============
 launch <span style="color:green">*MSYS 2 MINGW 64*</span> shell command :
 ```bash
-	MINGW64 terminal$ make TI_$COMPONENT
-	MINGW64 terminal$ make TU_$COMPONENT
+	MINGW64 terminal$ mingw32-make.exe  TI_$COMPONENT
+	MINGW64 terminal$ mingw32-make.exe  TU_$COMPONENT
 ``` 
 
 Tests
