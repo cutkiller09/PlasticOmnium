@@ -5,11 +5,15 @@ awk -f Generation_architecture.awk ../02_Canevas/*.c
 #COM Cmake Generation 
 ls -R ../03_Project_Skeleton/02_Components/ | grep : | grep inc | cut -f'1' -d':' | grep -v test > Headers.txt
 ls -R ../03_Project_Skeleton/02_Components/ | grep : | grep src | cut -f'1' -d':' | grep -v test > Sources.txt
+
+sed -e 's|../03_Project_Skeleton|${PROJECT_SOURCE_DIR}|g' Headers.txt > Headers2.txt 
+sed -e 's|../03_Project_Skeleton|${PROJECT_SOURCE_DIR}|g' Sources.txt > Sources2.txt 
      
-file1=../03_Project_Skeleton/02_Components/01_COM/CMakeLists.txt
-file2=../03_Project_Skeleton/02_Components/01_COM/CMakeLists_test.txt
+file1=../03_Project_Skeleton/02_Components/CMakeLists.txt  
 
 #sed 's/\(.*\)%HEADERS\(.*\)/echo '\''\1'\''$(cat '"$Header_files"')'\''\2'\''/e' "$file2" 
 
-awk 'NR==FNR{rep=(NR>1?rep RS:"") $0; next} {gsub(/%HEADERS/,rep)}1' Headers.txt $file1 > tmp && mv tmp $file1
-awk 'NR==FNR{rep=(NR>1?rep RS:"") $0; next} {gsub(/%SOURCES/,rep)}1' Sources.txt $file1 > tmp && mv tmp $file1 
+awk 'NR==FNR{rep=(NR>1?rep RS:"") $0; next} {gsub(/%HEADERS/,rep)}1' Headers2.txt $file1 > tmp && mv tmp $file1
+awk 'NR==FNR{rep=(NR>1?rep RS:"") $0; next} {gsub(/%SOURCES/,rep)}1' Sources2.txt $file1 > tmp && mv tmp $file1
+
+rm *.txt 
