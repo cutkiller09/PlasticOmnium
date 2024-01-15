@@ -41,36 +41,6 @@ subgraph "Output automatically generated"
     style A fill:#b5e61d,stroke:#11,stroke-width:4px
 ```
 
-Each component is sub-divided in sections
-
-```mermaid 
-flowchart LR 
-    A[Component]  --> B[doc]
-    B --> C[SWDD_Productname_Oem_ProductId.docx]
-    B --> D[Doxygen]
-    A --> XC[inc]
-    A --> Y[Src]
-    A --> Z[test]
-    A --> AA[CMakeLists.txt]
-    A --> AB[CoverageReport.sh]
-    A --> AC[Doxyfile.in]
-    A --> AD[Readme.md]
-    Z --> AE[01_SWE4_Units_Tests]
-    Z --> AJ[libs]
-    AE --> AI[doc]
-    AE --> AF[inc]
-    AE --> AG[src]
-    AE --> AH[stubs]
-    AI --> E[coverage]
-    AI --> F[Cartouche_SWE4.docx]
-    AI --> G[SWE4_Checklist_Review_Productname_Oem_ProductId.xlsm]
-    AI --> H[SWE4_Units_Tests_Plan_Productname_Oem_ProductId.xlsm]
-
-    style G fill:#b5e61d,stroke:#11,stroke-width:4px
-    style H fill:#b5e61d,stroke:#11,stroke-width:4px 
-    style C fill:#b5e61d,stroke:#11,stroke-width:4px
-```
-
 He will needs in input an "Architecture.c" file with all your compents and units inside in this format (use it as an example) :
 Please be aware : spaces at end of lines are forbidden
 
@@ -110,7 +80,39 @@ DCan | eConfigBaudRate_Exe|TU16 Fu16CtrlId,TU16 Fu16Baudrate
 #FinComponent
 ```
 
-![Screenshot](Capture.png)
+Each component is sub-divided in sections
+
+```mermaid 
+flowchart LR 
+    A[Component]  --> B[doc]
+    B --> C[SWDD_Productname_Oem_ProductId.docx]
+    B --> D[Doxygen]
+    A --> XC[inc]
+    A --> Y[Src]
+    A --> Z[test]
+    A --> AA[CMakeLists.txt]
+    A --> AB[CoverageReport.sh]
+    A --> AC[Doxyfile.in]
+    A --> AD[Readme.md]
+    Z --> AE[01_SWE4_Units_Tests]
+    Z --> AJ[libs]
+    AE --> AI[doc]
+    AE --> AF[inc]
+    AE --> AG[src]
+    AE --> AH[stubs]
+    AI --> E[coverage]
+    AI --> F[Cartouche_SWE4.docx]
+    AI --> G[SWE4_Checklist_Review_Productname_Oem_ProductId.xlsm]
+    AI --> H[SWE4_Units_Tests_Plan_Productname_Oem_ProductId.xlsm]
+
+    style G fill:#b5e61d,stroke:#11,stroke-width:4px
+    style H fill:#b5e61d,stroke:#11,stroke-width:4px 
+    style E fill:#b5e61d,stroke:#11,stroke-width:4px 
+    style C fill:#b5e61d,stroke:#11,stroke-width:4px
+```
+
+Coverage Folder will have all coverage results for 
+![Screenshot](Capture.PNG)
 
 ## Installation and Configuration environment 
 > the programming and Integration environment have been configured on a Windows 10 system environment.
