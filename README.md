@@ -122,4 +122,4 @@ flowchart LR
 ```
 
 Coverage Folder will have all coverage results for 
-![Screenshot](Capture.PNG)
+![Screenshot](images/Capture.PNG)
