@@ -11,7 +11,7 @@
 #$NAME | $PROJECT_ID | $OEM
 INVERTER | 1272489 | IVECO
 
-#Component_COM
+#Component_HighLevel
 #$NAME
 upg_app
 
@@ -21,7 +21,7 @@ Application | Init_Hook  | void
 Application | Background_Hookgure | void
 #FinComponent
 
-#Component_COM
+#Component_HighLevel
 #$NAME
 AC_Management
 
@@ -32,7 +32,7 @@ MAc | eClainInProgress_Get  | void
 MAc | eTask_Exe  | void
 #FinComponent
 
-#Component_COM
+#Component_HighLevel
 #$NAME
 Uds_Server
 
@@ -51,7 +51,7 @@ UDSSvr | isIdle | TU8 indexHandle
 UDSSvr | GetSvrSession | TstUDSSvr_svr_handle* handle, TU8 *session
 #FinComponent
 
-#Component_COM
+#Component_HighLevel
 #$NAME
 Uds_App
 
@@ -66,7 +66,7 @@ UDSApp | iMem_DataTransReq | TstUdsSvr_Frame* in, TstUdsSvr_Frame *out, unsigned
 UDSApp | iMem_DataTransfExit | TstUdsSvr_Frame* in, TstUdsSvr_Frame *out, unsigned char *session, unsigned char *security
 #FinComponent
 
-#Component_COM
+#Component_HighLevel
 #$NAME
 Rdbi_App
 
@@ -76,9 +76,21 @@ ARdbi | iRdbi_Exe | TstUdsSvr_Frame* in, TstUdsSvr_Frame *out, TU8 *session
 ARdbi | iWdbiExe | TU8* Fpu8FrameResponse, TU16 Fu16DataIdSet, TU16 Fu16BufferResponseSize, TU16 *Fpu16ResponseLength 
 #FinComponent
 
+#Component_Middleware
+#$NAME
+Aux
 
+#Units
+#$UNIT | $FUNCTION  | $PARAMETER | $ROLE 
+TS32|s32DAux_eInit_Exe|void
+TS32|s32DAux_eReloadInternal_Exe|TU32 Fu32MagicNumber
+TS32|s32DAux_eReloadExternal_Exe|TU32 Fu32MagicNumber
+TS32|s32DAux_eReloadPTO_Exe|TU32 Fu32MagicNumber
+TS32|s32DAux_eShutdown_Exe|TU32 Fu32MagicNumber
+TS32|s32DAux_eReloadCmdSend_Get|void
+#FinComponent
 
-#Component_DRV
+#Component_Driver
 #$NAME
 Drv_Can
 

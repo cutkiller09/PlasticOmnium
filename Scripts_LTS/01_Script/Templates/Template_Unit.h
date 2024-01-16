@@ -25,8 +25,8 @@
 /*                                                                            */
 /*============================================================================*/ 
 
-#ifndef _$COMPONENT_INCLUDE_
-#define _$COMPONENT_INCLUDE_
+#ifndef _$COMPONENT_include_
+#define _$COMPONENT_include_
 
 /* Includes 							                                      */
 /*============================================================================*/   

@@ -30,7 +30,7 @@ set (SRCS
 include_directories ( 
 	inc 
   test/lib/inc
-	../../02_CORE/Base/inc
+	../../02_Middleware/Base/inc
 )  
 
 set (TU_SRCS 
@@ -61,9 +61,9 @@ set_target_properties(TU_$COMPONENT PROPERTIES EXCLUDE_FROM_ALL TRUE)
 
 
 target_include_directories (TU_$COMPONENT PRIVATE
-	#../../01_COM/Service_TBC/inc	# OPTIONNAL & Complete with the good name
-	#../../02_CORE/Library_TBC/inc # OPTIONNAL & with the good name
-	#../../03_DRV/Driver_TBC/inc 		# OPTIONNAL & with the good name
+	#../../01_HighLevel/Service_TBC/inc	# OPTIONNAL & Complete with the good name
+	#../../02_Middleware/Library_TBC/inc # OPTIONNAL & with the good name
+	#../../03_Driver/Driver_TBC/inc 		# OPTIONNAL & with the good name
 	test/01_SWE4_Units_Tests/stubs/inc
 	test/01_SWE4_Units_Tests/inc
   test/lib/inc

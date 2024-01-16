@@ -29,7 +29,7 @@ set(${PROJECT_NAME}_INCLUDE_DIRS
  
 include_directories(${HDRS}) 
  
-add_subdirectory(../02_CORE Build_Core) 
+add_subdirectory(../02_Middleware Build_Core) 
 
 #--------------------------------------------------------------------------------------------------#  
 
