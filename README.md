@@ -13,6 +13,10 @@ README is divided in paragraph :
  
 ## Software Engineering Process group
 
+The Software Architecture (in Software Architectural Design (SWAD)) is composed of :
+   - Software Elements : Result of the decomposition of the architecture on software level: The software is decomposed into elements of the software architecture across appropriate hierarchical levels down to the software components (the lowest level elements of the software architecture).
+   - Software Components : Software-Components (SW-C) are architectural elements that provide and/or require interfaces and are connected to each other through the Virtual Functional Bus to fulfill architectural responsibilities. The Software Component is the central structural element used when building a system at the VFB-level. A SW-C has well-defined ports, through which the component can interact with other Software Components. A Software Component has a formal description defined by the Software Component template. Software Components can be abbreviated as SW-Cs. A SW-C contains a Software Component Description (SW-CD) and the implementation. In Automotive SPICE V3.0 the term "software component" is used for the lowest level elements of the software architecture for which finally the detailed design is defined. A software "component" consists of one or more software "units".
+
 The Software Engineering Process Group is divided in 3 layers :
    1. SWE.1 : Software Requirement Analysis linked to SWE.6 : Software Qualification Test
    2. SWE.2 : Software Architectural Design linked to SWE.5 : Software Integration Test
@@ -21,16 +25,20 @@ The Software Engineering Process Group is divided in 3 layers :
 
 ![SWE](images/SWE.PNG)
 
-The Software Architecture contains in Software Architectural Design (SWAD) is composed of :
-   - Software Elements : Result of the decomposition of the architecture on software level: The software is decomposed into elements of the software architecture across appropriate hierarchical levels down to the software components (the lowest level elements of the software architecture).
-   - Software Components : Software-Components (SW-C) are architectural elements that provide and/or require interfaces and are connected to each other through the Virtual Functional Bus to fulfill architectural responsibilities. The Software Component is the central structural element used when building a system at the VFB-level. A SW-C has well-defined ports, through which the component can interact with other Software Components. A Software Component has a formal description defined by the Software Component template. Software Components can be abbreviated as SW-Cs. A SW-C contains a Software Component Description (SW-CD) and the implementation. In Automotive SPICE V3.0 the term "software component" is used for the lowest level elements of the software architecture for which finally the detailed design is defined. A software "component" consists of one or more software "units".
+
 
 The Software Detailed Design Component is a specific detailed design for a component and is composed of :
-    - Units : Part of a software component which is not further subdivided. 
+- Units : Part of a software component which is not further subdivided. 
 
 
 
 ## Project Architecture
+
+the skeleton of the project is based on a shell script :
+```bash
+script_architecture.sh
+```
+
 
 ```mermaid 
 flowchart LR
@@ -71,8 +79,9 @@ subgraph "Output automatically generated"
     style A fill:#b5e61d,stroke:#11,stroke-width:4px
 ```
 
-He will needs in input an "Architecture.c" file with all your compents and units inside in this format (use it as an example) :
-Please be aware : spaces at end of lines are forbidden
+script_architecture.sh will needs in input an "Architecture.c" file with all  components and units.
+A specific format needs to be respected(use it as an example) :
+**Please be aware : spaces at end of lines are forbidden**
 
 ```bash
 #Product
