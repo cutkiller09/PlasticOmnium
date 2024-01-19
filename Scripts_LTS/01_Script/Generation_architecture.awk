@@ -108,7 +108,8 @@ BEGIN {
 				system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Test_Template.c >" Dossier_Units_tests"/src/TU_"Component_Name".c" )
 				system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/CoverageReport.sh >" Dossier_Component"/CoverageReport.sh" )
 				system ("cp Templates/Test_Report.c " Dossier_Lib_tests"/src" )			
-				system ("cp Templates/Test_Report.h " Dossier_Lib_tests"/inc" )							 						 
+				system ("cp Templates/Test_Report.h " Dossier_Lib_tests"/inc" )					
+				system ("cp Templates/.gitignore " Dossier_Component"/")					 						 
 			}     
 			else
 			{          
@@ -136,7 +137,8 @@ BEGIN {
 					system ("sed -e 's/$UNIT/"Unit"/g' -e 's/$FUNCTION/"Function"/g' Templates/Test_End_Template.c >>" Dossier_Units_tests"/src/TU_"Component_Name".c" )		
 					system ("cp Templates/Global_Review_Checklist_V1.0.xlsm " Dossier_Units_tests"/doc/SWE4_Checklist_Review_"Product_Name"_"Oem"_"Project_ID".xlsm")
 					system ("cp Templates/SoftwareTestPlan.xlsm " Dossier_Units_tests"/doc/SWE4_Units_Tests_Plan_"Product_Name"_"Composant"_"Oem"_"Project_ID".xlsm")						
-					system ("cp Templates/*SWE4.docx " Dossier_Units_tests"/doc/")						
+					system ("cp Templates/*SWE4.docx " Dossier_Units_tests"/doc/")	
+					system ("echo '#endif' >>" Dossier_Component"/inc/"Component_Name".h") 					
 				}    
 				else
 				{ 		
@@ -176,7 +178,7 @@ BEGIN {
 						system("mkdir " Dossier_Units_tests_doc)
 						system("mkdir " Dossier_Units_tests_doc"/coverage")
 						system ("sed -e 's/$COMPONENT/"Component_Name"/g' -e 's/$FUNCTION/"Function"/g' Templates/Template_Unit.c >" Dossier_Component"/src/"Component_Name".c" )
-						system ("sed -e 's/$COMPONENT/"Component_Name"/g' -e 's/$FUNCTION/"Function"/g' Templates/Template_Unit.h >" Dossier_Component"/inc/"Component_Name".h" )
+						system ("sed -e 's/$COMPONENT/"Component_Name"/g' -e 's/$FUNCTION/"Function"/g' Templates/Template_Unit.h >" Dossier_Component"/inc/"Component_Name".h" )						
 						system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/CMakeLists_UNIT.txt >" Dossier_Component"/CMakeLists.txt" )
 						system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Doxyfile.in >" Dossier_Component"/Doxyfile.in" )
 						system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Readme >" Dossier_Component"/Readme" )		
@@ -184,7 +186,9 @@ BEGIN {
 						system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Test_Template.c >" Dossier_Units_tests"/src/TU_"Component_Name".c" )	
 						system ("cp Templates/Test_Report.c " Dossier_Lib_tests"/src" )			
 						system ("cp Templates/Test_Report.h " Dossier_Lib_tests"/inc" )			 		
-						system ("cp Templates/main_types.h " Dossier_Base"/inc" )						 						 					 						 
+						system ("cp Templates/main_types.h " Dossier_Base"/inc" )	
+						system ("cp Templates/.gitignore " Dossier_Component"/")		  
+											 						 					 						 
 					}     
 					else
 					{          
@@ -252,7 +256,8 @@ BEGIN {
 								system ("cp Templates/*SWDD*.docx " Dossier_Component"/doc/SWDD_"Product_Name"_"Oem"_"Project_ID".docx")		  
 								system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Test_Template.c >" Dossier_Units_tests"/src/TU_"Component_Name".c" )	
 								system ("cp Templates/Test_Report.c " Dossier_Lib_tests"/src" )			
-								system ("cp Templates/Test_Report.h " Dossier_Lib_tests"/inc" )	 					 						 					 						 
+								system ("cp Templates/Test_Report.h " Dossier_Lib_tests"/inc" )	 
+								system ("cp Templates/.gitignore " Dossier_Component"/")							 						 					 						 
 							}     
 							else
 							{          

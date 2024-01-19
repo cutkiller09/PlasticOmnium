@@ -12,21 +12,21 @@ cp build/*TI_$COMPONENT*.md test/02_SWE5_Integration_Tests/doc/
 cp build/*TU_$COMPONENT*.md test/01_SWE4_Units_Tests/doc/
  
 # Integration tests Coverage Report
-cd test/02_SWE5_Integration_Tests/doc/coverage
+#cd test/02_SWE5_Integration_Tests/doc/coverage
 
 # Generate reports (.gcov files). All .gcda files in the build directory are passed as gcov args.
-find . -name '*.gcda' | xargs gcov
+#find . -name '*.gcda' | xargs gcov
 
-sleep 2
+#sleep 2
 
 # 1. Generate the coverage.info data file
-lcov --capture --directory . --output-file coverage.info
+#lcov --capture --directory . --output-file coverage.info
 
 # 2. Generate a report from this data file
-genhtml coverage.info --output-directory out
+#genhtml coverage.info --output-directory out
 
 # Unit tests Coverage Report
-cd -
+#cd -
 cd test/01_SWE4_Units_Tests/doc/coverage
 
 # Generate reports (.gcov files). All .gcda files in the build directory are passed as gcov args.

@@ -83,11 +83,7 @@ Aux
 #Units
 #$UNIT | $FUNCTION  | $PARAMETER | $ROLE 
 TS32|s32DAux_eInit_Exe|void
-TS32|s32DAux_eReloadInternal_Exe|TU32 Fu32MagicNumber
-TS32|s32DAux_eReloadExternal_Exe|TU32 Fu32MagicNumber
-TS32|s32DAux_eReloadPTO_Exe|TU32 Fu32MagicNumber
-TS32|s32DAux_eShutdown_Exe|TU32 Fu32MagicNumber
-TS32|s32DAux_eReloadCmdSend_Get|void
+TS32|s32DAux_eReloadInternal_Exe|TU32 Fu32MagicNumber 
 #FinComponent
 
 #Component_Driver
@@ -97,33 +93,7 @@ Drv_Can
 #Units
 #$UNIT | $FUNCTION  | $PARAMETER | $ROLE 
 DCan | eInit_Exe| TU16 Fu16CtrlId
-DCan | eConfigBaudRate_Exe|TU16 Fu16CtrlId,TU16 Fu16Baudrate
-DCan | eSetBitTime_Exe|TU16 Fu16CtrlId , TU32 Fu32BitTime
-DCan | eInitialisationEvents_Exe| TU16 Fu16CtrlId, TU16 Fu16ProtoColId,
-DCan | eSetupGlobalIrq_Exe| TU16 Fu16CtrlId,TU16 Fu16EnableMask
-DCan | eMaskGlobalIrq_Exe| TU16 Fu16CtrlId
-DCan | eRestoreGlobalIrq_Exe| TU16 Fu16CtrlId
-DCan | eRXMask_Set|TU16 Fu16CtrlId,TU16 Fu16ObjType, TU32 Fu32RxMask
-DCan | eRXMask_Get|TU16 Fu16CtrlId , TU16 Fu16ObjType
-DCan | eAssignProtocol_Exe|TU16 Fu16CtrlId, TU16 Fu16MBId, TU16 Fu16ProtoColId
-DCan | eSetupMB_Exe| TU16 Fu16CtrlId, TU16 Fu16MBId
-DCan | eClearMB_Exe| TU16 Fu16CtrlId, TU16 Fu16MBId
-DCan | eSetupMBIrqEnable_Exe| TU16 Fu16CtrlId, TU16 Fu16MBId, TU16 Fu16Enabled
-DCan | eMBPutData_Exe| TU16 Fu16CtrlId, TU16 Fu16MBId
-DCan | eMBGetData_Exe| TU16 Fu16CtrlId, TU16 Fu16MBId
-DCan | eReadMBIdent_Exe| TU16 Fu16CtrlId, TU16 Fu16MBId
-DCan | eMBState_Get| TU16 Fu16CtrlId, TU16 Fu16MBId
-DCan | eMBTx_Req| TU16 Fu16CtrlId, TU16 Fu16MBId
-DCan | eMBTxAbort_Exe| TU16 Fu16CtrlId, TU16 Fu16MBId
-DCan | eMBRemote_Req| TU16 Fu16CtrlId, TU16 Fu16MBId
-DCan | eMBRemoteAbort_Exe| TU16 Fu16CtrlId, TU16 Fu16MBId
-DCan | eBusOff_Exe| TU16 Fu16CtrlId
-DCan | eBusOn_Exe| TU16 Fu16CtrlId
-DCan | eBusOffState_Get|TU16 Fu16CtrlId
-DCan | eError_Get| TU16 Fu16CtrlId
-DCan | eMaxMBNumber_Set| TU16 Fu16CtrlId, TU16 Fu16MBNb
-DCan | eMaxMBNumber_Get| TU16 Fu16CtrlId 
-DCan | eWriteMBIdent_Exe|TU16 Fu16CtrlId, TU16 Fu16MBId, TU32 Fu32Ident
+DCan | eConfigBaudRate_Exe|TU16 Fu16CtrlId,TU16 Fu16Baudrate 
 #FinComponent
 
 #FinTraitement

@@ -22,7 +22,7 @@ To create Cmake files, launch <span style="color:green">*MSYS 2 MINGW 64*</span>
 ```bash
 	MINGW64 terminal$ mkdir build
 	MINGW64 terminal$ cd build
-	MINGW64 terminal$ cmake .. -G "MinGW Makefiles"
+	MINGW64 terminal$ cmake .. -G "MinGW Makefiles" (OR cmake -G "Eclipse CDT4 - MinGW Makefiles" .. if you prefer to use Eclipse environment)
 ``` 
 
 Compilation

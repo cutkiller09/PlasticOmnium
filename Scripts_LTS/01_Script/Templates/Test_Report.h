@@ -85,7 +85,7 @@ extern char report_name[PATH_MAX]; /*!< The report file name. */
 extern FILE *fReport;     /*!< Address of the report file. */
 
 
-TU8 ti_report_open(char *program_path);
-TU8 ti_report_close(void);
+TU8 Test_report_open(char *program_path);
+TU8 Test_report_close(void);
 
 #endif

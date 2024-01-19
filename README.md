@@ -83,7 +83,7 @@ script_architecture.sh will needs in input an "Architecture.c" file with all  co
 A specific format needs to be respected(use it as an example) :
 **Please be aware : spaces at end of lines are forbidden**
 
-```bash
+```C
 #Product
 #$NAME | $PROJECT_ID | $OEM
 INVERTER | 1272489 | IVECO
@@ -118,7 +118,7 @@ DCan | eInit_Exe| TU16 Fu16CtrlId
 DCan | eConfigBaudRate_Exe|TU16 Fu16CtrlId,TU16 Fu16Baudrate 
 #FinComponent
 ```
-
+### Components
 Each component is sub-divided in sections
 
 ```mermaid 
