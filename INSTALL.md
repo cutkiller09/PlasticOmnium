@@ -36,7 +36,7 @@ To successfully complete this tutorial, you must do the following steps:
 
 3. Install the Mingw-w64 toolchain (`pacman -S --needed base-devel mingw-w64-x86_64-toolchain`). Run the `pacman` command in a MSYS2 terminal. Accept the default to install all the members in the `toolchain` group.
 
-4.Install Gcc (`pacman -S mingw-w64-ucrt-x86_64-gcc`), Gdb (`pacman -S mingw-w64-ucrt-x86_64-gdb`)
+4.Install Gcc (`pacman -S mingw-w64-ucrt-x86_64-gcc`), Gdb (`pacman -S mingw-w64-ucrt-x86_64-gdb`), Git (`pacman -S git`)
 
 5. Add the path to your Mingw-w64 `bin` folder to the Windows `PATH` environment variable by using the following steps:
    1. In the Windows search bar, type 'settings' to open your Windows Settings.
@@ -76,7 +76,7 @@ make --version (Warning, perhaps, you will need to replace it using : mingw32-ma
 
 ### CMake Usage
 ```bash
-cmake .. -G "MinGW Makefiles"
+cmake ..
 ``` 
 
 ## Doxygen
@@ -86,7 +86,7 @@ In a specific folder, using <span style="color:green">*MSYS 2 MINGW 64*</span> s
 ```bash
 git clone https://github.com/doxygen/doxygen.git
 cd doxygen && mkdir build && cd build
-cmake -G "Unix Makefiles" ..
+cmake ..
 make
 cp bin/doxygen.exe /c/msys64/mingw64
 ``` 
