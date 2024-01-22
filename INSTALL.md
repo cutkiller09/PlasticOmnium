@@ -36,18 +36,20 @@ To successfully complete this tutorial, you must do the following steps:
 
 3. Install the Mingw-w64 toolchain (`pacman -S --needed base-devel mingw-w64-x86_64-toolchain`). Run the `pacman` command in a MSYS2 terminal. Accept the default to install all the members in the `toolchain` group.
 
-4. Add the path to your Mingw-w64 `bin` folder to the Windows `PATH` environment variable by using the following steps:
+4.Install Gcc (`pacman -S mingw-w64-ucrt-x86_64-gcc`)
+
+5. Add the path to your Mingw-w64 `bin` folder to the Windows `PATH` environment variable by using the following steps:
    1. In the Windows search bar, type 'settings' to open your Windows Settings.
    2. Search for **Edit environment variables for your account**.
    3. Choose the `Path` variable in your **User variables** and then select **Edit**.
    4. Select **New** and add the Mingw-w64 destination folder path to the system path. The exact path depends on which version of Mingw-w64 you have installed and where you installed it. If you used the settings above to install Mingw-w64, then add this to the path: `C:\msys64\mingw64\bin`. 
    5. Select **OK** to save the updated PATH. You will need to reopen any console windows for the new PATH location to be available.
 
-5. Install `pacman -S mingw-w64-x86_64-cmake`
+6. Install `pacman -S mingw-w64-x86_64-cmake`
 
-6. Install the Mingw-w64 Lcov (`pacman -S lcov`). Run the `pacman` command in a MSYS2 terminal. Selet "all". cd into the lcov package folder, run makepkg-mingw -sCLf
+7. Install the Mingw-w64 Lcov (`pacman -S lcov`). Run the `pacman` command in a MSYS2 terminal. Selet "all". cd into the lcov package folder, run makepkg-mingw -sCLf
    
-7. Install Package on Vscode the [VSCode LCOV] (https://marketplace.visualstudio.com/items?itemName=alexdima.vscode-lcov)
+8. Install Package on Vscode the [VSCode LCOV] (https://marketplace.visualstudio.com/items?itemName=alexdima.vscode-lcov)
 
 
 ### Using CMake
