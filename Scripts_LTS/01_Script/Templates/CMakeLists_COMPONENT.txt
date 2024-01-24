@@ -8,11 +8,7 @@ endif()
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
 
 #--------------------------------------------------------------------------------------------------#
-
-project($NAME)
-
-#--------------------------------------------------------------------------------------------------#
-
+ 
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
 set (SRCS 
@@ -21,7 +17,7 @@ set (SRCS
 
 set (HDRS
 	%HEADERS 
-)
+) 
 
 set(${PROJECT_NAME}_INCLUDE_DIRS   
   ${HDRS} 
@@ -29,16 +25,16 @@ set(${PROJECT_NAME}_INCLUDE_DIRS
  
 include_directories(${HDRS}) 
  
-add_subdirectory(../02_Middleware Build_Core) 
+add_subdirectory(../02_Middleware Build_Middleware) 
+add_subdirectory(../03_Driver Build_Driver) 
 
 #--------------------------------------------------------------------------------------------------#  
 
-#add_library($NAME STATIC ${SRCS})
-#target_link_libraries($NAME
-#			${CMAKE_THREAD_LIBS_INIT}
-#			Lib_LibLidarLms151
-#			Lib_CanOpen 
-#			Lib_StdLib )    
+add_library(${PROJECT_NAME} STATIC ${SRCS})
+target_link_libraries(${PROJECT_NAME}
+						${CMAKE_THREAD_LIBS_INIT}
+						Lib_LibLidarLms151
+						Lib_CanOpen 
+						Lib_StdLib )       
 
 #--------------------------------------------------------------------------------------------------# 
-

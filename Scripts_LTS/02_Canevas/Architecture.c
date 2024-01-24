@@ -85,6 +85,15 @@ Aux
 TS32|s32DAux_eInit_Exe|void
 TS32|s32DAux_eReloadInternal_Exe|TU32 Fu32MagicNumber 
 #FinComponent
+ 
+#Component_Middleware
+#$NAME
+Library_LibLidarLms151
+
+#Units
+#$UNIT | $FUNCTION  | $PARAMETER | $ROLE 
+TS32|initialisation|void 
+#FinComponent
 
 #Component_Driver
 #$NAME
@@ -94,6 +103,24 @@ Drv_Can
 #$UNIT | $FUNCTION  | $PARAMETER | $ROLE 
 DCan | eInit_Exe| TU16 Fu16CtrlId
 DCan | eConfigBaudRate_Exe|TU16 Fu16CtrlId,TU16 Fu16Baudrate 
+#FinComponent
+ 
+#Component_Driver
+#$NAME
+Drv_Serial
+
+#Units
+#$UNIT | $FUNCTION  | $PARAMETER | $ROLE 
+TS32|initialisation|void 
+#FinComponent
+  
+#Component_Driver
+#$NAME
+Drv_TcpSocket
+
+#Units
+#$UNIT | $FUNCTION  | $PARAMETER | $ROLE 
+TS32|initialisation|void 
 #FinComponent
 
 #FinTraitement

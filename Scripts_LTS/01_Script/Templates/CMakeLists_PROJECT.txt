@@ -9,8 +9,9 @@ UNSET(CMAKE_C_FLAGS CACHE)
 SET(CMAKE_C_FLAGS "-g -O0 -Wall -W" CACHE STRING "C Flags" FORCE)
 
 #--------------------------------------------------------------------------------------------------#
+project($NAME)
 
-add_subdirectory(./01_HighLevel Build)
+add_subdirectory(./01_HighLevel Build_HighLevel)
 include_directories($NAME_INCLUDE_DIRS)
 
 #--------------------------------------------------------------------------------------------------# 

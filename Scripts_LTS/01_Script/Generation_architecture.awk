@@ -50,7 +50,9 @@ BEGIN {
 			system("mkdir " Dossier_SWE2_Architecture"/images")	 	 
 			system("mkdir " Dossier_High)		 
 			system("mkdir " Dossier_Mid)		 
+			system("touch " Dossier_Mid"/CMakeLists.txt")		 
 			system("mkdir " Dossier_Drv)		 
+			system("touch " Dossier_Drv"/CMakeLists.txt")		 
 			 
 			system ("cp Templates/*SWQT_PROD*.xlsx "Dossier_SWE6_Qualification_Tests"/SWQT_"Product_Name"_"Oem"_"Project_ID".xlsx")	
 			system ("cp Templates/*SWQT_summary_PROD*.xlsx "Dossier_SWE6_Qualification_Tests"/SWQT_summary_"Product_Name"_"Oem"_"Project_ID".xlsx")							
@@ -60,7 +62,7 @@ BEGIN {
 			system ("cp Templates/*SWE6.docx " Dossier_SWE5_Integration_Testss"/doc/")						
 			system ("cp Templates/SoftwareTestPlan.xlsm " Dossier_SWE5_Integration_Tests"/doc/SWE5_Integration_Tests_Plan_"Product_Name"_"Oem"_"Project_ID".xlsm")			
 			system ("cp Templates/Global_Review_Checklist_V1.0.xlsm " Dossier_SWE5_Integration_Tests"/doc/SWE5_Checklist_Review_"Product_Name"_"Oem"_"Project_ID".xlsm")
-			system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/CMakeLists_PROJECT.txt >" Dossier_Source"/CMakeLists.txt" )
+			system ("sed -e 's/$COMPONENT/"Component_Name"/g' -e 's/$NAME/"Product_Name"/g' Templates/CMakeLists_PROJECT.txt >" Dossier_Code"/CMakeLists.txt" )
 		
 		}		  
 		else
@@ -100,7 +102,7 @@ BEGIN {
 				system("mkdir " Dossier_Units_tests_doc"/coverage")
 				system ("sed -e 's/$COMPONENT/"Component_Name"/g' -e 's/$FUNCTION/"Function"/g' Templates/Template_Unit.c >" Dossier_Component"/src/"Component_Name".c" )
 				system ("sed -e 's/$COMPONENT/"Component_Name"/g' -e 's/$FUNCTION/"Function"/g' Templates/Template_Unit.h >" Dossier_Component"/inc/"Component_Name".h" )
-				system ("sed -e 's/$COMPONENT/"Component_Name"/g' -e 's/$NAME/"Product_Name"/g' Templates/CMakeLists_COMPONENT.txt >" Dossier_Code"/CMakeLists.txt" )
+				system ("sed -e 's/$COMPONENT/"Component_Name"/g' -e 's/$NAME/"Product_Name"/g' Templates/CMakeLists_COMPONENT.txt >" Dossier_High"/CMakeLists.txt" )
 				system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/CMakeLists_UNIT.txt >" Dossier_Component"/CMakeLists.txt" )
 				system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Doxyfile.in >" Dossier_Component"/Doxyfile.in" )
 				system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Readme >" Dossier_Component"/Readme" )		
@@ -184,6 +186,7 @@ BEGIN {
 						system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Readme >" Dossier_Component"/Readme" )		
 						system ("cp Templates/*SWDD*.docx " Dossier_Component"/doc/SWDD_"Product_Name"_"Oem"_"Project_ID".docx")		  
 						system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Test_Template.c >" Dossier_Units_tests"/src/TU_"Component_Name".c" )	
+						system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Template_CMakeLists_LIB.txt >>" Dossier_Mid"/CMakeLists.txt" )							
 						system ("cp Templates/Test_Report.c " Dossier_Lib_tests"/src" )			
 						system ("cp Templates/Test_Report.h " Dossier_Lib_tests"/inc" )			 		
 						system ("cp Templates/main_types.h " Dossier_Base"/inc" )	
@@ -254,7 +257,8 @@ BEGIN {
 								system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Doxyfile.in >" Dossier_Component"/Doxyfile.in" )
 								system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Readme >" Dossier_Component"/Readme" )		
 								system ("cp Templates/*SWDD*.docx " Dossier_Component"/doc/SWDD_"Product_Name"_"Oem"_"Project_ID".docx")		  
-								system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Test_Template.c >" Dossier_Units_tests"/src/TU_"Component_Name".c" )	
+								system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Test_Template.c >" Dossier_Units_tests"/src/TU_"Component_Name".c" )
+								system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Template_CMakeLists_LIB.txt >>" Dossier_Drv"/CMakeLists.txt" )				
 								system ("cp Templates/Test_Report.c " Dossier_Lib_tests"/src" )			
 								system ("cp Templates/Test_Report.h " Dossier_Lib_tests"/inc" )	 
 								system ("cp Templates/.gitignore " Dossier_Component"/")							 						 					 						 

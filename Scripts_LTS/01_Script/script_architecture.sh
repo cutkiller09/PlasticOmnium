@@ -6,10 +6,10 @@ awk -f Generation_architecture.awk ../02_Canevas/*.c
 ls -R ../03_Project_Skeleton/02_Components/ | grep : | grep inc | cut -f'1' -d':' | grep -v test > Headers.txt
 ls -R ../03_Project_Skeleton/02_Components/ | grep : | grep src | cut -f'1' -d':' | grep -v test > Sources.txt
 
-sed -e 's|../03_Project_Skeleton|${PROJECT_SOURCE_DIR}|g' Headers.txt > Headers2.txt 
-sed -e 's|../03_Project_Skeleton|${PROJECT_SOURCE_DIR}|g' Sources.txt > Sources2.txt 
+sed -e 's|../03_Project_Skeleton/02_Components|${PROJECT_SOURCE_DIR}|g' Headers.txt > Headers2.txt 
+sed -e 's|../03_Project_Skeleton/02_Components|${PROJECT_SOURCE_DIR}|g' Sources.txt > Sources2.txt 
      
-file1=../03_Project_Skeleton/02_Components/CMakeLists.txt  
+file1=../03_Project_Skeleton/02_Components/01_HighLevel/CMakeLists.txt  
 
 #sed 's/\(.*\)%HEADERS\(.*\)/echo '\''\1'\''$(cat '"$Header_files"')'\''\2'\''/e' "$file2" 
 
