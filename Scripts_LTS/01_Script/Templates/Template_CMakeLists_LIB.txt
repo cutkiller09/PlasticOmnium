@@ -1,4 +1,4 @@
-if(NOT TARGET Lib_$COMPONENT)
-      message(STATUS "Lib_$COMPONENT : To be constructed ")
-   add_subdirectory(Lib_$COMPONENT build_Lms151)
+if(NOT TARGET $COMPONENT)
+      message(STATUS "$COMPONENT : To be constructed ")
+   add_subdirectory($COMPONENT build_$COMPONENT) 
 endif()

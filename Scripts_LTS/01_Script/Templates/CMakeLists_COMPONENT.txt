@@ -33,8 +33,7 @@ add_subdirectory(../03_Driver Build_Driver)
 add_library(${PROJECT_NAME} STATIC ${SRCS})
 target_link_libraries(${PROJECT_NAME}
 						${CMAKE_THREAD_LIBS_INIT}
-						Lib_LibLidarLms151
-						Lib_CanOpen 
-						Lib_StdLib )       
+						#For example : TBD LidarLms151
+            )       
 
 #--------------------------------------------------------------------------------------------------# 

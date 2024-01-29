@@ -76,25 +76,6 @@ ARdbi | iRdbi_Exe | TstUdsSvr_Frame* in, TstUdsSvr_Frame *out, TU8 *session
 ARdbi | iWdbiExe | TU8* Fpu8FrameResponse, TU16 Fu16DataIdSet, TU16 Fu16BufferResponseSize, TU16 *Fpu16ResponseLength 
 #FinComponent
 
-#Component_Middleware
-#$NAME
-Aux
-
-#Units
-#$UNIT | $FUNCTION  | $PARAMETER | $ROLE 
-TS32|s32DAux_eInit_Exe|void
-TS32|s32DAux_eReloadInternal_Exe|TU32 Fu32MagicNumber 
-#FinComponent
- 
-#Component_Middleware
-#$NAME
-Library_LibLidarLms151
-
-#Units
-#$UNIT | $FUNCTION  | $PARAMETER | $ROLE 
-TS32|initialisation|void 
-#FinComponent
-
 #Component_Driver
 #$NAME
 Drv_Can
@@ -121,6 +102,24 @@ Drv_TcpSocket
 #Units
 #$UNIT | $FUNCTION  | $PARAMETER | $ROLE 
 TS32|initialisation|void 
+#FinComponent
+
+#Component_Middleware
+#$NAME
+titi
+
+#Units
+#$UNIT | $FUNCTION  | $PARAMETER | $ROLE 
+TS32|initialisation|void
+#FinComponent
+
+#Component_Middleware
+#$NAME
+LidarLms151
+
+#Units
+#$UNIT | $FUNCTION  | $PARAMETER | $ROLE 
+TS32|initialisation|void
 #FinComponent
 
 #FinTraitement
