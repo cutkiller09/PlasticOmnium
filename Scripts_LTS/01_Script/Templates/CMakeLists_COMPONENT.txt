@@ -11,6 +11,16 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
  
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
+set (TI_SRCS 
+	${PROJECT_SOURCE_DIR}/04_SWE5_Integration_Tests/src 
+	${PROJECT_SOURCE_DIR}/04_SWE5_Integration_Tests/stubs/src 
+)   
+
+set (TI_HDRS
+	${PROJECT_SOURCE_DIR}/04_SWE5_Integration_Tests/inc
+	${PROJECT_SOURCE_DIR}/04_SWE5_Integration_Tests/stubs/inc 
+) 
+
 set (SRCS 
 	%SOURCES
 )   
@@ -36,4 +46,17 @@ target_link_libraries(${PROJECT_NAME}
 						#For example : TBD LidarLms151
             )       
 
-#--------------------------------------------------------------------------------------------------# 
+#--------------------------------------------------------------------------------------------------#  
+
+add_executable(TI_${PROJECT_NAME} ${TI_SRCS} ${SRCS} )    
+target_link_libraries(${PROJECT_NAME} -coverage
+						${CMAKE_THREAD_LIBS_INIT}
+						#For example : TBD LidarLms151
+					)       
+set_target_properties(TI_${PROJECT_NAME} PROPERTIES EXCLUDE_FROM_ALL TRUE) 
+
+
+target_include_directories (TI_${PROJECT_NAME} PRIVATE
+	${TI_HDRS}
+	${HDRS}
+)   

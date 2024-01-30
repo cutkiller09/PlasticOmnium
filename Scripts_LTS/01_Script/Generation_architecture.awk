@@ -10,14 +10,14 @@ BEGIN {
 	Dossier_Doc = Dossier_Source"/01_Elements"
 	Dossier_SWE1_Specification = Dossier_Doc"/01_SWE1_Specification"
 	Dossier_SWE2_Architecture = Dossier_Doc"/02_SWE2_Architecture" 
-	Dossier_SWE5_Integration_Tests = Dossier_Doc"/03_SWE5_Integration_Tests" 
-	Dossier_SWE6_Qualification_Tests = Dossier_Doc"/04_SWE6_Qualification_Tests"
+	Dossier_SWE6_Qualification_Tests = Dossier_Doc"/03_SWE6_Qualification_Tests"
 	Dossier_Code = Dossier_Source"/02_Components" 
 	Dossier_Settings = Dossier_Source"/03_Settings"	 
 	Dossier_Libs = Dossier_Source"/04_Libs"	 
 	Dossier_High = Dossier_Code"/01_HighLevel" 	
 	Dossier_Mid = Dossier_Code"/02_Middleware" 	
 	Dossier_Drv = Dossier_Code"/03_Driver" 	
+	Dossier_SWE5_Integration_Tests = Dossier_Code"/04_SWE5_Integration_Tests" 
 
    while ($1 != "#FinTraitement")
    {     
@@ -59,7 +59,8 @@ BEGIN {
 			system ("cp Templates/*SWE6.docx " Dossier_SWE6_Qualification_Tests)						
 			system ("cp Templates/TEMPLATE_SWAD*.docx "Dossier_SWE2_Architecture"/SWAD_"Product_Name"_"Oem"_"Project_ID".docx")	 
 			system ("cp Templates/*SWRMP*.docx "Dossier_SWE1_Specification"/SWRMP_"Product_Name"_"Oem"_"Project_ID".docx")
-			system ("cp Templates/*SWE6.docx " Dossier_SWE5_Integration_Testss"/doc/")						
+			system ("cp Templates/*SWE5.docx " Dossier_SWE5_Integration_Tests"/doc")			
+			system ("cp Templates/*SWE1.docx " Dossier_SWE1_Specification)				
 			system ("cp Templates/TEMPLATE_SWIT_PRODUCTNAME_OEM_PROJECTID.xlsx " Dossier_SWE5_Integration_Tests"/doc/SWIT_"Product_Name"_"Oem"_"Project_ID".xlsx")		
 			system ("cp Templates/TEMPLATE_SWIT_summary_PRODUCTNAME_OEM_PROJECTID.xlsx " Dossier_SWE5_Integration_Tests"/doc/SWIT_Summary_"Product_Name"_"Oem"_"Project_ID".xlsx")			
 			system ("cp Templates/Global_Review_Checklist_V1.0.xlsm " Dossier_SWE5_Integration_Tests"/doc/SWE5_Checklist_Review_"Product_Name"_"Oem"_"Project_ID".xlsm")
@@ -102,8 +103,8 @@ BEGIN {
 				system("mkdir " Dossier_Units_tests"/stubs/src")
 				system("mkdir " Dossier_Units_tests"/inc")
 				system("mkdir " Dossier_Units_tests"/src")
-				system("mkdir " Dossier_Units_tests_doc)
-				system("mkdir " Dossier_Units_tests_doc"/coverage")
+				system("mkdir " Dossier_Units_tests"/doc")
+				system("mkdir " Dossier_Units_tests"/doc/coverage")
 				system ("sed -e 's/$COMPONENT/"Component_Name"/g' -e 's/$FUNCTION/"Function"/g' Templates/Template_Unit.c >" Dossier_Component"/src/"Component_Name".c" )
 				system ("sed -e 's/$COMPONENT/"Component_Name"/g' -e 's/$FUNCTION/"Function"/g' Templates/Template_Unit.h >" Dossier_Component"/inc/"Component_Name".h" )
 				system ("sed -e 's/$COMPONENT/"Component_Name"/g' -e 's/$NAME/"Product_Name"/g' Templates/CMakeLists_COMPONENT.txt >" Dossier_High"/CMakeLists.txt" )
@@ -115,7 +116,8 @@ BEGIN {
 				system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/CoverageReport.sh >" Dossier_Component"/CoverageReport.sh" )
 				system ("cp Templates/Test_Report.c " Dossier_Lib_tests"/src" )			
 				system ("cp Templates/Test_Report.h " Dossier_Lib_tests"/inc" )					
-				system ("cp Templates/.gitignore " Dossier_Component"/")					 						 
+				system ("cp Templates/.gitignore " Dossier_Component"/")		 		
+				system ("cp Templates/*SWE4.docx " Dossier_Component"/doc" )				 						 
 			}     
 			else
 			{          
@@ -181,8 +183,8 @@ BEGIN {
 						system("mkdir " Dossier_Units_tests"/stubs/src")
 						system("mkdir " Dossier_Units_tests"/inc")
 						system("mkdir " Dossier_Units_tests"/src")
-						system("mkdir " Dossier_Units_tests_doc)
-						system("mkdir " Dossier_Units_tests_doc"/coverage")
+						system("mkdir " Dossier_Units_tests"/doc")
+						system("mkdir " Dossier_Units_tests"/doc/coverage") 
 						system ("sed -e 's/$COMPONENT/"Component_Name"/g' -e 's/$FUNCTION/"Function"/g' Templates/Template_Unit.c >" Dossier_Component"/src/"Component_Name".c" )
 						system ("sed -e 's/$COMPONENT/"Component_Name"/g' -e 's/$FUNCTION/"Function"/g' Templates/Template_Unit.h >" Dossier_Component"/inc/"Component_Name".h" )						
 						system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/CMakeLists_UNIT.txt >" Dossier_Component"/CMakeLists.txt" )
@@ -193,7 +195,8 @@ BEGIN {
 						system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Template_CMakeLists_LIB.txt >>" Dossier_Mid"/CMakeLists.txt" )								
 						system ("cp Templates/Test_Report.c " Dossier_Lib_tests"/src" )			
 						system ("cp Templates/Test_Report.h " Dossier_Lib_tests"/inc" )			 		
-						system ("cp Templates/main_types.h " Dossier_Base"/inc" )	
+						system ("cp Templates/main_types.h " Dossier_Base"/inc" )		 		
+						system ("cp Templates/*SWE4.docx " Dossier_Component"/doc" )	
 						system ("cp Templates/.gitignore " Dossier_Component"/")		  
 											 						 					 						 
 					}     
@@ -253,8 +256,8 @@ BEGIN {
 								system("mkdir " Dossier_Units_tests"/stubs/src")
 								system("mkdir " Dossier_Units_tests"/inc")
 								system("mkdir " Dossier_Units_tests"/src")
-								system("mkdir " Dossier_Units_tests_doc)
-								system("mkdir " Dossier_Units_tests_doc"/coverage")
+								system("mkdir " Dossier_Units_tests"/doc")
+								system("mkdir " Dossier_Units_tests"/doc/coverage")
 								system ("sed -e 's/$COMPONENT/"Component_Name"/g' -e 's/$FUNCTION/"Function"/g' Templates/Template_Unit.c >" Dossier_Component"/src/"Component_Name".c" )
 								system ("sed -e 's/$COMPONENT/"Component_Name"/g' -e 's/$FUNCTION/"Function"/g' Templates/Template_Unit.h >" Dossier_Component"/inc/"Component_Name".h" )
 								system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/CMakeLists_UNIT.txt >" Dossier_Component"/CMakeLists.txt" )
@@ -265,7 +268,8 @@ BEGIN {
 								system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Template_CMakeLists_LIB.txt >>" Dossier_Drv"/CMakeLists.txt" )				
 								system ("cp Templates/Test_Report.c " Dossier_Lib_tests"/src" )			
 								system ("cp Templates/Test_Report.h " Dossier_Lib_tests"/inc" )	 
-								system ("cp Templates/.gitignore " Dossier_Component"/")							 						 					 						 
+								system ("cp Templates/.gitignore " Dossier_Component"/")	
+								system ("cp Templates/*SWE4.docx " Dossier_Component"/doc" )							 						 					 						 
 							}     
 							else
 							{          
@@ -302,17 +306,6 @@ BEGIN {
 		getline
 		gsub(/(^ *)|( *$)/,"",$1)  # Suppression des espaces   
 
-   }
-
-#system ("ls -R ../03_Project_Skeleton | grep : | grep inc | cut -f'1' -d':' | grep -v test > Headers.txt")
-#system ("ls -R ../03_Project_Skeleton | grep : | grep src | cut -f'1' -d':' | grep -v test > Sources.txt")
-#../03_Project_Skeleton/02_Components/01_HighLevel/Service_Configuration/inc\\r\\n../03_Project_Skeleton/02_Components/01_HighLevel/Service_Configuration/test/01_SWE4_Units_Tests/inc
-    
-#file2=Dossier_High"/CMakeLists2.txt"
-#file1=Dossier_High"/CMakeLists.txt"
- 
-#system ("awk 'NR==FNR{rep=(NR>1?rep RS:"") $0; next} {gsub(/%HEADERS/,rep)}1' Headers.txt "file1" > tmp && mv tmp "file1)
-#system ("awk 'NR==FNR{rep=(NR>1?rep RS:"") $0; next} {gsub(/%SOURCES/,rep)}1' Sources.txt "file1" > tmp && mv tmp "file1)
-     
+   } 
 }
 
