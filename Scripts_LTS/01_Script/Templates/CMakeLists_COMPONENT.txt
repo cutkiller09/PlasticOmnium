@@ -1,25 +1,36 @@
-cmake_minimum_required(VERSION 3.26) 
+cmake_minimum_required(VERSION 3.26)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -g")
 
 if(WIN32)
    set(CMAKE_C_COMPILER "C:/msys64/mingw64/bin/gcc.exe")
    set(CMAKE_CXX_COMPILER "C:/msys64/mingw64/bin/gcc.exe")
 endif()
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
+set(CMAKE_C_OUTPUT_EXTENSION_REPLACE 1)
 
+# Options
+option(COVERAGE "Enable code coverage" ON)
+
+# first we can indicate the documentation build as an option and set it to ON by default
+option(BUILD_DOC "Build documentation" ON) 
+
+if (COVERAGE)
+    add_definitions(--coverage)
+endif()
 #--------------------------------------------------------------------------------------------------#
  
-set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
-
 set (TI_SRCS 
-	${PROJECT_SOURCE_DIR}/04_SWE5_Integration_Tests/src 
-	${PROJECT_SOURCE_DIR}/04_SWE5_Integration_Tests/stubs/src 
+	${PROJECT_SOURCE_DIR}/04_SWE5_Integration_Tests/src/TI_${PROJECT_NAME}.c 
+#	${PROJECT_SOURCE_DIR}/04_SWE5_Integration_Tests/stubs/src 
+  ${PROJECT_SOURCE_DIR}/04_SWE5_Integration_Tests/lib/src/Test_Report.c
 )   
 
 set (TI_HDRS
 	${PROJECT_SOURCE_DIR}/04_SWE5_Integration_Tests/inc
-	${PROJECT_SOURCE_DIR}/04_SWE5_Integration_Tests/stubs/inc 
-) 
+#	${PROJECT_SOURCE_DIR}/04_SWE5_Integration_Tests/stubs/inc 
+	${PROJECT_SOURCE_DIR}/04_SWE5_Integration_Tests/lib/inc
+  ${PROJECT_SOURCE_DIR}/02_Middleware/Base/inc
+)  
 
 set (SRCS 
 	%SOURCES
@@ -40,19 +51,19 @@ add_subdirectory(../03_Driver Build_Driver)
 
 #--------------------------------------------------------------------------------------------------#  
 
-add_library(${PROJECT_NAME} STATIC ${SRCS})
-target_link_libraries(${PROJECT_NAME}
-						${CMAKE_THREAD_LIBS_INIT}
+#add_library(${PROJECT_NAME} STATIC ${SRCS})
+#target_link_libraries(${PROJECT_NAME}
+#						${CMAKE_THREAD_LIBS_INIT}
 						#For example : TBD LidarLms151
-            )       
+#            )       
 
 #--------------------------------------------------------------------------------------------------#  
 
 add_executable(TI_${PROJECT_NAME} ${TI_SRCS} ${SRCS} )    
-target_link_libraries(${PROJECT_NAME} -coverage
-						${CMAKE_THREAD_LIBS_INIT}
+#target_link_libraries(${PROJECT_NAME} -coverage
+#						${CMAKE_THREAD_LIBS_INIT}
 						#For example : TBD LidarLms151
-					)       
+#    
 set_target_properties(TI_${PROJECT_NAME} PROPERTIES EXCLUDE_FROM_ALL TRUE) 
 
 

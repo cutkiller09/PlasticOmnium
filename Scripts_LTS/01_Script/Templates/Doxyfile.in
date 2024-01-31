@@ -198,11 +198,7 @@ REFERENCES_RELATION    = NO
 REFERENCES_LINK_SOURCE = YES
 SOURCE_TOOLTIPS        = YES
 USE_HTAGS              = NO
-VERBATIM_HEADERS       = YES
-CLANG_ASSISTED_PARSING = NO
-CLANG_ADD_INC_PATHS    = YES
-CLANG_OPTIONS          =
-CLANG_DATABASE_PATH    =
+VERBATIM_HEADERS       = YES   
 #---------------------------------------------------------------------------
 # Configuration options related to the alphabetical class index
 #---------------------------------------------------------------------------
@@ -222,8 +218,7 @@ HTML_EXTRA_FILES       =
 HTML_COLORSTYLE        = AUTO_LIGHT
 HTML_COLORSTYLE_HUE    = 220
 HTML_COLORSTYLE_SAT    = 100
-HTML_COLORSTYLE_GAMMA  = 80
-HTML_TIMESTAMP         = NO
+HTML_COLORSTYLE_GAMMA  = 80 
 HTML_DYNAMIC_MENUS     = YES
 HTML_DYNAMIC_SECTIONS  = NO
 HTML_INDEX_NUM_ENTRIES = 100
@@ -292,8 +287,7 @@ PDF_HYPERLINKS         = YES
 USE_PDFLATEX           = YES
 LATEX_BATCHMODE        = NO
 LATEX_HIDE_INDICES     = NO
-LATEX_BIB_STYLE        = plain
-LATEX_TIMESTAMP        = NO
+LATEX_BIB_STYLE        = plain 
 LATEX_EMOJI_DIRECTORY  =
 #---------------------------------------------------------------------------
 # Configuration options related to the RTF output

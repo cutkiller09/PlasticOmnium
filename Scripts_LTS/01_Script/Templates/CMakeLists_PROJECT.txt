@@ -1,17 +1,28 @@
-cmake_minimum_required(VERSION 3.26) 
+cmake_minimum_required(VERSION 3.26)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -g")
 
 if(WIN32)
    set(CMAKE_C_COMPILER "C:/msys64/mingw64/bin/gcc.exe")
    set(CMAKE_CXX_COMPILER "C:/msys64/mingw64/bin/gcc.exe")
 endif()
 
-UNSET(CMAKE_C_FLAGS CACHE)
-SET(CMAKE_C_FLAGS "-g -O0 -Wall -W" CACHE STRING "C Flags" FORCE)
+set(CMAKE_C_OUTPUT_EXTENSION_REPLACE 1)
+file(MAKE_DIRECTORY  ${CMAKE_CURRENT_SOURCE_DIR}/doc/Doxygen)
+
+# Options
+option(COVERAGE "Enable code coverage" ON)
+
+# first we can indicate the documentation build as an option and set it to ON by default
+option(BUILD_DOC "Build documentation" ON)
+
+if (COVERAGE)
+    add_definitions(--coverage)
+endif()
 
 #--------------------------------------------------------------------------------------------------#
 project($NAME)
 
-add_subdirectory(./01_HighLevel Build_HighLevel)
+add_subdirectory(./01_HighLevel Build_Project)
 include_directories($NAME_INCLUDE_DIRS)
 
 #--------------------------------------------------------------------------------------------------# 

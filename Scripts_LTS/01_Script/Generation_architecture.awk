@@ -18,6 +18,7 @@ BEGIN {
 	Dossier_Mid = Dossier_Code"/02_Middleware" 	
 	Dossier_Drv = Dossier_Code"/03_Driver" 	
 	Dossier_SWE5_Integration_Tests = Dossier_Code"/04_SWE5_Integration_Tests" 
+	Dossier_Lib_tests = Dossier_SWE5_Integration_Tests"/lib" 
 
    while ($1 != "#FinTraitement")
    {     
@@ -53,6 +54,9 @@ BEGIN {
 			system("touch " Dossier_Mid"/CMakeLists.txt")		 
 			system("mkdir " Dossier_Drv)		 
 			system("touch " Dossier_Drv"/CMakeLists.txt")		 
+			system("mkdir " Dossier_Lib_tests)
+			system("mkdir " Dossier_Lib_tests"/inc")
+			system("mkdir " Dossier_Lib_tests"/src") 
 			 
 			system ("cp Templates/*SWQT_PROD*.xlsx "Dossier_SWE6_Qualification_Tests"/SWQT_"Product_Name"_"Oem"_"Project_ID".xlsx")	
 			system ("cp Templates/*SWQT_summary_PROD*.xlsx "Dossier_SWE6_Qualification_Tests"/SWQT_summary_"Product_Name"_"Oem"_"Project_ID".xlsx")							
@@ -64,11 +68,16 @@ BEGIN {
 			system ("cp Templates/TEMPLATE_SWIT_PRODUCTNAME_OEM_PROJECTID.xlsx " Dossier_SWE5_Integration_Tests"/doc/SWIT_"Product_Name"_"Oem"_"Project_ID".xlsx")		
 			system ("cp Templates/TEMPLATE_SWIT_summary_PRODUCTNAME_OEM_PROJECTID.xlsx " Dossier_SWE5_Integration_Tests"/doc/SWIT_Summary_"Product_Name"_"Oem"_"Project_ID".xlsx")			
 			system ("cp Templates/Global_Review_Checklist_V1.0.xlsm " Dossier_SWE5_Integration_Tests"/doc/SWE5_Checklist_Review_"Product_Name"_"Oem"_"Project_ID".xlsm")
-			system ("sed -e 's/$COMPONENT/"Component_Name"/g' -e 's/$NAME/"Product_Name"/g' Templates/CMakeLists_PROJECT.txt >" Dossier_Code"/CMakeLists.txt" )  
+			system ("sed -e 's/$NAME/"Product_Name"/g' Templates/CMakeLists_PROJECT.txt >" Dossier_Code"/CMakeLists.txt" )  
 			system ("cp Templates/TEMPLATE_PCC_PRODUCTNAME_OEM_PROJECTID.xlsx " Dossier_SWE5_Integration_Tests"/doc/PCC_"Product_Name"_"Oem"_"Project_ID".xlsx")		
 			system ("cp Templates/TEMPLATE_SOFTWARE_VV_STRATEGY.docx " Dossier_Doc)
 			system ("cp Templates/Header_Template_CMakeLists_LIB.txt " Dossier_Mid"/CMakeLists.txt" )	
-			system ("cp Templates/Header_Template_CMakeLists_LIB.txt " Dossier_Drv"/CMakeLists.txt" )	
+			system ("cp Templates/Header_Template_CMakeLists_LIB.txt " Dossier_Drv"/CMakeLists.txt" )	 
+			system ("sed -e 's/$COMPONENT/"Product_Name"/g' Templates/Test_Template.c >" Dossier_SWE5_Integration_Tests"/src/TI_"Product_Name".c" )	
+			system ("sed -e 's/$COMPONENT/"Product_Name"/g' Templates/Template_Unit.h >" Dossier_SWE5_Integration_Tests"/inc/"Product_Name".h" )
+			system ("echo '#endif' >>" Dossier_SWE5_Integration_Tests"/inc/"Product_Name".h" )	
+			system ("cp Templates/Test_Report.c " Dossier_Lib_tests"/src" )			
+			system ("cp Templates/Test_Report.h " Dossier_Lib_tests"/inc" )						
 		}
 		else
 		{   
@@ -139,7 +148,7 @@ BEGIN {
 						
 						system ("sed -e 's/$UNIT/"Unit"/g' -e 's/$FUNCTION/"Function"/g' -e 's/$PARAMETER/"Parameter"/g' Templates/Template_Function.c >>" Dossier_Component"/src/"Component_Name".c" )		 	
 						system ("sed -e 's/$UNIT/"Unit"/g' -e 's/$FUNCTION/"Function"/g' -e 's/$PARAMETER/"Parameter"/g' Templates/Test_Body_Template.c >>" Dossier_Units_tests"/src/TU_"Component_Name".c" )					
-						system ("echo 'Std_ReturnType "Unit"_"Function"(void);' >>" Dossier_Component"/inc/"Component_Name".h") 
+						system ("sed -e 's/$UNIT/"Unit"/g' -e 's/$FUNCTION/"Function"/g' -e 's/$PARAMETER/"Parameter"/g' Templates/Template_Function.h >>" Dossier_Component"/inc/"Component_Name".h" )		 	
 						getline 
 					}				 						
 					system ("sed -e 's/$UNIT/"Unit"/g' -e 's/$FUNCTION/"Function"/g' Templates/Test_End_Template.c >>" Dossier_Units_tests"/src/TU_"Component_Name".c" )		 
@@ -307,5 +316,7 @@ BEGIN {
 		gsub(/(^ *)|( *$)/,"",$1)  # Suppression des espaces   
 
    } 
+	system ("cat 'Templates/Test_End_Template.c' >>" Dossier_SWE5_Integration_Tests"/src/TI_"Product_Name".c" )	
+
 }
 

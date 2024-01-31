@@ -3,8 +3,10 @@
 awk -f Generation_architecture.awk ../02_Canevas/*.c 
 
 #COM Cmake Generation 
-ls -R ../03_Project_Skeleton/02_Components/ | grep : | grep inc | cut -f'1' -d':' | grep -v test > Headers.txt
-ls -R ../03_Project_Skeleton/02_Components/ | grep : | grep src | cut -f'1' -d':' | grep -v test > Sources.txt
+ls -R ../03_Project_Skeleton/02_Components/ | grep : | grep inc | cut -f'1' -d':' | grep -v est > Headers.txt 
+find ../03_Project_Skeleton/02_Components/ -name *.c | grep -v est | grep -v build > Sources.txt
+
+
 
 sed -e 's|../03_Project_Skeleton/02_Components|${PROJECT_SOURCE_DIR}|g' Headers.txt > Headers2.txt 
 sed -e 's|../03_Project_Skeleton/02_Components|${PROJECT_SOURCE_DIR}|g' Sources.txt > Sources2.txt 
