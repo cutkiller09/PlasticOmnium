@@ -81,7 +81,7 @@ cmake ..
 
 ## Doxygen
 
-If needed, you can compile Doxygen Source code 
+If needed, you can compile Doxygen Source code  (Please install before `pacman -S mingw-w64-x86_64-iconv`)
 In a specific folder, using <span style="color:green">*MSYS 2 MINGW 64*</span> shell command :
 ```bash
 git clone https://github.com/doxygen/doxygen.git
