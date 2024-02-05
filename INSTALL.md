@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # INSTALLATION
 
 ## Installation and Configuration environment 
@@ -21,35 +20,23 @@ If you have any problems, feel free to file an issue for this tutorial in the [V
 
 To successfully complete this tutorial, you must do the following steps:
 
-1. Install [graphviz](https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/8.0.2/windows_10_cmake_Release_graphviz-install-8.0.2-win64.exe) and put `C:\Program Files\Graphviz\bin` in path variable environment under windows 
-
-1. Install [Doxygen](https://www.doxygen.nl/files/doxygen-1.9.6-setup.exe) for Windows (or other distribution)
-
-1. Install [Visual Studio Code](/download).
-
-1. Install the [C/C++ extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools). You can install the C/C++ extension by searching for 'c++' in the Extensions view (`kb(workbench.view.extensions)`).
-
-    ![C/C++ extension](images/cpp/cpp-extension.png)
-
-1. Get the latest version of Mingw-w64 via [MSYS2](https://www.msys2.org/), which provides up-to-date native builds of GCC, Mingw-w64, and other helpful C++ tools and libraries. You can download the latest installer from the MSYS2 page or use this [link to the installer](https://github.com/msys2/msys2-installer/releases/download/2022-06-03/msys2-x86_64-20220603.exe).
-
-2. Follow the **Installation** instructions on the [MSYS2 website](https://www.msys2.org/) to install Mingw-w64. Take care to run each required Start menu and `pacman` command.
-
-3. Install the Mingw-w64 toolchain (`pacman -S --needed base-devel mingw-w64-x86_64-toolchain`). Run the `pacman` command in a MSYS2 terminal. Accept the default to install all the members in the `toolchain` group.
-
-4. Add the path to your Mingw-w64 `bin` folder to the Windows `PATH` environment variable by using the following steps:
+1. Install Git (`pacman -S git`)
+2. Install [graphviz](https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/8.0.2/windows_10_cmake_Release_graphviz-install-8.0.2-win64.exe) and put `C:\Program Files\Graphviz\bin` in path variable environment under windows
+3. Install [Doxygen](https://www.doxygen.nl/files/doxygen-1.9.6-setup.exe) for Windows (or other distribution)
+4. Install [Visual Studio Code](/download).
+5. Install the [C/C++ extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools). You can install the C/C++ extension by searching for 'c++' in the Extensions view (`kb(workbench.view.extensions)`).   ![C/C++ extension](images/cpp/cpp-extension.png)
+6. Get the latest version of Mingw-w64 via [MSYS2](https://www.msys2.org/), which provides up-to-date native builds of GCC, Mingw-w64, and other helpful C++ tools and libraries. You can download the latest installer from the MSYS2 page or use this [link to the installer](https://github.com/msys2/msys2-installer/releases/download/2022-06-03/msys2-x86_64-20220603.exe).
+7. Follow the **Installation** instructions on the [MSYS2 website](https://www.msys2.org/) to install Mingw-w64. Take care to run each required Start menu and `pacman` command.
+8. Install the Mingw-w64 toolchain (`pacman -S --needed base-devel mingw-w64-x86_64-toolchain`). Run the `pacman` command in a MSYS2 terminal. Accept the default to install all the members in the `toolchain` group.
+9. Add the path to your Mingw-w64 `bin` folder to the Windows `PATH` environment variable by using the following steps:
    1. In the Windows search bar, type 'settings' to open your Windows Settings.
    2. Search for **Edit environment variables for your account**.
    3. Choose the `Path` variable in your **User variables** and then select **Edit**.
    4. Select **New** and add the Mingw-w64 destination folder path to the system path. The exact path depends on which version of Mingw-w64 you have installed and where you installed it. If you used the settings above to install Mingw-w64, then add this to the path: `C:\msys64\mingw64\bin`. 
    5. Select **OK** to save the updated PATH. You will need to reopen any console windows for the new PATH location to be available.
-
-5. Install `pacman -S mingw-w64-x86_64-cmake`
-
-6. Install the Mingw-w64 Lcov (`pacman -S lcov`). Run the `pacman` command in a MSYS2 terminal. Selet "all". cd into the lcov package folder, run makepkg-mingw -sCLf
-   
-7. Install Package on Vscode the [VSCode LCOV] (https://marketplace.visualstudio.com/items?itemName=alexdima.vscode-lcov)
-
+10. Install `pacman -S mingw-w64-x86_64-cmake`
+11. Install the Mingw-w64 Lcov (`pacman -S lcov`). Run the `pacman` command in a MSYS2 terminal. Selet "all". cd into the lcov package folder, run makepkg-mingw -sCLf
+12. Install Package on Vscode the [VSCode LCOV] (https://marketplace.visualstudio.com/items?itemName=alexdima.vscode-lcov)
 
 ### Using CMake
 
