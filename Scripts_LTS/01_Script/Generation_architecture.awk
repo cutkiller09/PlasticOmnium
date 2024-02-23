@@ -11,13 +11,13 @@ BEGIN {
 	Dossier_SWE1_Specification = Dossier_Doc"/01_SWE1_Specification"
 	Dossier_SWE2_Architecture = Dossier_Doc"/02_SWE2_Architecture" 
 	Dossier_SWE6_Qualification_Tests = Dossier_Doc"/03_SWE6_Qualification_Tests"
+	Dossier_SWE5_Integration_Tests = Dossier_Doc"/04_SWE5_Integration_Tests" 
 	Dossier_Code = Dossier_Source"/02_Components" 
 	Dossier_Settings = Dossier_Source"/03_Settings"	 
 	Dossier_Libs = Dossier_Source"/04_Libs"	 
 	Dossier_High = Dossier_Code"/01_HighLevel" 	
 	Dossier_Mid = Dossier_Code"/02_Middleware" 	
 	Dossier_Drv = Dossier_Code"/03_Driver" 	
-	Dossier_SWE5_Integration_Tests = Dossier_Code"/04_SWE5_Integration_Tests" 
 	Dossier_Lib_tests = Dossier_SWE5_Integration_Tests"/lib" 
 
    while ($1 != "#FinTraitement")
@@ -202,6 +202,7 @@ BEGIN {
 						system ("cp Templates/*SWDD*.docx " Dossier_Component"/doc/SWDD_"Product_Name"_"Oem"_"Project_ID".docx")		  
 						system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Test_Template.c >" Dossier_Units_tests"/src/TU_"Component_Name".c" )	
 						system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Template_CMakeLists_LIB.txt >>" Dossier_Mid"/CMakeLists.txt" )								
+						system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/CoverageReport.sh >" Dossier_Component"/CoverageReport.sh" )
 						system ("cp Templates/Test_Report.c " Dossier_Lib_tests"/src" )			
 						system ("cp Templates/Test_Report.h " Dossier_Lib_tests"/inc" )			 		
 						system ("cp Templates/main_types.h " Dossier_Base"/inc" )		 		
@@ -273,7 +274,8 @@ BEGIN {
 								system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Doxyfile.in >" Dossier_Component"/Doxyfile.in" )
 								system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Readme >" Dossier_Component"/Readme" )		
 								system ("cp Templates/*SWDD*.docx " Dossier_Component"/doc/SWDD_"Product_Name"_"Oem"_"Project_ID".docx")		  
-								system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Test_Template.c >" Dossier_Units_tests"/src/TU_"Component_Name".c" )
+								system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Test_Template.c >" Dossier_Units_tests"/src/TU_"Component_Name".c" )							
+								system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/CoverageReport.sh >" Dossier_Component"/CoverageReport.sh" )
 								system ("sed -e 's/$COMPONENT/"Component_Name"/g' Templates/Template_CMakeLists_LIB.txt >>" Dossier_Drv"/CMakeLists.txt" )				
 								system ("cp Templates/Test_Report.c " Dossier_Lib_tests"/src" )			
 								system ("cp Templates/Test_Report.h " Dossier_Lib_tests"/inc" )	 
