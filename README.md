@@ -122,10 +122,7 @@ DCan | eConfigBaudRate_Exe|TU16 Fu16CtrlId,TU16 Fu16Baudrate
 Each component contains :
 - **SWDD_Productname_Oem_ProductId.docx** 
 - **SWE4_Checklist_Review_Productname_Oem_ProductId.xlsm**
-- **SWE4_Units_Tests_Plan_Productname_Oem_ProductId.xlsm**
-- ** **
-- ** **
-- ** **
+- **SWE4_Units_Tests_Plan_Productname_Oem_ProductId.xlsm** 
 
 ```mermaid 
 flowchart LR 
@@ -158,10 +155,6 @@ flowchart LR
 
 ### Elements
 Each Elements contains :
-
-- ** **
-- ** **
-- ** **
-- 
+ 
 Coverage Folder will have all coverage results for 
 ![Screenshot](images/Capture.PNG)
